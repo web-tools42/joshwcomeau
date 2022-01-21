@@ -1,0 +1,77 @@
+{
+  "name": "@agney/playground",
+  "version": "0.3.4",
+  "description": "A simple playground for HTML, CSS and JavaScript supporting module imports.",
+  "private": false,
+  "scripts": {
+    "start": "microbundle watch",
+    "build": "microbundle --jsx React.createElement --tsconfig tsconfig.json",
+    "test": "jest",
+    "prepublishOnly": "yarn build",
+    "release": "np"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "source": "src/Playground.tsx",
+  "main": "dist/editor.js",
+  "module": "dist/editor.module.js",
+  "umd:main": "dist/editor.umd.js",
+  "unpkg": "dist/editor.umd.js",
+  "keywords": [
+    "react",
+    "editor",
+    "playground"
+  ],
+  "files": [
+    "src",
+    "dist"
+  ],
+  "author": "Agney Menon <agney@outlook.in> (@agneymenon)",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=16",
+    "react-dom": ">=16",
+    "styled-components": ">=4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-react": "^7.10.1",
+    "@babel/preset-typescript": "^7.10.1",
+    "@testing-library/jest-dom": "^5.10.1",
+    "@testing-library/react": "^10.3.0",
+    "@types/jest": "^26.0.0",
+    "@types/lodash": "^4.14.155",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/react": "^16.9.38",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-inspector": "^4.0.0",
+    "@types/styled-components": "^5.1.0",
+    "jest": "^26.0.1",
+    "microbundle": "^0.11.0",
+    "np": "^6.2.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  },
+  "dependencies": {
+    "@agney/react-inspector": "^4.0.0",
+    "@reach/auto-id": "^0.10.4",
+    "@reach/tabs": "^0.10.4",
+    "@types/lodash-es": "^4.17.3",
+    "lodash.merge": "^4.6.2",
+    "prism-react-renderer": "^1.1.1",
+    "react-simple-code-editor": "^0.11.0"
+  },
+  "jest": {
+    "rootDir": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agneym/playground"
+  },
+  "bugs": {
+    "url": "https://github.com/agneym/playground/issues"
+  }
+}
