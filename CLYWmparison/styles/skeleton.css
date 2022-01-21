@@ -1,0 +1,216 @@
+.max_width_990 {
+  max-width: 990px;
+  margin: 0 auto;
+}
+
+#bgCanvas {
+  position: fixed;
+}
+#header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 54px;
+  line-height: 50px;
+}
+  #site_title {
+    float: left;
+  }
+
+#main_content_wrapper {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  top: 0;
+  padding-top: 16px;
+}
+  #browser_warning {
+    margin: -5px 10px 20px 10px;
+    padding: 10px 15px;
+  }
+  #browser_warning i {
+    float: left;
+    margin-right: 15px;
+  }
+  #browser_warning h2 {
+    margin-bottom: 8px;
+  }
+  #browser_warning p {
+    margin-bottom: 5px;
+  }
+  #radar_chart_wrapper {
+    position: relative;
+    z-index: 5;
+    clear: both;
+    width: 444px;
+    padding-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+  }
+    .chart_label {
+      position: absolute;
+      font-size: 0.75rem;
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+    }
+      #label_diameter {
+        width: 100px;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      #label_width {
+        bottom: 105px;
+        left: 11px;
+        transform:rotate(-30deg);
+        -ms-transform:rotate(-30deg); /* IE 9 */
+        -webkit-transform:rotate(-30deg); /* Opera, Chrome, and Safari */
+      }
+      #label_weight {
+        bottom: 103px;
+        right: 9px;
+        transform:rotate(30deg);
+        -ms-transform:rotate(30deg); /* IE 9 */
+        -webkit-transform:rotate(30deg); /* Opera, Chrome, and Safari */
+      }
+
+  #yoyo_selection_wrapper {
+    width: 536px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+    #yoyo_selection_avatars {
+      position: relative;
+      padding: 4px;
+      height: 360px;
+      text-align: center;
+    }
+
+      .yoyo_avatar {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 4px;
+        width: 88px;
+        height: 88px;
+        overflow: hidden;
+      }
+
+        .yoyo_avatar img {
+          width: 100%;
+        }
+        .avatar_label {
+          z-index: 5;
+          position: absolute;
+          width: 88px;
+          margin-left: -4px;
+          height: 25px;
+          bottom: -25px;
+          line-height: 25px;
+          background: rgba(0,0,0,0.8);
+        }
+        .avatar_checked {
+          z-index: 5;
+          position: absolute;
+          top: -78px;
+          left: -23px;
+          width: 45px;
+          height: 45px;
+          transform:rotate(45deg);
+          -ms-transform:rotate(45deg); /* IE 9 */
+          -webkit-transform:rotate(45deg); /* Opera, Chrome, and Safari */
+        }
+    #yoyo_selection_controls {
+      line-height: 32px;
+      height: 32px;
+    }
+      #yoyo_selection_controls > span {
+        vertical-align: top;
+        display: inline-block;
+        padding: 0px 10px;
+      }
+      #yoyo_selection_controls li, #yoyo_selection_controls ul {
+        vertical-align: top;
+        display: inline-block;
+        margin: 0px 3px;
+      }
+      #yoyo_selection_controls label {
+        display: block;
+        padding: 0px 13px 0px 6px;
+      }
+  #yoyo_detail_wrapper {
+    clear: both; 
+    position: relative;
+    z-index: 10;
+    margin-top: -40px; 
+    padding: 15px 0px;
+    border-top: 1px solid #DDD;
+    min-height: 170px;
+    text-align: center;
+  }
+    #yoyo_detail_wrapper_header {
+      margin-bottom: 1rem;
+    }
+    .yoyo_more_info {
+      position: relative;
+      width: 246px;
+      display: none;
+      vertical-align: top;
+      padding: 10px;
+
+    }
+      .yoyo_more_info h2 {
+        position: relative;
+        z-index: 20;
+      }
+      .yoyo_more_info > div {
+        padding: 1px;
+      }
+      .yoyo_more_info ul {
+        position: relative;
+        z-index: 10;
+      }
+
+      .yoyo_more_info li {
+        display: inline-block;
+        vertical-align: top;
+        width: 80px;
+        padding: 8px;
+      }
+      .yoyo_more_info li:nth-child(2) {
+        padding: 8px 0px;
+        width: 64px;
+      }
+      .stat_holder {
+        padding: 5px;
+      }
+
+    .yoyo_more_info_template {
+      display: none;
+    }
+
+#footer_content_wrapper {
+  position: relative;
+  z-index: 5;
+  padding: 15px 0px;
+  margin-bottom: 50px;
+}
+  #footer_content_wrapper > div {
+    text-align: center;
+    padding: 5px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
