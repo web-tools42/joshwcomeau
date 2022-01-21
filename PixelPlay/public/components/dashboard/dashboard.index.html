@@ -1,0 +1,11 @@
+<h1>Dashboard Index</h1>
+<p>{{dash.tagline}}</p>
+
+<p ng-show="global.currentUser">Logged in as {{global.currentUser.fullname}}. <a href="#" ng-click="global.userService.logout()">Log out.</a></p>
+
+
+{{global.currentUser}}
+
+<p ng-hide="global.currentUser">
+  <a href="#" ng-click="global.userService.login()">Login to 500px</a>
+</p>

@@ -1,0 +1,85 @@
+<div class="game-wrapper" answer-with-numbers>
+  <div class="black-background"></div>
+  <div class="photo-container" 
+    ng-style="{'background-image':'url('+game.manager.currentPhoto.image_url+')'}" 
+    ng-class="{blurred: game.manager.state === game.manager.states.waiting, translucent: game.manager.resultsSplash !== null}"
+  ></div>
+
+  <div class="score-wrapper" ng-show="game.manager.state === game.manager.states.running">
+    <div class="score">{{game.manager.score}}</div>
+    <div class="combo-row" id="combo-row-{{$index+1}}" ng-repeat="c in [0,1,2]" ng-show="game.manager.combo >= c*3">
+      <div class="multiplier-indicator" ng-show="game.manager.combo >= (c+1)*3">
+        x{{c*2+2}}
+      </div>
+      <div class="combo-cell" ng-class="{lit: game.manager.combo >= (1 + 3*c), glued: game.manager.combo >= (3 + 3*c)}">
+      </div><div class="combo-cell" ng-class="{lit: game.manager.combo >= (2 + 3*c), glued: game.manager.combo >= (3 + 3*c)}">
+      </div><div class="combo-cell" ng-class="{lit: game.manager.combo >= (3 + 3*c), glued: game.manager.combo >= (3 + 3*c)}"></div>
+    </div>
+  </div>
+
+  <div class="loading-bar" ng-style="{'width': game.manager.loadPercent + '%'}" ng-show="game.manager.state === game.manager.states.loading"></div>
+
+  <div class="loading-overlay" ng-if="game.manager.state < game.manager.states.waiting"></div>
+  
+  <div class="instructions" ng-if="game.manager.state < game.manager.states.running">
+    <header ng-class="{hide: game.manager.state === game.manager.states.loading}">Select Game Mode</header>
+    <div class="game-mode-box" id="curated-box" ng-click="game.manager.selectMode('curated')">
+      <h2>Curated</h2>
+      <p>Blabla stuff about what this game mode is. You pick community-voted favorites</p>
+      <button ng-click="game.manager.startGame()">{{ game.manager.state === 'waiting' ? 'Start Game' : 'Loading...' }}</button> 
+    </div>
+    <div class="divider"></div>
+    <div class="game-mode-box" id="fresh-box" ng-click="game.manager.selectMode('fresh')">
+      <h2>Fresh</h2>
+      <p>Blabla stuff about what this game mode is. The daily submitted pics. Harder, more random. Daredevil option.</p>
+      <button ng-click="game.manager.startGame()">{{ game.manager.state === 'waiting' ? 'Start Game' : 'Loading...' }}</button> 
+    </div>
+
+    
+  </div>
+
+
+  <div class="results-splash card" ng-show="game.manager.resultsSplash !== null">
+    <div class="right" ng-show="game.manager.resultsSplash === true">
+      <i class="result-icon fa fa-check"></i>
+      <h2>You're right!</h2>
+      <p>Have you considered a career in globetrotting?</p>
+    </div>
+
+    <div class="wrong" ng-show="game.manager.resultsSplash === false">
+      <i class="result-icon fa fa-times"></i>
+      <h2>Nope, sorry.</h2>
+    </div>
+
+    <div class="button" ng-click="game.manager.goToNextQuestion()">
+      <i class="fa fa-arrow-right"></i>
+    </div>
+  </div>
+
+  <h2 style="display: block; position: absolute; z-index: 3; top: 20%;">{{ game.manager.combo }}</h2>
+
+  
+
+  <div class="answers" ng-class="{show: game.manager.state === game.manager.states.running &amp;&amp; game.manager.resultsSplash === null}">
+    <ul>
+      <li id="answer-{{$index+1}}"
+          ng-repeat="answer in game.manager.currentAnswers" 
+          ng-click="game.manager.submitAnswer(answer)" 
+          ng-class="{
+            correct: 
+              game.manager.rightAnswer.city === answer.city &amp;&amp; 
+              game.manager.chosenAnswer.city === answer.city &amp;&amp;  
+              game.manager.resultsSplash !== null,
+            incorrect:
+              game.manager.rightAnswer.city !== answer.city &amp;&amp;
+              game.manager.chosenAnswer.city === answer.city &amp;&amp;
+              game.manager.resultsSplash !== null
+          }"
+      >
+        <div class="number-label">{{$index+1}}</div>
+        <h3>{{answer.city}}</h3>
+        <h5>{{answer.country}}</h5>
+      </li>
+    </ul>
+  </div>
+</div>
