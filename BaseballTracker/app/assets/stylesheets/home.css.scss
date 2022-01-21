@@ -1,0 +1,80 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+$width: 400px;
+
+body {
+  background: #CCC;
+}
+.content-wrapper {
+  position: relative;
+  margin: 0 auto;
+  width: $width;
+  background: #FFF;
+}
+header {
+  text-align: center;
+  padding: 2rem 0.5rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-bottom: 2px solid #888;
+
+  .arrow-left {
+    width: 4rem;
+    float: left;
+  }
+  .arrow-right {
+    width: 4rem;
+    float: right;
+  }
+
+  i {
+    cursor: pointer;
+  }
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+li {
+  padding: 1rem;
+  margin: 1rem 0;
+  border-bottom: 1px solid #CCC;
+  line-height: 1.5em;
+}
+.score {
+  float: right;
+}
+.winner {
+  font-weight: bold;
+  color: #090;
+}
+.no-games {
+  background: #EEE;
+  color: #900;
+  padding: 3rem;
+  font-size: 1.2rem;
+}
+
+.date-picker {
+  text-align: center;
+  padding: 1rem;
+  background: #EEE;
+
+  input[type="text"] {
+    width: 75px;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  input[type="submit"] {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+  }
+
+}

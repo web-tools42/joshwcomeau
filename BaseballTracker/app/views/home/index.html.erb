@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+  <header>
+    <span class="arrow-left" ng-click="home.next_day(-1)"><i class="fa fa-chevron-left"></i></span>
+    {{home.date | formatDate}}
+    <span class="arrow-right" ng-click="home.next_day(1)"><i class="fa fa-chevron-right"></i></span>
+  </header>
+  <div class="date-picker">
+    Enter a date:
+    <%= form_tag("/", method: :get) do %>
+      <%= text_field_tag "day", '', placeholder: 'day' %>
+      <%= text_field_tag "month", '', placeholder: 'month' %>
+      <%= text_field_tag "year", '', placeholder: 'year' %>
+      <%= submit_tag "Go" %>
+    <% end %>
+  </div>
+
+  <div class="no-games" ng-show="!home.results.has_games">
+    No games today! =(
+  </div>
+  <ul ng-show="home.results.has_games">
+    <li ng-repeat="game in home.results.data.games.game">
+      <strong>Home:</strong> 
+      <span ng-class="{winner: game.linescore.r.home > game.linescore.r.away}">{{game.home_team_name}}</span>
+      <span class="score">{{game.linescore.r.home}}</span>
+      <br>
+      <strong>Away:</strong> 
+      <span ng-class="{winner: game.linescore.r.home < game.linescore.r.away}">{{game.away_team_name}}</span>
+      <span class="score">{{game.linescore.r.away}}</span>
+      <br>
+      {{game.status.status}}
+    </li>
+  </ul>
+</div>
