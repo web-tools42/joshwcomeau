@@ -1,0 +1,9 @@
+@import 'variables';
+
+@mixin width-wrap {
+  width: 100%;
+  max-width: $width-max;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}

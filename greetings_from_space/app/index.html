@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Greetings From Space!</title>
+  <link rel="stylesheet" href="css/style.min.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h2 class="title">Greetings From Space</h2>            
+    </header>
+
+    <!-- Main content -->
+    <div id="content">
+        
+        <!-- Populated by card.template.html -->
+        <div id="card"></div>
+
+        <!-- Populated by card_generator.template.html -->
+        <div id="card-generator"></div>
+    </div>
+  </div>
+
+
+  <!-- JS libraries -->
+  <script src="libs/jquery/dist/jquery.js"></script>
+  <script src="libs/underscore/underscore.js"></script>
+  <script src="libs/backbone/backbone.js"></script>
+  <script src="libs/firebase/firebase.js"></script>
+  <script src="libs/backbonefire/dist/backbonefire.js"></script>
+  <script src="libs/moment/moment.js"></script>
+
+  <!-- Concatenated app JS -->
+  <script src="app.min.js"></script>
+</body>
+</html>

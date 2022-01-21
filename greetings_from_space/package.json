@@ -1,0 +1,35 @@
+{
+  "name": "greetings_from_space",
+  "version": "0.0.1",
+  "description": "Send yourself a postcard from space!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joshua Comeau",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "~1.9.3",
+    "express": "^4.10.4",
+    "method-override": "~2.3.0",
+    "moment": "^2.10.2",
+    "mongoose": "~3.8.20",
+    "request": "^2.55.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.0.0",
+    "gulp-cache": "^0.2.4",
+    "gulp-concat": "^2.4.2",
+    "gulp-imagemin": "^2.0.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-livereload": "^2.1.1",
+    "gulp-minify-css": "^0.3.11",
+    "gulp-notify": "^2.0.1",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "^1.2.4",
+    "gulp-sourcemaps": "^1.2.8",
+    "gulp-uglify": "^1.0.1",
+    "gulp-webserver": "^0.9.0"
+  }
+}

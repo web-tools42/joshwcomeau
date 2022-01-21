@@ -1,0 +1,11 @@
+{
+  "name": "Greetings From Space",
+  "dependencies": {
+    "jquery": "latest",
+    "underscore": "latest",
+    "backbone": "latest",
+    "firebase": "latest",
+    "backbonefire": "latest",
+    "moment": "~2.10.2"
+  }
+}
