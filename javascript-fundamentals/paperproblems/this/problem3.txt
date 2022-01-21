@@ -1,0 +1,15 @@
+What is the output of this program?
+
+let obj = {
+    bar: function() {console.log(this.baz);},
+    baz: 10
+}
+
+let obj2 = {
+    bar: function() {console.log(this.baz + 2);},
+    baz: 12
+}
+
+obj2.bar = obj.bar;
+obj2.bar();
+

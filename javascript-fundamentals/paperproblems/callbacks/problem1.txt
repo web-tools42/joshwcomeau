@@ -1,0 +1,24 @@
+What does the following program do?
+
+- Reference -
+
+setTimeout takes 2 parameters
+- a callback function,
+- a number that represents time in ms (miliseconds) after which to execute the callback
+setTimeout returns a number representing the id of the timeout, used to clear the timeout e.g. clearTimeout(id)
+
+- Problem -
+
+function g() {
+    console.log("Hello!")
+}
+
+function f() {
+    setTimeout(g, 500);
+}
+
+function h() {
+    setTimeout(f, 1000);
+}
+
+setTimeout(h, 200);

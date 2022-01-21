@@ -1,0 +1,11 @@
+Replace all functions with anonymous functions
+
+function greet(x, y) {
+    console.log("hello " + x + " " + y);
+}
+
+function call(f) {
+    f("Bob", "Dole");
+}
+
+call(greet);

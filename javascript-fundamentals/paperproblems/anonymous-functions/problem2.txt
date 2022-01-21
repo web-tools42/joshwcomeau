@@ -1,0 +1,13 @@
+Replace all functions with anonymous functions
+The final program should be on a single line
+
+
+function greet(x) {
+    console.log("hello " + x);
+}
+
+function call(f) {
+    f("bob");
+}
+
+call(greet);

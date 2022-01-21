@@ -1,0 +1,10 @@
+Draw the object diagram for this program
+
+let x1 = {};
+let x2 = {};
+let x3 = {};
+let x4 = {};
+x2.__proto__ = x1;
+x3.__proto__ = x2;
+x4.__proto__ = x3;
+

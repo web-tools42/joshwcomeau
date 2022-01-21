@@ -1,0 +1,30 @@
+What is the output of this program?
+
+- Reference -
+
+this (aka "the context") is a special keyword in functions, its value depends on how the function was called.
+
+function foo() {
+    console.log(this);
+}
+
+// normal function call
+foo(); // this is undefined
+
+// as object method (does not apply to arrow functions)
+let obj = {bar: foo};
+obj.bar(); // this refers to obj
+
+// as object method (arrow function)
+let obj = {bar: () => console.log(this)};
+obj.bar(); // this is undefined
+
+- Problem - 
+
+function foo() {
+    console.log(this.baz);
+}
+
+let obj = {bar: foo, baz: 8};
+obj.bar();
+

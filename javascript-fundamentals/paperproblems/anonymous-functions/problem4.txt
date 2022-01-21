@@ -1,0 +1,12 @@
+Replace all functions with anonymous functions
+
+function greet(x) {
+    console.log("hello " + x);
+}
+
+function twice(f) {
+    f("bob");
+    f("mary");
+}
+
+twice(greet);

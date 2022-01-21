@@ -1,0 +1,16 @@
+What is the output of this program?
+
+let animals = [
+    {species: 'dog', name: 'Nacho'},
+    {species: 'cat', name: 'Ramses'},
+    {species: 'bunny',name: 'Flufftail'},
+    {species: 'dog', name: 'Popcorn'},
+    {species: 'giraffe', name: 'Neckbeard'},
+    {species: 'possum', name: ''}
+];
+
+let letterN = animals.filter(function(animal) {
+    return animal.name !== undefined && animal.name[0] === 'N'
+});
+
+console.log(letterN[0].name);

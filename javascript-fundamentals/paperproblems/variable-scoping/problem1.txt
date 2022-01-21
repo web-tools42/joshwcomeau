@@ -1,0 +1,11 @@
+What is the output of this program?
+
+let x = 1;
+
+function f() {
+    x = x * 2;
+    console.log(x);
+}
+
+f();
+f();

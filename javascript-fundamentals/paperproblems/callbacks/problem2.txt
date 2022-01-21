@@ -1,0 +1,20 @@
+What does the following program do?
+
+- Reference -
+
+setInterval takes 2 parameters
+- a callback function,
+- a number that represents time in ms (miliseconds) after which to execute the callback (executes callback every interval until clearInterval is called)
+setInterval returns a number representing the id of the interval, used to clear the interval e.g. clearInterval(id)
+
+- Problem -
+
+function g() {
+    console.log("Hello!")
+}
+
+function h() {
+    setInterval(g, 1000);
+}
+
+setInterval(h, 1000);

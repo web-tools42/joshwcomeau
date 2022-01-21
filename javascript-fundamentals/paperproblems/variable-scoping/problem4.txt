@@ -1,0 +1,17 @@
+Which variables are in scope on the indicated line?
+
+let x = 5;
+function f() {
+    let y = 8;
+    function g() {
+        let z = 10;
+        function h() {
+            let p = "hello";
+            function k() {
+                let b = "boom";
+            }
+            // Which variables are in scope on this line?
+        }
+
+    }
+}
