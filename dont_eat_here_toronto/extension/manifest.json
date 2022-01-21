@@ -1,0 +1,43 @@
+{
+  "manifest_version": 2,
+
+  "name": "Don't Eat Here Toronto",
+  "description": "Adds Toronto DineSafe food inspection info to Yelp restaurant pages for Toronto restaurants.",
+  "version": "0.0.1",
+
+  "page_action": {
+    "default_icon": {
+      "19": "icon_19.png",
+      "38": "icon_38.png"
+    },
+    "default_title": "Restaurant Inspection Data Available!"
+  },
+
+  "background": {
+    "scripts": ["js/show_icon.js"],
+    "persistent": false
+  },
+
+  "icons": { 
+    "16": "icon_16.png",
+    "48": "icon_48.png",
+    "128": "icon_128.png" 
+  },
+
+  "permissions": [
+    "declarativeContent"
+  ],
+
+  "content_scripts": [
+    {
+      "matches":  ["http://*.yelp.com/biz/*", "https://*.yelp.com/biz/*", "http://*.yelp.ca/biz/*", "https://*.yelp.ca/biz/*"],
+      "css":      ["css/style.css"],
+      "js":       ["js/jquery.js", "js/lodash.js", "js/get_and_display_results.js"]
+    }
+  ],
+
+  "web_accessible_resources": [
+    "*.json",
+    "white_x.png"
+  ]
+}
