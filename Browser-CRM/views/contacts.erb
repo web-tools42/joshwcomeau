@@ -1,0 +1,61 @@
+      <section id="status_side_contacts">
+        <div id="not_search"<%= ' style="display: none;"' if @search_term %>>
+          Viewing All Contacts
+        </div>
+        <div id="search" <%= ' style="display: none;"' unless @search_term %>>
+          Search Results
+          <div id="search_num">
+            Found <%= @results_num %> contacts that contain the term '<%= @term %>'.
+          </div>
+        </div>
+      </section>
+      <section id="contacts">
+        <div id="search_div">
+          <form action="/contacts" method="get">
+            <input type="text" name="search" placeholder="Enter Search Term..." required><input type="submit" value="Search" id="search_submit">
+          </form>
+        </div>
+        <div id="delete_confirm" <%= "style='display:none;'" unless @deleted %>>
+          <form action="/contacts/confirm" method="post">
+            <input type="hidden" name="id" value="<%= @id %>">
+            <input type="hidden" name="first_name" value="<%= @name %>">
+            <input type="hidden" name="email" value="<%= @email %>">
+            <input type="hidden" name="notes1" value="<%= @notes1 %>">
+            <input type="hidden" name="notes2" value="<%= @notes2 %>">
+            <input type="hidden" name="notes3" value="<%= @notes3 %>">
+            <input type="hidden" name="notes4" value="<%= @notes4 %>">
+            <input type="hidden" name="notes5" value="<%= @notes5 %>">
+            <input type="hidden" name="action" value="restore">
+            Contact Deleted. <input type="submit" value="Undo Delete" id="undo_button">
+          </form>
+        </div>
+        <div id="restore_confirm" <%= "style='display:none;'" unless @restored %>>
+          Contact #<%= @id %> Restored!
+        </div>
+
+        <ul class="contacts_list">
+          <% @results.each do |c| %>
+          <li>
+            <div class="c_delete">
+              <form action="/contacts/<%= c.id %>/delete" method="post">
+                <input type="hidden" name="id" value="<%= c.id %>">
+                <input type="hidden" name="_method" value="delete">
+                <input type="submit" name="submit" class="delete_button_contacts" value="X">
+              </form>
+            </div>
+            <div class="c_id_div"><a href="/contacts/<%= c.id %>/edit" class="c_id_link"><%= c.id %></a></div>
+            <h3 class="c_name"><a href="/contacts/<%= c.id %>/edit"><%= c.name %></a></h3>
+            <p class="c_email"><%= c.email %></p>
+            <ol id="notes_list">
+              <li><%= c.notes1 %></li>
+            </ol>
+            <p class="c_dates">
+              <strong>Date Created:</strong> <%= c.created_at.to_s[0,10] + " at " + c.created_at.to_s[11,8] %><br>
+              <strong>Date Modified:</strong> <%= c.updated_at.to_s[0,10] + " at " + c.updated_at.to_s[11,8] %>
+          </li>
+          <% end %>
+
+          <li id="add_contact_list_item" style="border:0px;"><a href="/add">+</a></li>
+
+        </ul>
+      </section>

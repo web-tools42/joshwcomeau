@@ -1,0 +1,38 @@
+      <section id="status_side">
+        Add A Contact
+      </section>
+
+      <section id="add_contact_section">
+        <form action="/contacts/confirm" method="post" name="add_contact">
+          <table>
+            <tr>
+              <td class="col_label">Name:</td>
+              <td class="col_smallfield rightborder">
+                <input type="text" name="first_name" class="smallfield" placeholder="eg. John Doe" required>
+              </td>
+              <td class="col_label">Email:</td>
+              <td class="col_smallfield">
+                <input type="email" name="email" class="smallfield" placeholder="eg. john@domain.com" required>
+              </td>
+            </tr>
+            <tr>
+              <td class="col_label">Notes:</td>
+              <td class="col_largefield" colspan="3">
+                <input type="text" name="notes1" class="largefield" required>
+                <input type="text" name="notes2" class="largefield">
+                <input type="text" name="notes3" class="largefield">
+                <input type="text" name="notes4" class="largefield">
+                <input type="text" name="notes5" class="largefield">
+              </td>
+            </tr>
+            <tr>
+              <td colspan="4" class="col_submit">
+                <input type="hidden" name="action" value="create">
+                <input type="submit" name="submit" value="Add Contact">
+              </td>
+            </tr>
+
+          </table>
+
+        </form>
+      </section>

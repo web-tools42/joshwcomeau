@@ -1,0 +1,55 @@
+<section id="view_contact_section">
+  <form action="/contacts/savechanges" method="post">
+    <div id="contact_name_div">
+      <input type="text" name="first_name" value="<%= @contact.name %>" id="contact_name" required>
+    </div>
+    <div id="contact_email_div">
+      <input type="email" name="email" value="<%= @contact.email %>" id="contact_email" required>
+    </div>
+
+    <div id="contact_edit_instructions">
+      (Click name or email to edit)
+    </div>
+
+    <div id="notes_holder">
+      <div id="notes_title">
+        Notes
+      </div>
+      <div id="note_iterator">
+      <% 
+        (1..5).each do |iteration|
+      %>
+        <input type="text" value="<%= @contact.send("notes" + iteration.to_s) %>" name="notes<%= iteration %>" class="note" placeholder="Enter new note">
+      <% end %>
+      </div>
+    </div>
+    <div id="submit_holder">
+      <input type="hidden" name="id" value="<%= @contact.id %>">
+      <input type="hidden" name="_method" value="put">
+
+      <div id="contact_button1" class="contact_buttons">
+        <input type="submit" value="Save Changes" id="contact_submit">
+      </div>
+      <div id="contact_button2" class="contact_buttons">
+        <a href="">Reset Contact</a>
+      </div>
+      <div id="contact_button3" class="contact_buttons">
+        <a href="/contacts">View Contacts</a>
+      </div>
+    </div>
+  </form>
+  <form action="/contacts/<%= @contact.id %>/delete" method="post">
+    <input type="hidden" name="id" value="<%= @contact.id %>">
+    <input type="hidden" name="_method" value="delete">
+
+
+    <div id="delete_holder">
+      <div id="contact_button4" class="contact_buttons">
+        <input type="submit" value="Kill This Idiot" id="contact_submit">
+      </div>
+    </div>
+    
+
+
+  </form>
+</section>
