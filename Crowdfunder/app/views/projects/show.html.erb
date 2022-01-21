@@ -1,0 +1,106 @@
+
+	<div id="pledge_confirmation">
+		<h2></h2>
+		<p></p>
+	</div>
+
+	<div class='row'>
+		<table class="project_details large-6 columns">
+			<h1><%= @project.name %></h1>		
+			<tr><td>Start date:</td><td> <%= @project.start_date %></td></tr>
+			<tr><td>End date: </td><td><%= @project.finish_date %></td></tr>
+			<tr><td>Days remaining: </td><td><%= @days_remaining %></td></tr>	
+		</table>
+		<div class="project_funding large-6 columns">
+
+			<strong>Total money raised:</strong> $<%= @project.funded %><br><br>
+			<strong>Funding goal:</strong> $<%= @project.funding_goal %>
+
+			<span id="project_funded_amount"><%= @project.funded %></span>
+
+		</div>
+	</div>
+</div>
+<div class="inner_project_page"><br>
+	<% if flash[:alert] %>
+	<div class="alert" style="color: red; font-size: 3em;"><%= flash[:alert] %></div>
+	<% end %>
+	<div class="project_text_description">
+		<%= @project.description %>
+		<% if current_user %>
+		<% current_user.pledges.each do |p| %>
+		<% if p.project.id == @project.id %><br>
+		<%= "You've already backed this project." %>
+		<% break %>
+		<% end %>
+		<% end %>
+		<% end %>
+
+
+		<div class="pledge_form" style="text-align: left; margin-top: 50px; display: none;">
+			
+			<%= form_for [@project, @pledge] do |f| %>
+			<h2>Make a Pledge</h2>
+			<div class="field">
+				<%= f.label :amount %><br>
+				<%= f.text_field :amount %>
+				<%= f.hidden_field :tier_id %>
+			</div>
+			<h4>Selected Reward: <span id="selected_reward"></span></h4>
+			<div class="action">
+				<%= f.submit %>
+			</div>  
+			<% end %>
+		</div>
+	</div>
+
+
+	<div class="project_reward_tiers">
+		<% @project.tiers.each do |b| %>
+
+		<br><br><div class="project_reward_tier" id="tier_<%= b.id %>">
+			Pledge $<span class="tier_amount"><%= b.amount %></span> or more<br><br>
+			Backers: <%= b.pledges.count %><br><br>
+
+			Sum: <%= @tier_total_money_backed = b.pledges.inject(0) {|sum, pledge| sum + pledge.amount} %><br><br>
+			<span class="tier_description"><strong>Reward:</strong> <%= b.tier_description %></span><br><br>
+
+		<div class="project_reward_tier" id="tier_<%= b.id %>">
+			Pledge $<span class="tier_amount"><%= b.amount %></span> or more<br>
+			Backers: <span class="tier_backers"><%= b.pledges.count %></span><br>
+
+			Sum: <span class="tier_sum"><%=  @tier_total_money_backed = b.pledges.inject(0) {|sum, pledge| sum + pledge.amount} %></span><br>
+			<span class="tier_description"><%= b.tier_description %></span>
+
+			
+		</div>
+		<% end %>			
+	</div>
+	<%= render 'layouts/editdestroyproject' %>
+	<%= link_to "< Return home", projects_path, class: 'return_home' %>
+	<script>
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

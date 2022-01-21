@@ -1,0 +1,109 @@
+// Place all the styles related to the Projects controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.field {
+  padding: 12px;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  margin: 10px;
+  width: 50%;
+  
+}
+.project_funding {
+	padding-top:4%;
+	border:1px solid;
+	padding-bottom:2.8%;
+	background-color:#c4db97;
+	text-align:center;
+}
+.project_index {
+	text-align:center;
+	background-color:#d5c3d4;
+	border:solid 1px;
+}
+
+.top-bar-section {
+	float:right;
+	color:white;
+}
+
+.projects_listed {
+	text-align:center;
+	height:300px;
+	width:300px;
+	background-color:#d5d080;
+}
+
+.individual_project_immediate_details {
+	background-color:#D4F8D8;
+	text-align:center;
+}
+
+.project_details {
+	background-color:#D6D9B9;
+	border:1px solid;
+}
+
+.project_funding {
+	
+}
+.editdestroy {
+	float:right;
+}
+.return_home {
+	position:relative;
+	top:500px;
+	
+}
+.project_reward_tiers {
+	float:right;
+	background-color:#E6F0D9;
+	text-align:center;
+}
+.project_reward_tier {
+	height:100%;
+	width:200px;
+}
+
+.project_text_description {
+	float:left;
+	margin-left:20px;
+}
+
+.inner_project_page {
+	border-radius:20px;
+	background-color:#F8F6D4;
+	width:80%;
+	height:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+
+#pledge_confirmation {
+	display: none;
+	position: fixed;
+	z-index:100000;
+	width: 100%;
+	height: 150%;
+	margin-top: -100px;
+	background: rgba(255,255,255,0.9);
+	text-align: center;
+	padding: 100px;
+
+}
+	#pledge_confirmation h2 {
+		font-size: 48px;
+		color: green;
+	}
+
+
+
+
+
+
+
+
+
