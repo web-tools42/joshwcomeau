@@ -1,0 +1,30 @@
+@import '../../variables';
+@import '../../mixins';
+
+.footer {
+  position: relative;
+  text-align: center;
+  padding: 2rem;
+
+  .icon {
+    margin: 0 4px;
+    transform: translateY(3px);
+  }
+
+  .attribution {
+    font-size: 16px;
+    font-weight: 100;
+    color: $darkgray;
+
+    a {
+      // color: $peach;
+    }
+  }
+
+  .privacy-notification {
+    font-size: 14px;
+    color: $mediumgray;
+    margin-top: 1rem;
+  }
+
+}

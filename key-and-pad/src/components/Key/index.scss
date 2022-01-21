@@ -1,0 +1,39 @@
+@import '../../variables';
+
+.key {
+  position: relative;
+  width: $keyboard-key-size;
+  height: $keyboard-key-size;
+  margin: 0 3px;
+  padding: 5px;
+  border-radius: $border-radius-large;
+  cursor: default;
+  cursor: not-allowed;
+
+  &.white {
+    background: $white;
+    border-bottom: 3px solid rgba(0,0,0,0.2);
+    border-right: 1px solid rgba(0,0,0,0.1);
+    border-left: 1px solid rgba(0,0,0,0.1);
+  }
+
+  &.black {
+    background: $darkgray;
+    color: $white;
+    border-bottom: 3px solid rgba(0,0,0,0.6);
+    border-right: 1px solid rgba(0,0,0,0.3);
+    border-left: 1px solid rgba(0,0,0,0.3);
+  }
+
+  &.placeholder {
+    background: $verylightgray;
+    color: $white;
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-left: 1px solid rgba(0,0,0,0.05);
+  }
+
+  &.active {
+    transform: translateY(2px);
+  }
+}

@@ -1,0 +1,60 @@
+@import '../../variables';
+@import '../../mixins';
+
+.subheading {
+  position: relative;
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: normal;
+  letter-spacing: -1.25px;
+  color: $darkgray;
+  cursor: default;
+  user-select: none;
+
+  &.background-offwhite {
+    @include text-outline($offwhite);
+  }
+
+  &.background-white {
+    @include text-outline($white);
+  }
+
+  &.underline-peach {
+    .subheading-inline:after {
+      background: $peach;
+    }
+  }
+
+  &.underline-navy {
+    .subheading-inline:after {
+      background: $navy;
+    }
+  }
+
+  &.underline-dark-gray {
+    .subheading-inline:after {
+      background: $darkgray;
+    }
+  }
+
+  &.underline-medium-gray {
+    .subheading-inline:after {
+      background: $mediumgray;
+    }
+  }
+
+  .subheading-inline {
+    position: relative;
+
+    &:after {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      height: 3px;
+      left: 2px;
+      right: 0;
+      bottom: 0;
+      border-radius: 4px;
+    }
+  }
+}
