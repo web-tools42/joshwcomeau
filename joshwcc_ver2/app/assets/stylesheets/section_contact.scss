@@ -1,0 +1,104 @@
+@import 'variables';
+
+section.contact {
+  background: $darkgrey;
+  min-height: 600px;
+
+  .width-wrapper {
+    max-width: 830px;
+    padding: 4rem 0 6rem 0;
+  }
+
+  .title {
+    position: relative;
+    color: $lightblue;
+    font-size: 5rem;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -3px;
+
+    &:before {
+      content: " ";
+      position: absolute;
+      z-index: 0;
+      width: 20%;
+      left: 40%;
+      bottom: -0.5rem;
+      margin: auto;
+      border-bottom: 3px solid $lightgreen;
+    }
+  }
+
+  .intro {
+    font-size: 2rem;
+    color: #FFF;
+    text-align: center;
+    margin: 2rem 0;
+  }
+
+  .contacts {
+    max-width: 585px;
+    margin: 0 auto;
+    color: #FFF;
+    font-size: 1.3rem;
+
+    .icon {
+      margin-right: 1.5rem;
+    }
+
+    li {
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+
+      &:last-of-type {
+        border-bottom: none;
+      }
+
+      a {
+        display: block;
+        padding: 1rem;
+        color: $blue;
+        text-decoration: none;
+        font-weight: 400;
+        transition: 0.5s;
+
+
+        i {
+          color: #DDD;
+        }
+
+        &:hover {
+          background: rgba(255,255,255,0.2);
+          transition: 0.2s;
+
+          i {
+            color: #FFF;
+            text-shadow: 
+              0.5px 0.5px 0px lighten($darkgrey, 5%),
+              1px 1px 0px lighten($darkgrey, 5%),
+              1.5px 1.5px 0px lighten($darkgrey, 5%),
+              2px 2px 0px lighten($darkgrey, 5%)
+            ;
+          }
+          
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 400px) {
+  section.contact {
+    .contacts {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+
+@media screen and (min-width: 1000px) {
+  section.contact {
+    .contacts {
+      font-size: 2.2rem;
+    }
+  }
+}

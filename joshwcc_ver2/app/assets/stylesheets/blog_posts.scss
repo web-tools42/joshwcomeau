@@ -1,0 +1,402 @@
+//////////////////// NOTE! ////////////////////////////////////////////////////////////////////////////
+/////////// This page contains styles for the blog pages in terms of their LAYOUT. ////////////////////
+/////////// The styles for blog posts, that make up the content of the post, is in blog_post.scss /////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+@import 'variables';
+$max-width: 932px;
+
+
+//////////////////////////////////// HEADER STYLES
+header.blog-header {
+  position: relative;
+  z-index: 1;
+  background: $blue;
+  height: 8rem;
+
+  .width-wrapper {
+    height: 100%;
+    max-width: $max-width;
+  }
+
+  h1 {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    left: 0;
+    right: 0;
+    bottom: -1.1rem;
+    padding: 0 1rem;
+    letter-spacing: -0.1em;
+    font-size: 6rem;
+    color: $lightblue;
+    cursor: default;
+    transition: 0.4s;
+    text-shadow:
+      1px 1px 0px mix(black, $lightblue, 19%),
+      2px 2px 0px mix(black, $lightblue, 21%),
+      3px 3px 0px mix(black, $lightblue, 23%),
+      4px 4px 0px mix(black, $lightblue, 26%)
+    ;
+
+
+    &:hover {
+      transition: 0.1s;
+      font-size: 7rem;
+      bottom: -0.7rem;
+      left: -2.4rem;
+      color: $yellow;
+      text-shadow:
+        1px 1px 0px mix(black, $yellow, 19%),
+        2px 2px 0px mix(black, $yellow, 21%),
+        3px 3px 0px mix(black, $yellow, 23%),
+        4px 4px 0px mix(black, $yellow, 26%),
+        5px 5px 0px mix(black, $yellow, 28%),
+        6px 6px 0px mix(black, $yellow, 32%)
+      ;
+    }
+
+    .t { letter-spacing: -0.11em; }
+    .h { letter-spacing: -0.15em; }
+    .l { letter-spacing: -0.15em; }
+    .o { letter-spacing: -0.07em; }
+  }
+
+
+  .icons {
+    position: absolute;
+    z-index: 0;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+
+    a {
+      position: relative;
+      color: #FFF;
+      opacity: 0.65;
+      padding: 0.5rem;
+      animation-duration: 1s !important;  
+      animation-name: fadeInDropMod;
+      animation-fill-mode: backwards;
+      text-shadow: 1px 1px 0px $blue;
+
+      &:hover {
+        opacity: 1 !important;
+      }
+
+      &.icon1 {
+        animation-delay: 0s;
+      }
+      &.icon2 {
+        animation-delay: 0.4s;
+      }
+      &.icon3 {
+        animation-delay: 0.8s;
+      }
+    }
+
+  }
+
+  .stripe {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 0.5rem;
+    background: $lightgreen;
+  }
+
+  .text-covering-effect {
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 10rem;
+    left: 0;
+    right: 0;
+    bottom: -10rem;
+    background: rgb(202,252,216); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(202,252,216,1) 0%, rgba(181,223,193,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(202,252,216,1)), color-stop(100%,rgba(181,223,193,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(202,252,216,1) 0%,rgba(181,223,193,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(202,252,216,1) 0%,rgba(181,223,193,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(202,252,216,1) 0%,rgba(181,223,193,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(202,252,216,1) 0%,rgba(181,223,193,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cafcd8', endColorstr='#b5dfc1',GradientType=0 ); /* IE6-9 */
+
+  }
+}
+//////////////////////////////////// END HEADER
+
+
+
+.blog-wrapper {
+  background: $desaturated-lightblue;
+  position: relative;
+  height: 100%;
+}
+
+
+  
+//////////////////////////////////// INDEX STYLES
+.blog-index-wrapper {
+  @extend .blog-wrapper;
+  // Styles are probably more appropriate on blog-wrapper than here.
+
+
+  .index {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 1rem 2rem 1rem;
+    max-width: $max-width;
+  }
+
+  .post {
+    position: relative;
+    
+    margin: 1rem auto 3rem 0;
+    padding: 2px;
+    background: #FFF;
+
+    .post-header {
+      position: relative;
+      z-index: 2;
+
+      &.small {
+        height: 8rem;
+        background-color: $blue;
+      }
+
+      &.large {
+        height: 20rem;
+        background-size: cover;
+        background-position: center center;
+      }
+
+      .gradient {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.4) 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(50%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.4))); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.4) 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.4) 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.4) 100%); /* IE10+ */
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 50%,rgba(0,0,0,0.4) 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#66000000',GradientType=0 ); /* IE6-9 */
+      }
+
+      .title {
+        position: absolute;
+        z-index: 3;
+        bottom: 0;
+        padding: 1rem;
+        font-size: 3.25rem;
+        color: #FFF;
+        text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        letter-spacing: -2px;
+      }
+
+    }
+
+    .post-detail-bar {
+      position: relative;
+      z-index: 3;
+      line-height: 3rem;
+      height: 3rem;
+      padding-left: 6rem; // Offsetting the avatar, which is absolutely positioned.
+      background: darken($blue, 5%);
+      color: $lightgrey;
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: -0.6px;
+
+
+      .avatar {
+        transition: 0.6s;
+        position: absolute;
+        top: -0.5rem;
+        left: 1rem;
+        
+        height: 4rem;
+        width: 4rem;
+        border-radius: 100%;
+      }
+
+      .author {
+        font-weight: 700;
+        color: $yellow;
+      }
+
+      .min-read {
+        position: absolute;
+        top: 0.2rem;
+        right: 0;
+        width: 5.5rem;
+        height: 2.8rem;
+        text-align: center;
+        color: $lightblue;
+        font-size: 1rem;
+
+        .icon-clock {
+          position: absolute;
+          z-index: 4;
+          left: 0;
+          right: 0;
+          top: -0.65rem;
+          height: 1.5rem;
+          width: 1.5rem;
+          margin: auto;
+          text-align: center;
+          font-size: 1.8rem;
+          color: $lightgrey;
+          background: darken($blue, 5%);
+          border-radius: 100%;
+
+          &:before {
+            position: relative;
+            top: -3px;
+          }
+        }
+      }
+    }
+
+    .post-contents {
+      position: relative;
+      border-top: 4px solid darken($blue, 10%);
+      z-index: 4;
+      background: #FFF;
+      padding: 2rem 2rem 4rem 2rem;
+    }
+
+
+    .read_more {
+      position: absolute;
+      bottom: 2px;
+      right: 2rem;
+      z-index: 4;
+      display: block;
+      float: right;
+      padding: 1rem 1.75rem;
+      font-size: 1.3rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: #FFF;
+      background: darken($blue, 5%);
+      text-shadow: 1px 1px 0px rgba(0,0,0,0.22);
+      transition: 0.7s;
+
+      &:hover {
+        transition: 0.35s;
+        color: $yellow;
+        bottom: 8px;
+      }
+    }
+
+    .post-footer {
+      clear: both;
+      position: relative;
+      z-index: 2;
+      margin-top: 0rem;
+      display: block;
+      background: darken($blue, 5%);
+      height: 10px;
+    }
+  }
+
+
+
+}
+
+
+//////////////////////////////////// END INDEX
+
+
+
+
+
+//////////////////////////////////// SHOW STYLES
+
+//////////////////////////////////// END SHOW STYLES
+
+
+//////////////////////////////////// NEW / EDIT STYLES
+.blue-backdrop {
+  background: $blue;
+  padding: 2rem 0;
+}
+.nedit-post-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: $lightblue;
+  overflow: auto;
+
+  h1 {
+    background: $darkgrey;
+    padding: 3rem;
+    color: $yellow;
+    text-align: center;
+  }
+
+  .new_blog_post {
+    padding: 4rem;
+    width: 75%;
+    float: left;
+  
+
+    input, textarea {
+      outline: none;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0;
+      border: 0;
+      border-bottom: 1px solid #DDD;
+    }
+    textarea {
+      width: 100%;
+      height: 50rem;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 0;
+      border-bottom: 1px solid #DDD;
+    }
+
+    #blog_post_title {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    #blog_post_subtitle {
+      font-size: 2rem;
+      font-weight: 500;
+      color: #666;
+    }
+    #blog_post_author {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #666;
+    }
+
+    #blog_post_content {
+      font-size: 1.4rem;      
+      line-height: 1.5em;
+      font-weight: 400;
+    }
+  }
+
+  .uploads {
+    float: right;
+    width: 25%;
+    height: 100%;
+    padding: 3rem;
+    background: $lightgrey;
+    text-align: center;
+  }
+}

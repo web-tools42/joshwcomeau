@@ -1,0 +1,285 @@
+@import 'variables';
+
+section.projects {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 0.5rem 5rem 0.5rem;
+  text-align: center;
+
+  ul {
+    padding: 0.5rem 0;
+  }
+
+  .project-thumb {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      vertical-align: middle;
+    }
+
+    .project-label {
+      position: absolute;
+      z-index: 3;
+      bottom: 2.7rem;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-size: 2.1rem;
+      color: #FFF;
+      font-weight: 500;
+      letter-spacing: -1px;
+      text-shadow: 1px 1px 1px rgba(0,0,0,0.25);
+
+      &.ng-hide-remove.ng-hide-remove-active {
+        animation-duration: 0.5s !important;  
+        animation-name: fadeInUp;
+        animation-fill-mode: both;
+      }
+      &.ng-hide-add.ng-hide-add-active {
+        animation-duration: 0.8s !important;  
+        animation-name: fadeOutDown;
+        animation-fill-mode: both;
+      }
+    }
+
+    .backdrop {
+      position: absolute;
+      z-index: 2;
+      top: 0.5rem;
+      left: 0.5rem;
+      right: 0.5rem;
+      bottom: 0.5rem;
+      background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%); /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(100%,rgba(0,0,0,0.2))); /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.2) 100%); /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.2) 100%); /* Opera 11.10+ */
+      background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.2) 100%); /* IE10+ */
+      background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.2) 100%); /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1a000000', endColorstr='#33000000',GradientType=0 ); /* IE6-9 */
+
+      &.ng-hide-remove.ng-hide-remove-active {
+        animation-duration: 0.8s !important;  
+        animation-name: fadeIn;
+        animation-fill-mode: both;
+      }
+      &.ng-hide-add.ng-hide-add-active {
+        animation-duration: 0.8s !important;  
+        animation-name: fadeOut;
+        animation-fill-mode: both;
+      }
+
+    }
+  }
+
+  .active-project {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    left: 0.5rem;
+    right: 0.5rem;
+    min-height: 100%;
+    padding: 0.5rem;
+    background: $lightgrey;
+
+
+    &.ng-hide-remove.ng-hide-remove-active {
+      animation-duration: 0.5s !important;  
+      animation-name: fadeIn;
+      animation-fill-mode: both;
+    }
+    &.ng-hide-add.ng-hide-add-active {
+      animation-duration: 0.5s !important;  
+      animation-name: fadeOut;
+      animation-fill-mode: both;
+    }
+
+    .active-project-container {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      background: #FFF;
+
+      &.ng-hide-remove.ng-hide-remove-active {
+        animation-duration: 0.3s !important;  
+        animation-name: fadeIn;
+        animation-fill-mode: both;
+      }
+      &.ng-hide-add.ng-hide-add-active {
+
+      }
+    
+      & > header {
+        position: relative;
+        height: 7rem;
+        z-index: 1;
+
+        h3 {
+          position: absolute;
+          left: 1rem;
+          bottom: 1rem;
+          font-size: 2.85rem;
+          font-weight: 700;
+          letter-spacing: -2px;
+          color: #FFF;
+
+          span {
+            display: inline-block;
+            position: relative;
+            padding-right: 1rem;
+          }
+
+          a {
+            color: #FFF;
+            font-size: 1.4rem;
+            padding: 0 0.2rem;
+            opacity: 0.6;
+
+            &:hover {
+              opacity: 1;
+              transition: 0.25s;
+            }
+          }
+        }
+
+      }
+
+      .close {
+        position: absolute;
+        padding: 1.5rem 1rem;
+        right: 0;
+        top: 0;
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover img {
+          opacity: 1;
+        }
+
+        img {
+          opacity: 0.3;
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .content {
+        font-size: 1.75rem;
+        line-height: 1.05em;
+        letter-spacing: -1px;
+        font-weight: 400;
+        padding: 1.5rem 2rem 1.5rem 1.5rem;
+        text-align: left;
+
+        p {
+          text-align: justify;
+          margin-bottom: 1.6rem;
+        }
+
+        a {
+          color: #0076ba;
+        }
+      }
+
+      .detail-image {
+        img {
+          width: 100%;
+          vertical-align: middle;
+        }
+      }
+
+
+      .project-stats {
+        background: #444;
+        padding: 1rem;
+        color: #FFF;
+        text-align: left;
+        font-size: 1.2rem;
+
+        .stat-ul {
+          padding: 1rem 0;
+        }
+
+        ul {
+          padding: 0;
+        }
+
+        li {
+          margin-bottom: 1.5rem;
+
+          &.half {
+            width: 50%;
+            display: inline-block;
+            vertical-align: top;
+            padding-right: 1rem;
+          }
+
+          .title {
+            font-weight: 700;
+            color: $lightgreen;
+          }
+        }
+
+        .bottom-links {
+          text-align: center;
+          margin: 0 -1rem -1rem -1rem;
+          background: rgba(0,0,0,0.5);
+
+          a {
+            display: inline-block;
+            color: $yellow;
+            font-size: 1.4rem;
+            padding: 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            width: 40%;
+            text-align: center;
+            
+            &:hover {
+              background: $yellow;
+              color: #000;
+              transition: 0.35s;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 700px) {
+  section.projects {
+    .active-project {
+      .active-project-container {
+        .close {
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .project-thumb {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  section.projects {
+    .project-thumb {
+      width: 33.333%;
+    }
+  }
+}
+

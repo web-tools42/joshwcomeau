@@ -1,0 +1,29 @@
+<div class="grid" ng-controller="NewBlogController as blog">
+  <%= form_for @post do |f| %>
+    <% if @post.errors.any? %>
+      <ul>  
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.text_field :title, placeholder: 'Title' %>
+    <%= f.text_field :subtitle, placeholder: 'Subtitle' %>
+    <%= f.text_field :author, placeholder: 'Author', value: 'Joshua Comeau' %>
+    <%= f.text_area :content, placeholder: 'Write your shit here.' %>
+
+    <%= f.check_box :featured %> <%= f.label :featured %>
+
+    <%= f.submit %>
+  <% end %>
+
+  <div class="uploads">
+    <h3>Uploads</h3> 
+
+    <%= form_tag('/s3_images', multipart: true) do %>
+      <%= file_field_tag "image" %>
+      <%= submit_tag "upload" %>
+    <% end %>
+  </div>
+</div>

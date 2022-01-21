@@ -1,0 +1,9 @@
+<nav class="main-nav" follow-scroll nav-highlight sections="projects,skillset,blog,contact" ng-class="{'yellow-shadow': home.activeSection === 'skillset', 'blue-shadow': home.activeSection === 'blog', 'dark-shadow': home.activeSection === 'contact'}">
+  <ul>
+    <li class="main-nav-li" ng-class="{active: home.activeSection === 'projects'}" click-to dest="projects">Projects</li><!-- 
+ --><li class="main-nav-li" ng-class="{active: home.activeSection === 'skillset'}" click-to dest="skillset">Skillset</li><!--
+ --><li class="main-nav-li" ng-class="{active: home.activeSection === 'blog'}" click-to dest="blog">Blog</li><!-- 
+ --><li class="main-nav-li" ng-class="{active: home.activeSection === 'contact'}" click-to dest="contact">Contact</li>
+  </ul>
+</nav>
+<div class="nav-spacer"></div>
