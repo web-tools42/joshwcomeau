@@ -1,0 +1,528 @@
+<%= form_for @order do |f| %>
+<div class="alpha_wrapper">
+  <div id="step1_intro" class="step">
+    <div class="decorative_stripe"></div>
+    <div class="width_limiter">
+
+      <div class="intro_container">
+        <div class="cs_logo2"><%= render partial: 'logo_sample.svg' %></div>
+
+        <h3>Why hello there!</h3>
+        <p>
+          Ready for an awesome surprise? HungryBelly takes the decision out of dinner, by sending you a hand-picked delicious meal we hope you'll love.
+        </p>
+        <h5>Here are a couple of things to keep in mind:</h5>
+        <ul>
+          <li data-number="1.">
+            This app is in its testing phase. If you run into trouble or need help, call Ellen at <span class="yellow">647-298-8996</span>.
+          </li>
+          <li data-number="2.">
+            We're taking orders from 11AM to 9PM, 7 days a week.
+          </li>
+          <li data-number="3.">
+            For now, we don't take debit or credit cards. <u>Please have cash for the delivery person.</u>
+          </li>
+          <li data-number="4.">
+            Your food should arrive within 60-75 minutes. Right now you cannot order in advance, all orders are assumed to be ASAP.
+          </li>
+        </ul>
+
+      </div>
+
+      <div class="state_btn" id="state_btn_1" data-state-desired="2">
+        Got it, let's start!
+      </div>
+
+      <div class="testers">
+        <i class="fa fa-heart"></i>
+        Thanks for helping us test our app!
+      </div>
+    </div>
+  </div>
+
+  <div id="step2_cuisines" class="step">
+    <div class="width_limiter">
+      <%= fields_for :cuisines do |cfield| %>
+        <% Cuisine.all.each do |cuisine_box| %>
+          <%= cfield.check_box cuisine_box.name, {multiple: true, class: 'cuisine_checkbox'}, 1, nil %>
+        <% end %>
+      <% end %>
+
+      <div class="cuisine_container">
+        <h2>What are you Craving?</h2>
+        <h4>Click all that apply. We'll select one at random.</h4>
+        <div class="grid">
+          <div class="c6-s">
+            <div class="cat_btn">Indian</div>
+            <div class="cat_btn">Chinese</div>
+            <div class="cat_btn">Japanese</div>
+          </div>
+          <div class="c6-s">
+            <div class="cat_btn">American</div>
+            <div class="cat_btn">Greek</div>
+            <div class="cat_btn">Italian</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="state_btn" id="state_btn_2" data-state-desired="3">
+        I'm Not Picky
+      </div>
+
+
+    </div>
+  </div>
+
+  <div id="step3_options" class="step">
+    <div class="width_limiter">
+      <div class="grid">
+        <div class="c6">
+          <div class="choice bg_green">
+            <h2>How many servings would you like?</h2>
+            <%= f.select(:servings, options_for_select(
+              [ ['1 serving', 1], ['2 servings', 2], ['3 servings', 3], ['4 servings', 4], ['5 servings', 5], ['6 servings', 6] ], 1
+            ), {}, class: 'step3_dropdown order_input') %>
+
+            <p class="click_change green">Click or tap to change.</p>
+          </div>
+        </div>
+        <div class="c6">
+          <div class="choice bg_blue">
+            <h2>How much are you willing to spend?</h2>
+            <%= f.select(:budget, options_for_select(
+              [ ['$20', 20], ['$25', 25], ['$30', 30], ['$35', 35] ], 25
+            ), {}, class: 'step3_dropdown order_input') %>
+            <p class="click_change blue">Click or tap to change.</p>
+          </div>
+        </div>
+      </div>
+  
+      <div class="choice bg_red">
+        <h2>Would you like drinks with your order?</h2>
+        <%= f.select(:drinks, options_for_select(
+              [ ['Yeah, sure!', true], ['Nope', false] ]
+            ), {}, class: 'step3_dropdown drink_input') %>
+      </div>
+
+
+      <h3 class="delivery_header">Delivery Address</h3>
+      <div class="address_inputs">
+        <%= f.text_field :first_name, placeholder: 'First Name', class: 'order_input tab_allowed' %>
+        <%= f.text_field :last_name, placeholder: 'Last Name', class: 'order_input tab_allowed' %>
+        <%= f.text_field :street, placeholder: 'Address', class: 'order_input tab_allowed' %>
+        <%= f.text_field :city, placeholder: 'City', class: 'order_input tab_allowed' %>
+        <%= f.text_field :postal_code, placeholder: 'Postal Code', class: 'order_input tab_allowed' %>
+        <%= f.text_field :phone, placeholder: 'Phone', class: 'phone order_input tab_allowed' %>
+        <%= f.text_field :email, placeholder: 'Email Address', class: 'order_input' %>
+      </div>
+
+      <div class="state_btn" id="state_btn_3" data-state-desired="4">Submit</div>
+    </div>
+  </div>
+
+
+
+
+  <div id="step4_notes" class="step">
+    <div class="width_limiter">
+      <div class="notes_container">
+        <div class="toknow perc100">Things we should know...</div>
+          <div class="notes_text">
+            <p class="allergies">Love pasta? Hate pickles? Let us know of any dietary restrictions, allergies, likes and dislikes, and we'll do our best to make sure you get what you want.</p>
+
+            <p class="inform">Note, these customizations are <strong>not guaranteed</strong>. If you have dangerous food allergies, please don't use this service. Sorry =(</p>
+
+            <%= f.text_area :notes, placeholder: "eg. I'm vegetarian, I hate zucchini, etc", class: 'order_input', rows: 10 %>
+
+          </div>
+
+      <div class="state_btn" id="state_btn_4" data-state-desired="5">View Order Summary</div>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="step5_confirmation" class="step">
+    <div class="width_limiter">
+      <h2>Let's Review</h2>
+      <div class="summary1_container">
+
+        <p> We just want to make sure we got your order right. <strong>Please review!</strong></p>
+
+        <div class="summarize">
+          <div class="grid">
+            <div class="c3">
+              <span class="name_label">Name:</span>
+            </div>
+            <div class="c9">
+              <span id="order_first_name_summary"></span> <span id="order_last_name_summary"></span>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="c3">
+              <span class="name_label">Deliver To:</span>
+            </div>
+            <div class="c9">
+              <p id="order_street_summary"></p>
+              <p id="order_city_summary"></p>
+              <p id="order_postal_code_summary"></p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="c3">
+              <span class="name_label">Contact:</span>
+            </div>
+            <div class="c9">
+              <p id="order_email_summary"></p>
+              <p id="order_phone_summary"></p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="c3">
+              <span class="name_label">Order:</span>
+            </div>
+            <div class="c9">
+              <p id="not_picky_summary">
+                No specific cuisines selected.
+              </p>
+              <p id="locked_in_summary" style="display: none;">
+                <ul id="cuisines_summary_ul">
+
+                </ul>
+              </p>
+              <p style="margin-top: 0.4rem;"><span id="order_servings_summary">1</span> serving(s), <span id="drink_note_in_summary">with drinks. </span>$<span id="order_budget_summary">25</span> budget</p>
+              <p style="margin-top: 0.25rem; font-size: 0.8em; color: #555;">$<small id="budget_per_serving">12.50</small> per serving.</p>
+            </div>
+          </div>
+          <div class="grid">
+            <div class="c3">
+              <span class="name_label">Notes:</span>
+            </div>
+            <div class="c9">
+              <span id="order_notes_summary"></span>
+            </div>
+          </div>
+        </div>
+
+        <input type="submit" value="Feed Me!" id="state_btn_5" class="modalButton button red text-blanco text-shadow-negra feedme">
+
+
+      </div>
+    </div>
+  </div>
+
+  <div id="step6_thankyou" class="step">
+    <div class="width_limiter">
+      <div class="cs_logo3"><%= render partial: 'logo_sample.svg' %></div>
+        <div class="ty_final">
+          <p class="ty">Thank you!</p>
+          <p class="arrive">Your food should arrive shortly!</p>
+          <p>In the event that the food delivery is taking longer than 60 minutes, please contact Ellen at <span class="phone">647-298-8996</span>.</p>
+          <p class="enjoy">Enjoy!</P>
+        </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<script>
+$(document).ready(function() {
+  var
+  current_state = 1,
+  states = {
+    '#step1_intro':         1,
+    '#step2_cuisines':      2,
+    '#step3_options':       3,
+    '#step4_notes':         4,
+    '#step5_confirmation':  5,
+    '#step6_thankyou':      6
+  },
+  cuisines = {
+    'Indian':     false,
+    'Chinese':    false,
+    'Japanese':   false,
+    'American':   false,
+    'Greek':      false,
+    'Italian':    false
+  },
+  num_of_cuisines = 0,
+  price_list,
+  price_list_1,
+  price_list_2,
+  price_list_3,
+  price_list_4,
+  price_list_5,
+  price_list_6,
+  list_of_price_lists;
+
+  $(".perc100").percentext();
+
+  History.pushState({state: 1}, "Welcome to the HungryBelly Alpha", "?step=1");
+
+  History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+    var new_state = History.getState(), // Note: We are using History.getState() instead of event.state
+        new_state_num = new_state.data.state;
+
+    // Are we going FORWARD through the app?
+    if ( new_state_num > current_state ) {
+      _.each(states, function(value, key) {
+        if ( value === current_state ) {
+          var offset = "-" + $(window).height() + "px";
+          $(key).animate({
+            marginTop: offset
+          }, 1000);
+        }
+      });
+    } else if ( current_state > new_state_num ) {
+      _.each(states, function(value, key) {
+        if ( value === new_state_num ) {
+          $(key).animate({
+            marginTop: 0
+          }, 1000);
+        }
+      });
+    }
+
+    current_state = new_state_num;
+
+  });
+
+  // disable 'tab' and 'enter' keys, except in appropriate circumstances
+  $(window).on("keydown", function(e) {
+    var $focused = $(":focus")
+
+    if (e.which == 9 && !$focused.hasClass('tab_allowed')) {
+      e.preventDefault();
+      return false;
+    } else if (e.which == 13) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  var update_summary = function(field) {
+    var field_id, field_val, summary_id;
+
+    // Update the field in question
+    field_id    = $(field).attr("id");
+    field_val   = $(field).val();
+    summary_id  = "#" + field_id + "_summary";
+
+    $(summary_id).text( field_val );
+  };
+
+
+  var get_budget_per_serving = function() {
+    return ( $("#order_budget").val() / $("#order_servings").val() ).toFixed(2);
+  };
+
+  $(".order_input").on("change", function() {
+    update_summary(this);
+  });
+
+  var validate_address = function() {
+    var
+    invalid_fields = [],
+    required_fields = [
+      "#order_first_name", "#order_last_name", "#order_street",
+      "#order_city", "#order_postal_code", "#order_phone", "#order_email"
+    ];
+
+    invalid_fields = required_fields.filter(function(field) {
+      return $(field).val() === '';
+    });
+
+    return invalid_fields.length === 0
+  };
+
+  // var validate_phoneno = function() {
+  //  $('#order_phone').val().length < 10;
+  // };
+
+   function validate_phoneno() {
+    if ($('#order_phone').val().length < 10) {
+      return "invalid"
+    } else {
+      return "valid"
+    }
+  }
+
+  function update_drinks() {
+    if ( $(".drink_input").val() === 'true' ) {
+      $("#drink_note_in_summary").show();
+    } else {
+      $("#drink_note_in_summary").hide();
+    }
+  }
+
+  var change_state = function() {
+    var valid_form;
+    var desired_state = $(this).data('state-desired');
+
+
+    // Deal with validations
+    if ( desired_state === 4 ) {
+      // This is the step where we submit our delivery address. We need to make sure required fields are filled in
+      // before allowing the user to proceed.
+      valid_phone = validate_phoneno();
+      valid_form  = validate_address();
+      if ( valid_phone == "invalid" ) {
+        alert("We need your full phone number with area code! (eg. 4168770000)")
+        return false;
+      } else if ( !valid_form ) {
+        alert("Please give us your full delivery address! We need every field.")
+        return false;
+      } else {
+        // Update our summary budget, since this can change silently
+        update_summary( $("#order_budget").get(0) );
+        $("#budget_per_serving").html(get_budget_per_serving());
+        update_drinks();
+      }
+
+    }
+    // Gogogo!
+    History.pushState(
+      {state: desired_state}, "HungryBelly Alpha - Step "+desired_state, "?step="+desired_state
+    );
+  };
+
+
+  var toggle_cuisine = function() {
+    var clicked_cuisine = $(this).text();
+    var c_list = "";
+
+    if ( cuisines[clicked_cuisine] === true ) {
+      $(this).removeClass("selected");
+      $("#cuisines_"+clicked_cuisine+"_1").prop("checked", false);
+      cuisines[clicked_cuisine] = false;
+      num_of_cuisines--;
+    } else {
+      $(this).addClass("selected");
+      $("#cuisines_"+clicked_cuisine+"_1").prop("checked", true);
+      cuisines[clicked_cuisine] = true;
+      num_of_cuisines++;
+    }
+
+    if (num_of_cuisines > 0) {
+      $("#state_btn_2").text("Lock In Selection");
+      $("#not_picky_summary").hide();
+      $("#locked_in_summary").show();
+      Object.keys(cuisines).forEach(function(key) {
+        if ( cuisines[key] ) {
+          c_list += "<li>"+key+"</li>";
+        }
+      });
+    } else {
+      $("#state_btn_2").text("I'm Not Picky");
+      $("#not_picky_summary").show();
+      $("#locked_in_summary").hide();
+    }
+
+    $("#cuisines_summary_ul").html(c_list);
+
+  };
+
+  var get_min_and_max_prices = function(servings) {
+    var range_start, range_stop;
+
+    switch(servings) {
+      case 1:
+        range_start = 25;
+        range_stop  = 45;
+        break;
+      case 2:
+        range_start = 30;
+        range_stop  = 70;
+        break;
+      case 3:
+        range_start = 45;
+        range_stop  = 90;
+        break;
+      case 4:
+        range_start = 55;
+        range_stop  = 110;
+        break;
+      case 5:
+        range_start = 65;
+        range_stop  = 130;
+        break;
+      case 6:
+        range_start = 75;
+        range_stop  = 150;
+        break;
+    }
+
+    return [ range_start, range_stop ];
+  }
+
+  var get_html_option_list_for_prices = function(prices) {
+    return prices.map(function(value, index, arr) {
+      return '<option value="' + value + '">$' + value + '</option>'
+    }).join("");
+  }
+
+  var get_appropriate_prices_for_servings = function(servings) {
+    var p_range, range_start, range_stop, prices;
+
+    p_range     = get_min_and_max_prices(servings);
+    range_start = p_range[0];
+    range_stop  = p_range[1];
+
+    prices = build_price_array(range_start, range_stop);
+
+    return get_html_option_list_for_prices(prices);
+
+  }
+
+  var build_price_array = function(min_price, max_price) {
+    var prices = [];
+    for ( i=min_price; i<=max_price; i+=5 ) {
+      prices.push(i);
+    }
+
+    return prices;
+  }
+
+  price_list   = build_price_array(25, 160);
+  price_list_1 = get_appropriate_prices_for_servings(1, price_list);
+  price_list_2 = get_appropriate_prices_for_servings(2, price_list);
+  price_list_3 = get_appropriate_prices_for_servings(3, price_list);
+  price_list_4 = get_appropriate_prices_for_servings(4, price_list);
+  price_list_5 = get_appropriate_prices_for_servings(5, price_list);
+  price_list_6 = get_appropriate_prices_for_servings(6, price_list);
+  list_of_price_lists = [null, price_list_1, price_list_2, price_list_3, price_list_4, price_list_5, price_list_6, ]
+
+
+  var toggle_prices = function() {
+    var num_servings = $(this).val();
+    $("#order_budget").html( list_of_price_lists[num_servings] );
+  };
+
+
+
+  $("#order_servings").on("change", toggle_prices)
+
+  $(".state_btn").on("click", change_state);
+  $(".cat_btn").on("click", toggle_cuisine);
+});
+
+$('.phone').keyup(function () {
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+     var _this = this, maxlength = 30;
+     setTimeout(function(){
+         if(_this.value.length > maxlength){
+            _this.value = _this.value.substr(0,maxlength);
+         }
+     },1);
+    // setTimeout(function(){
+    //      if(_this.value.length < 10){
+    //       alert('We need your full phone number with area code! (eg. 416-555-5555)');
+    //     }
+    //  },8000);
+});
+
+
+
+
+
+</script>
