@@ -1,0 +1,92 @@
+body {
+	font-family: 'Maven Pro', sans-serif;
+	font-weight: 400;	
+}
+strong {
+	font-weight: 700;	
+}
+
+h2 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 700;
+	margin: 0px;
+}
+
+#controls {
+	color: white;
+}
+
+#infobutton {
+	font-size: 30px;
+	font-weight: bold;
+	font-family: Times;
+}
+
+
+#question_label {
+	font-size: 40px;
+}
+
+
+#question_label h2 {
+	margin: 5px 0px 90px 0px;
+}
+
+.a_title {
+	font-size: 22px;
+	font-weight: 700;
+	text-shadow: 1px 1px 1px #000;
+}
+
+.a_subtitle {
+	font-size: 13px;
+	text-shadow: 1px 1px 0px #000;	
+	opacity: 0.5;
+}
+
+#question_div label {
+	color: #FFF;	
+	transition: 0.2s;
+}
+
+#question_div label:hover {
+	background: rgba(255,255,255,0.1);	
+	transition: 0.2s;
+}
+
+#question_div label:hover .a_title {
+	color: #ffc600;	
+	transition: 0.2s;
+}
+
+
+#submit_div input {
+	border: 0px;
+	border-radius: 0px 20px 0px 0px;
+	width: 100%;
+	height: 70px;
+	color: #FFF;
+	font-family: 'Maven Pro';
+	font-weight: 700;
+	letter-spacing: -1px;
+	font-size: 28px;
+	text-shadow: 1px 1px 2px #046887;
+background: #7bd5e5; /* Old browsers */
+background: -moz-linear-gradient(top,  #FFD7A5 0%,#B17A06 40%,#5C4200 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFD7A5), color-stop(40%,#B17A06), color-stop(100%,#5C4200)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #FFD7A5 0%,#B17A06 40%,#5C4200 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #FFD7A5 0%,#B17A06 40%,#5C4200 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #FFD7A5 0%,#B17A06 40%,#5C4200 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #FFD7A5 0%,#B17A06 40%,#5C4200 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7bd5e5', endColorstr='#046887',GradientType=0 ); /* IE6-9 */
+
+}
+
+#submit_div input:hover {
+background: -moz-linear-gradient(top,  #5C4200 0% ,#B17A06 40%, #FFD7A5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5C4200), color-stop(40%,#B17A06), color-stop(100%,#FFD7A5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #5C4200 0% ,#B17A06 40%, #FFD7A5 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #5C4200 0% ,#B17A06 40%, #FFD7A5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #5C4200 0% ,#B17A06 40%, #FFD7A5 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #5C4200 0% ,#B17A06 40%, #FFD7A5 100%);
+}
