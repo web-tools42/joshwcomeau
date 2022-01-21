@@ -1,0 +1,19 @@
+$dramatic-ease: cubic-bezier(.8,0,.2,1);
+
+$budget-date-animation: fadeIn 750ms $dramatic-ease 1000ms backwards;
+
+@keyframes fadeIn {
+  from { opacity: 0.01 }
+  to { opacity: 1 }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  to {
+    opacity: 0.01;
+    pointer-events: none;
+  }
+}

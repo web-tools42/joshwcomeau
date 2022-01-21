@@ -1,0 +1,77 @@
+@import 'variables';
+@import 'animations';
+@import 'mixins';
+@import 'reset';
+
+html, body, #render-target {
+  -webkit-tap-highlight-color: transparent;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body, input, textarea, select, button, p, span, div, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway' !important;
+}
+
+#home {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.error-text {
+  font-size: 12px;
+  color: rgb(244, 67, 54);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+// World's simplest flexbox grid
+.flex-row {
+  display: flex;
+
+  &.with-gutter {
+    padding-left: $gutter-size;
+
+    & > .flex-cell {
+      padding-right: $gutter-size;
+    }
+  }
+
+  &.with-top-gutter {
+    padding-top: $gutter-size;
+  }
+
+  &.with-border {
+    & > div {
+      padding-top: $gutter-size;
+      padding-bottom: $gutter-size;
+      padding-right: $gutter-size;
+      border-right: 1px solid $light-gray;
+    }
+
+    & > div:last-of-type {
+      padding-right: 0;
+      padding-left: $gutter-size;
+      border-right: none;
+    }
+  }
+
+  &.centered {
+    & > div {
+      text-align: center;
+    }
+  }
+
+  .full, .one-half, .one-third, .one-quarter {
+    flex: 1;
+  }
+  .two-thirds {
+    flex: 2;
+  }
+
+  .pulled-up {
+    margin-top: -1rem;
+  }
+}

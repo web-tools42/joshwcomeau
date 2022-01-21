@@ -1,0 +1,90 @@
+@import 'variables';
+
+$drawer-header-height: 50px;
+
+.drawer {
+  position: absolute;
+  z-index: 10;
+
+  .backdrop {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    will-change: opacity;
+  }
+
+  .content {
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $white;
+    will-change: transform;
+  }
+
+  .header {
+    position: relative;
+    height: $drawer-header-height;
+    margin: 2px;
+    background: #EEE;
+    border-bottom: 1px solid #E2E2E2;
+    padding: 0 $gutter-size;
+
+    h2 {
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    button {
+      // Sadly, this is a MaterialUI button, which means contorting it to my
+      // needs is super hacky x_x
+      position: absolute !important;
+      height: $drawer-header-height !important;
+      min-width: $drawer-header-height !important;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background: transparent;
+    }
+  }
+
+  .footer {
+    position: absolute;
+    left: $gutter-size;
+    right: $gutter-size;
+    bottom: $gutter-size;
+
+    .submit-button {
+      width: 100%;
+
+      button > div > div {
+        background-color: transparent !important;
+      }
+
+      i {
+        color: #FFF;
+      }
+    }
+  }
+
+  .footer-spacer {
+    position: relative;
+    z-index: -1;
+    height: 80px;
+  }
+
+  .bleed {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: inherit;
+    height: 100px;
+  }
+}

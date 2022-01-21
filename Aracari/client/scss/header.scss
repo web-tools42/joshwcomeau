@@ -1,0 +1,44 @@
+@import 'variables';
+
+#header {
+  z-index: 2 !important;
+
+  h1 {
+    position: absolute;
+    top: 0;
+    left: 50px;
+    right: 50px;
+
+    height: 64px;
+    line-height: 64px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: $white;
+  }
+  & > div {
+    margin-top: 0 !important;
+    margin-right: -24px !important;
+  }
+  button {
+    padding: 16px !important;
+    width: 64px !important;
+    height: 64px !important;
+    line-height: 32px !important;
+
+    .material-icons {
+      font-size: 32px !important;
+    }
+  }
+  // button {
+  //   position: absolute !important;
+  //   top: 0;
+  //   bottom: 0;
+  //   width: $header-height !important;
+  //   min-width: $header-height !important;
+  //   height: $header-height !important;
+  //   line-height: $header-height !important;
+  //
+  //   i { font-size: 32px !important; }
+  // }
+}

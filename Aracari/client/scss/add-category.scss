@@ -1,0 +1,47 @@
+@import 'variables';
+
+.add-category {
+  .button-toggle-group {
+    position: relative;
+  }
+
+  .category-button {
+    width: 33.3%;
+    display: inline-block;
+    padding: 5px;
+
+    button {
+      position: relative;
+      width: 100%;
+      font-size: 12px !important;
+
+      div {
+        text-align: left;
+        padding-left: 34px;
+      }
+
+      i {
+        position: absolute;
+        width: 24px;
+        height: 24px;
+        top: 0;
+        bottom: 0;
+        left: 5px;
+        margin: auto;
+      }
+    }
+  }
+
+  .custom-label {
+    position: absolute;
+    left: 33.3%;
+    top: 80px;
+    width: 66%;
+    padding: 0 5px;
+    animation: fadeIn 500ms;
+
+    div:first-of-type {
+      font-size: 14px !important;
+    }
+  }
+}
