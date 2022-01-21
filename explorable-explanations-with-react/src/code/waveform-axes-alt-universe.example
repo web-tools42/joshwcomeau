@@ -1,0 +1,11 @@
+<Waveform
+  showXAxis={true}
+  showYAxis={true}
+  shape="sine"
+  frequency={1}
+  amplitude={1}
+  width={width}
+  height={height}
+  color={COLORS.blue}
+  strokeWidth={4}
+/>

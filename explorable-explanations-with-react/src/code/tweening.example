@@ -1,0 +1,25 @@
+const from = getPointsForWaveform({
+  amplitude,
+  frequency,
+  timeElapsed,
+  width,
+  height,
+  shape: tweenFromShape,
+});
+
+const to = getPointsForWaveform({
+  amplitude,
+  frequency,
+  timeElapsed,
+  width,
+  height,
+  shape: tweenToShape,
+});
+
+const ratio = /* some number between 0-1 */;
+
+const points = addWaveforms(
+  from,
+  to,
+  ratio
+);
