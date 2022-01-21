@@ -1,0 +1,43 @@
+@import 'variables';
+@import 'reset';
+
+@import 'header';
+@import 'footer';
+@import 'palette';
+@import 'swatch';
+@import 'upload-button';
+
+body {
+  background: $white;
+  color: $mediumgrey;
+}
+
+body, input, textarea, select {
+  font-family: 'Roboto', monospace;
+}
+
+#main-content {
+  display: flex;
+  justify-content: center;
+  background: $darkgrey;
+  padding: 3rem;
+
+  // DrawingBoard
+  #main-panel {
+    border: 1rem solid $black;
+    margin-right: 1rem;
+
+    canvas { display: block; }
+  }
+
+  #side-panel {
+    flex: 0 0 200px;
+
+    .panel-box-header {
+      padding: 0.5rem 1rem;
+      background: lighten($black, 5%);
+      font-size: 14px;
+      color: $white;
+    }
+  }
+}

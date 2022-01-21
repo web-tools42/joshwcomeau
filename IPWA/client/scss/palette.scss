@@ -1,0 +1,23 @@
+#palette-wrapper {
+  .selected-color-wrapper {
+    display: flex;
+    position: relative;
+    background: $black;
+    padding: 0 1rem 1rem 1rem;
+
+    .swatch {
+      width: 100%;
+      height: 3rem;
+    }
+  }
+
+}
+
+#palette {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background: $black;
+  padding: 1rem 1rem 0.5rem 1rem;
+
+}
