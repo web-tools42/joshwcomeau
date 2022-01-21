@@ -1,0 +1,354 @@
+@import "../begin/variables_and_mixins";
+@import "../begin/animations";
+@import "../begin/fonts";
+
+html, body {
+	height: 100%;
+	background: #333;
+}
+
+/* HEADER STYLES */
+header.top {
+	z-index: 50;
+	position: relative;
+	width: 100%;
+	height: $nav-height;
+	background: $header-bg;
+	color: #FFF;
+	box-shadow: 0px 2px 20px rgba(0,0,0,0.5);
+
+	.header_bars {
+
+		.header_bar1 {
+			position: absolute;
+			width: 100%;
+			background: $purple;
+			top: 0;
+			height: 100%;
+		}
+
+		.header_bar2 {
+			position: absolute;
+			width: 100%;
+			background: $blue;
+			top: 18%;
+			height: 82%;
+			// border: 1px solid rgba(0,0,0,0.25);
+		}
+
+		.header_bar3 {
+			position: absolute;
+			width: 100%;
+			background: $green;
+			top: 61%;
+			height: 39%;
+			// border: 1px solid rgba(0,0,0,0.25);
+		}		
+	}
+
+	.header_wrapper {
+		position: relative;
+		margin: 0 auto;
+		max-width: $max-page-width;
+		width: 100%;
+		height: 100%;
+		background: $header-bg
+	}
+	.overflow_wrapper {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: $nav-height;
+		overflow: hidden;
+	}
+	.decorative_bars {
+		position: absolute;
+		left: -$nav-height*0.7;
+		top: $nav-height*0.2;
+		height: $nav-height;
+		width: $nav-height*2;
+		overflow: hidden;
+		@include rotate(45deg);
+
+
+		& > div {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		.dbar_1 {
+			background: $purple;
+			top: 0;
+		}
+
+		.dbar_2 {
+			background: $blue;
+			top: 33%;
+			// border: 1px solid rgba(0,0,0,0.25);
+		}
+
+		.dbar_3 {
+			background: $green;
+			top: 65%;
+			// border: 1px solid rgba(0,0,0,0.25);
+		}
+	}
+
+	.top_left_logo {
+		position: absolute;
+		left: 1.5rem;
+		line-height: $nav-height;
+		font-weight: 900;
+		font-size: 2.5rem;
+		text-shadow: 
+			1px 1px 0px darken($header-bg, 10%),
+			2px 2px 0px darken($header-bg, 10%),
+			3px 3px 0px darken($header-bg, 10%);
+
+
+		@include bp(phone) {
+			font-size: 1.5rem;
+		}
+		@include bp(tablet) {
+			font-size: 2.5rem;
+		}
+	}
+
+	nav.desktop_nav {
+		text-align: right;
+		line-height: $nav-height;
+		margin-right: 1.5rem;
+
+		li {
+			position: relative;
+			display: inline-block;
+			margin: 0 0.1rem;
+			vertical-align: top;
+
+
+			.nav_link {
+				position: relative;
+				z-index: 3;
+				display: block;
+				padding: 0 1.2rem;
+				cursor: pointer;
+				font-size: 1.1rem;
+				text-shadow: 
+					1px 1px 0px darken($header-bg, 10%),
+					2px 2px 0px darken($header-bg, 10%);
+
+			}
+			.nav_slide {
+				position: relative;
+				display: block;
+				padding: 0 1.2rem;
+				cursor: pointer;
+				width: 100%;
+				text-align: center;
+			}
+			.nav_slide.n1 {
+				background: $red;
+				text-shadow: 1px 1px 0px darken($red, 20%);
+				font-size: 2rem;
+			}
+			.nav_slide.n2 {
+				background: $orange;
+				text-shadow: 1px 1px 0px darken($orange, 20%);
+				font-size: 2rem;
+			}
+			.nav_slide.n3 {
+				background: $green;
+				text-shadow: 1px 1px 0px darken($green, 20%);
+				font-size: 1.8rem;
+			}
+			.nav_slide.n4 {
+				background: $blue;
+				text-shadow: 1px 1px 0px darken($blue, 20%);
+				font-size: 1.8rem;
+			}
+			.nav_slide.n5 {
+				background: $purple;
+				text-shadow: 1px 1px 0px darken($purple, 20%);
+				font-size: 1.6rem;
+			}
+			.nav_slide.n6 {
+				background: #111;
+				text-shadow: 1px 1px 0px #000;
+				font-size: 1.6rem;
+			}
+			// .nav_highlight {
+			// 	z-index: 1;
+			// 	position: absolute;
+			// 	background: #222;
+			// 	width: 100%;
+			// 	height: $nav-height;
+			// 	bottom: -$nav-height * 2;
+			// 	border-bottom: 3px solid $orange;
+			// }
+		}
+
+		@include bp(phone) {
+			display: none;
+	  }
+	 	@include bp(laptop) {
+			display: block;
+	  }
+	  
+	}	
+	nav.mobile_nav {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: $nav-height;
+
+		.mobile_nav_button {
+			position: absolute;
+			width: $nav-height * 0.7;
+			height: $nav-height * 0.7;
+			top: $nav-height * 0.15;
+			right: $nav-height * 0.5;
+			line-height: $nav-height * 0.66;
+			color: #FFF;
+			font-size: 2rem;
+			border-radius: 5px;
+			text-align: center;
+			transition: 0.2s;
+			cursor: pointer;
+		}
+		.passive_mobile_nav {
+			border: 1px solid #444;
+			background: #222;
+		}
+
+		.active_mobile_nav {
+			background: $orange;
+			transition: 0.2s;
+		}
+
+		.mobile_nav_menu {
+			display: none;
+			position: absolute;
+			z-index: 5;
+			width: 100%;
+			top: $nav-height;
+
+			li {
+				display: block;
+				border-bottom: 1px solid #555;
+				background: rgba(30,30,30,0.95);
+			}
+			a {
+				display: block;
+				padding: 1rem;
+			}
+
+			.mobile_selected_link {
+				background: $orange;
+			}
+		}
+		
+		@include bp(phone) {
+			display: block;
+	  }
+	 	@include bp(laptop) {
+			display: none;
+	  } 
+	}
+}
+.header_spacer {
+	display: none;
+	position: relative;
+	height: $nav-height;
+}
+
+
+////////////* HOMEPAGE *////////////////
+
+.home_splash, .projects {
+	position: relative;
+	max-width: $max-page-width;
+	margin: 0 auto;
+}
+.home_splash {
+	max-height: 1080px;
+	height: 90%;
+
+	background-size: cover;
+	background-position: right top;
+
+	@include bp(phone) {
+		background-image: image-url("josh_splash/josh_480_portrait_blurred.jpg");
+  }
+  @include bp(phablet) {
+		background-image: image-url("josh_splash/josh_800_portrait_blurred.jpg");
+  }
+  @include bp(tablet) {
+		background-image: image-url("josh_splash/josh_1890_blurred.jpg");
+  }
+
+
+}
+.home_splash_inner {
+	width: 100%;
+	height: 100%;
+
+	background-size: cover;
+	background-position: center top;
+
+	@include bp(phone) {
+		background-image: image-url("josh_splash/josh_480_portrait.jpg");
+  }
+  @include bp(phablet) {
+		background-image: image-url("josh_splash/josh_800_portrait.jpg");
+  }
+  @include bp(tablet) {
+  	background-position: right top;
+		background-image: image-url("josh_splash/josh_1890.jpg");
+  }
+}
+.splash_text {
+	position: absolute;
+	top: 8%;
+	left: 7%;
+	width: 86%;
+	height: 84%;
+	margin: auto;
+
+	.greeting {
+		font-size: 5rem;
+		font-weight: 900;
+		color: #FFF;
+		text-shadow: 
+			0.5px 0.5px 0px darken($red, 5%),
+			1px 1px 0px darken($red, 5%),
+			1.5px 1.5px 0px darken($red, 20%),
+			2px 2px 0px darken($red, 20%),
+			2.5px 2.5px 0px darken($red, 30%),
+			3px 3px 0px darken($red, 30%),
+			3.5px 3.5px 5px #333;
+	}
+	.big_text {
+		font-size: 3rem;
+		font-weight: 900;
+		color: #333;
+		background: $red;
+		padding: 1rem;
+		border-radius: 4px;
+	}
+}
+
+.projects {
+	position: relative;
+	background: $orange;
+	min-height: 140%;
+
+	.project {
+		background: #FFF;
+		margin-bottom: 20px;
+	}
+}
+
+
+
