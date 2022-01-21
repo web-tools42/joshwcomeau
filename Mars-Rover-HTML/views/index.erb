@@ -1,0 +1,190 @@
+<%
+# Constants
+ANIMATION_DELAY = 1.5
+INPUT_FIELDS = 9
+%>
+
+<html>
+  <head>
+    <title>Mars Rover</title>
+    <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700|Ubuntu+Mono:400,700|PT+Mono' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <style type="text/css">
+
+    <% if @instructions %>
+      #rover {
+        display: block;
+        -webkit-animation: movebot <%= @route.length %>s; 
+        -webkit-animation-delay: <%= ANIMATION_DELAY %>s;
+        -webkit-animation-timing-function: cubic-bezier(0.5, 0.2, 0.3, 1.0);
+        left: <%= @start_x %>px;
+        top: <%= @start_y %>px;
+
+      }
+
+      #results_path span { 
+        -webkit-animation: lettercolor 1s;
+       }
+
+      <% (1..@route.length).each do |i| %>
+        #results_path span:nth-child(<%= i %>){ -webkit-animation-delay: <%= i + ANIMATION_DELAY - 1 %>s }
+      <% end %>      
+
+      @-webkit-keyframes lettercolor { 
+        0%  { opacity:0.5; color: #FFF;}
+        15% { opacity:1;   color: #E04734;}
+        85% { opacity:1;   color: #E04734;}
+        100% {opacity:0.2; color: #FFF;}
+      }
+
+    /* if we have 5 steps (4 + init), we want the percentages to be  0%, 25%, 50%, 75%, 100%. */
+    /* Indexes are 0, 1, 2, 3, 4 */
+
+    
+
+    
+      @-webkit-keyframes movebot
+      {
+      <% @route.length.times do | index | %>
+        <%= ( (index / (@route.length.to_f )) * 100 ).round %>%    {-webkit-transform:rotate(<%= @route[index][0]  %>deg);left: <%= @route[index][1]  %>px; top:<%= @route[index][2]  %>px; } 
+      <% end %>
+        95%  { opacity: 1;-webkit-transform:rotate(<%= @route[-1][0]  %>deg);left: <%= @route[-1][1]  %>px; top:<%= @route[-1][2]  %>px; }
+        100% { opacity: 0;-webkit-transform:rotate(<%= @route[-1][0]  %>deg);left: <%= @route[-1][1]  %>px; top:<%= @route[-1][2]  %>px; }
+      }
+
+    <% end %>  
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <h1>NASA Remote Unit Controller</h1>
+      
+      <div id="loading_comments">
+        <p id="para1">Initializing Local Software........<strong class="green">COMPLETE.</strong>
+        <p>Connecting to Unit #24791 - ROVER-CLASS, deployed to <strong class="red">[ MARS ]</strong>......<strong class="green">CONNECTED</strong>.
+        <p><strong>Motor control initialized, awaiting instruction.</strong>
+      </div>
+
+      <div id="content">
+      
+        <div id="controls" <%= "style='display: none'" if @instructions %>>
+          <div id="controls_howto">
+            <h3>Mars Rover User Manual</h3>
+            <p>Thank you for purchasing a Mars Rover. To pilot your explorer, select starting co-ordinates (measured from the top-left corner), and enter commands.
+            <p><strong>Your rover understands the following instructions:</strong>
+            <ul>
+              <li><span>M</span> - (M)ove forward</li>
+              <li><span>L</span> - (L)eft turn</li>
+              <li><span>R</span> - (R)ight turn</li>
+            </ul>
+
+          </div>
+          <form action="/" method="get">
+            Unit #24791 <strong class="green">DEPLOYED</strong>.<br>
+            Enter Starting Coordinates:
+            <div id="command_start">
+              <select name="x_pos">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5" selected>5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+              </select>
+
+              <select name="y_pos">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+
+              <select name="heading">
+                <option value="N" selected>NORTH</option>
+                <option value="E">EAST</option>
+                <option value="S">SOUTH</option>
+                <option value="W">WEST</option>
+              </select>
+            </div>
+            Enter Move Instructions:
+            <div id="command_fields">
+              <input type="text" name="cs_1" maxlength="1" autocomplete='off' autofocus>
+              <% 2.upto(INPUT_FIELDS) do |i| %>
+              <input type="text" name="cs_<%= i %>" maxlength="1" autocomplete='off'>
+              <% end %>
+            </div>
+            <div id="submit_div">
+              <input type="submit" value="PUSH INSTRUCTIONS TO ROVER">
+            </div>
+          </form>
+        </div>
+
+        <div id="results" <%= "style='display: none'" unless @instructions %>>
+          <div id="results_header">
+            <strong class="green">INSTRUCTIONS RECEIVED.</strong><br>
+          </div>
+
+          <div id="results_start">
+            Rover landed at <strong class="rover_white"><%= @start_string %></strong>
+          </div>
+
+          <div id="results_path_container">
+            <span id="moving_animate">Moving Rover Unit #24791 to desired location:</span>
+
+            <div id="results_path">
+              <% 
+              counter = 0
+              @move_instructions << "" # Pushing an empty string to the end of the array, to avoid a NoMethod error when '.empty?' checks nil.
+              while !@move_instructions[counter].empty? 
+                  %>
+                  <span class="results_instr" id="results_instr_<%= counter %>"><%= @move_instructions[counter] %></span>
+              <% counter += 1
+              end %>
+            </div>  
+          </div>
+
+          <div id="route"><strong>DEVICE COORDINATE PATH: <span class="rover_white"><%= @route %></span></div>
+
+          <div id="reset_div">
+            <a href="/">SEND NEW INSTRUCTIONS</a>
+          </div>
+
+        </div>
+        
+
+        <div id="field">
+
+          <div id="rover">
+            <div class="piece"></div><div class="nopiece"></div><div class="piece"></div><div class="nopiece"></div><div class="piece"></div>
+            <div class="piece"></div><div class="piece"></div><div class="nopiece"></div><div class="piece"></div><div class="piece"></div>
+            <div class="piece"></div><div class="nopiece"></div><div class="piece"></div><div class="nopiece"></div><div class="piece"></div>
+            <div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div><div class="piece"></div>
+            <div class="piece"></div><div class="nopiece"></div><div class="nopiece"></div><div class="nopiece"></div><div class="piece"></div>
+          </div>
+
+          <table cellspacing="0" cellpadding="0" border="0" id="fieldtable">
+            <% 1.upto(@height) do |y|%>
+            <tr>
+              <% 1.upto(@length) do |x| %>
+                <td class="cell" id="cell_<%= x %>_<%= y %>"></td>
+              <% end %>
+            </tr>
+
+            <% end %>
+
+          </table>
+        </div>
+      </div>
+
+      
+    </div>
+  </body>
+</html>
+
+

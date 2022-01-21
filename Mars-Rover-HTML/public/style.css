@@ -1,0 +1,349 @@
+
+html {
+  font-family: 'Inconsolata';
+  color: #6FB530;
+}
+
+body {
+  background: #111111;
+}
+
+strong {
+  font-weight: 700;
+}
+
+a {
+  color: #4F6268;
+  text-decoration: none;
+}
+a:hover {
+  color: #4B8391;
+  text-decoration: underline;
+}
+
+p {
+  margin: 10px 0px;
+}
+
+h1 {
+  text-align: center;
+  font-family: 'PT Mono';
+  font-size: 55px;
+  font-weight: 700;
+  padding: 10px 0px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h4 {
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.green {
+  color: #6FB530;
+}
+.red {
+  color: #E04734;
+}
+
+#wrapper {
+  position: relative;
+  background: #222222;
+  width: 1024px;
+  margin: 0 auto;
+  padding-bottom: 25px;
+  box-shadow: 0px 0px 6px #000;
+}
+
+
+#loading_comments {
+  position: relative;
+  padding: 5px 20px;
+  color: #E8D83F;
+  background: #1C1C1C;
+  line-height: 0.85em;
+}
+#status {
+  position: relative;
+  padding: 22px 45px;
+  color: #E8D83F;
+  background: #1C1C1C;
+}
+
+
+/******** FIELD ********/
+#field {
+  position: relative;
+  margin: 15px;
+  width: 700px;
+}
+#fieldtable {
+}
+.cell {
+  margin: 1px;
+  border: 1px solid #6FB530;
+  width: 75px;
+  height: 75px;
+}
+  .cell:hover {
+    background: #333;
+  }
+
+/******** ROVER ********/
+#rover {
+  display: none;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  padding: 5px;
+}
+  #rover > div {
+    position: relative;
+    float: left;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    height: 20%;
+  }
+  #rover .piece {
+    background: #6FB530;
+  }
+
+/******** CONTROLS ********/
+#controls {
+  position: relative;
+  float: right;
+  margin: 20px;
+  width: 280px;
+  padding: 15px;
+  background: #333;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0px #000;
+  color: #E8D83F;
+}
+#command_fields {
+  text-align: center;
+  margin-top: 12px;
+}
+#command_fields input[type=text] {
+  width: 20px;
+  padding: 5px 0px;
+  border: 0px;
+  border-bottom: 1px dotted #777;
+  background: transparent;
+  outline: none;
+  color: #FFF;
+  font-family:'Inconsolata';
+  text-align: center;
+  font-size: 16px;
+}
+  #command_fields input[type=text]:focus {
+    background: #444;
+    border-radius: 5px 5px 0px 0px;
+    border-bottom: 1px solid #777;
+  }
+#command_start {
+  text-align: center;
+  margin: 12px 0px;
+}
+#command_start select {
+  padding: 7px;
+  border: 0px;
+  border-bottom: 1px dotted #777;
+  text-align: center;
+  background: transparent;
+  outline: none;
+  color: #FFF;
+  font-family:'Inconsolata';
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px 5px 0px 0px;
+  -webkit-appearance:none 
+}
+#submit_div {
+  margin: 25px 0px;
+}
+#submit_div input[type=submit] {
+  width: 240px;
+  padding: 10px 35px;
+  background: #6FB530;
+  color: #FFF;
+  text-shadow: 1px 1px 0px #2F6300;
+  font-family: 'Inconsolata';
+  font-size: 17px;
+  font-weight: 700;
+  white-space: normal;
+  border: 0px;
+  border-radius: 2px;
+  box-shadow: 0.5px 0.5px 0px #2F6300,
+              1px 1px 0px #2F6300,
+              1.5px 1.5px 0px #2F6300,
+              2px 2px 0px #2F6300,
+              2.5px 2.5px 0px #2F6300,
+              3px 3px 0px #2F6300;
+ outline: none;
+ transition: 0.2s;
+}
+#submit_div input[type=submit]:hover {
+  background: #DEB500;
+  box-shadow: 0.5px 0.5px 0px #A36A00,
+              1px 1px 0px #A36A00,
+              1.5px 1.5px 0px #A36A00,
+              2px 2px 0px #A36A00,
+              2.5px 2.5px 0px #A36A00,
+              3px 3px 0px #A36A00;
+  text-shadow: 1px 1px 0px #A36A00;
+  transition: 0.25s;
+}
+#submit_div input[type=submit]:active {
+  box-shadow: none;
+  margin-top: 3px;
+  margin-left: 3px;
+  transition: 0.2s;
+}
+
+
+#controls_howto {
+  position: absolute;
+  z-index: 100;
+  width: 250px;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  padding: 16px;
+  background: #444;
+  border-radius: 5px;
+  font-size: 13px;
+  box-shadow: 0px 0px 4px  1px #222;
+  opacity: 0;
+  transition: 0.2s;
+}
+  #controls:hover #controls_howto {
+    opacity: 1.0;
+    right: 285px;
+    transition: 0.3s;
+  }
+  #controls_howto h3 {
+    color: #E04734;
+    text-align: center;
+    margin: -11px -16px 5px -16px;
+    padding: 10px;
+    background: #222;
+    font-weight: 700;
+    font-size: 18px;
+  }
+  #controls_howto li {
+    list-style-type: circle;
+    margin: 8px 10px;
+    font-size: 16px;
+
+  }
+  #controls_howto p {
+    text-align: justify;
+    color: #FFF;
+    margin-bottom: 17px;
+    line-height: 1.2em;
+  }
+  #controls_howto span {
+    font-weight: 900;
+    color: #E04734;
+  }
+
+
+/******** RESULTS ********/
+#results {
+  float: right;
+  margin: 20px;
+  width: 280px;
+  padding: 15px;
+  background: #333;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0px #000;
+  color: #E8D83F;
+}
+#results_header {
+  font-size: 1.1em;
+  text-align: center;
+}
+#results_start, #results_path {
+  margin: 15px;
+  font-size: 0.9em;
+}
+#results_path_container {
+  text-align: center;
+  padding: 15px;
+  margin: 0px -13px;
+  background: #222;
+  border-radius: 5px;
+}
+#results_path {
+}
+#results_path .results_instr {
+  color: #FFF;
+  opacity: 0.5;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 4px;
+  display: inline-block;
+  transition: 0.2s;
+  line-height: 20px;
+}
+
+#route {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #555;
+  font-size: 0.6em;
+}
+.rover_white {
+  color: #FFF;
+}
+
+
+#reset_div {
+  position: absolute;
+  top: 525px;
+  right: 45px;
+}
+#reset_div a {
+  padding: 10px 35px;
+  background: #6FB530;
+  color: #FFF;
+  text-shadow: 1px 1px 0px #2F6300;
+  font-family: 'Inconsolata';
+  font-size: 15px;
+  font-weight: 700;
+  border: 0px;
+  border-radius: 2px;
+  box-shadow: 0.5px 0.5px 0px #2F6300,
+              1px 1px 0px #2F6300,
+              1.5px 1.5px 0px #2F6300,
+              2px 2px 0px #2F6300,
+              2.5px 2.5px 0px #2F6300,
+              3px 3px 0px #2F6300;
+ outline: none;
+ transition: 0.2s;
+ text-decoration:none;
+}
+#reset_div a:hover {
+  background: #DEB500;
+  box-shadow: 0.5px 0.5px 0px #A36A00,
+              1px 1px 0px #A36A00,
+              1.5px 1.5px 0px #A36A00,
+              2px 2px 0px #A36A00,
+              2.5px 2.5px 0px #A36A00,
+              3px 3px 0px #A36A00;
+  text-shadow: 1px 1px 0px #A36A00;
+  transition: 0.25s;
+  text-decoration:none;
+}
+
+
+
+
+
+
+
