@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Percentext, a nifty little jQuery plugin.</title>
+
+  <!-- @reload -->
+
+  <!-- @stylesheet style -->
+  <!-- @stylesheet grid -->
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <script src="http://use.edgefonts.net/raleway:n3,n5,n7,n9;bowlby-one.js"></script>
+
+  <!-- @javascript jquery_1.11.1 -->
+  <!-- @javascript throttle-debounce_1.1.min -->
+  <!-- @javascript patternizr.min -->
+  <!-- @javascript patternizr_stripes -->
+  <!-- @javascript percentext_1.0 -->
+  <!-- @javascript scripts/* -->
+
+  <script>
+  $(document).ready(function() {
+  
+
+     
+    var bgCanvas = document.getElementById('bgCanvas');
+
+    init(bgCanvas);
+
+
+    $("#title").percentext({letterSpacing: -4});
+    $("#title_caption").percentext({width: 40, letterSpacing: -2});
+    $("#title_description_desktop").percentext({minFontSize: 18});
+    $(".mobile_title_desc_line").percentext();
+    $(".line_text").percentext();
+    $("#why_percentext_header").percentext({width: 75, letterSpacing: -3})
+    $("#s2_title, #s4_title, #s5_title").percentext();
+    $(".jungle .line1").percentext({width: 53, letterSpacing: -2});
+    $(".jungle .line2").percentext({letterSpacing: -12});
+
+    parallax_scroller(["#section_2", "#section_3", "#section_4", "#section_5"]); 
+    silly_highlight_effect(".line_effect");
+
+  });
+  </script>
+
+</head>
+
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <div id="wrapper">
+
+    <!-- Section 1 - Introduction -->
+    <section id="section_1">
+
+      <div class="top_black_bars">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+
+      <div class="title_area">
+        <h5 id="title_caption">
+          Allow me to introduce
+        </h5>
+        <h1 id="title">
+          Percentext<span class="title_extension">.js</span>
+        </h1>
+
+        <div class="divider_with_icon" id="title_divider">
+          <div class="icon_holder">
+            <img src="percentext_icon.png" class="percentext_icon">
+          </div>
+        </div>
+
+        <div id="title_description">
+          <h6 id="title_description_desktop">
+            The jQuery plugin that adjusts <em>font-size</em> and <em>letter-spacing</em>, so you can set a <em>percentage width</em> for your headers.
+          </h6>
+
+          <h6 id="title_description_mobile">
+            <div>
+              <h4 class="mobile_title_desc_line">
+                The jQuery plugin that adjusts <em>font-size</em> and <em>letter-spacing</em>,
+              </h4>
+            </div>
+            <div>
+              <h4 class="mobile_title_desc_line">
+                so you can set a <em>percentage width</em> for your headers.
+              </h4>
+            </div>
+          </h6>
+        </div>
+
+        <div id="main_button_holder">
+          <div id="button_1_learn_more">
+            Quick Start Guide
+          </div><div id="button_2_github"><a href="https://github.com/joshwcomeau/Percentext" target="_top">Download on GitHub</a></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section 2 - Demonstration -->
+    <section id="section_2" class="main_section">
+      <div class="section_dark_bg">
+        <h2 id="s2_title" style="">A Quick Demonstration.</h2>
+        <div class="space_taker"></div>
+
+        <div id="section_2_main_wrapper">
+
+          <div id="section_2_text">
+            <div class="s2_line">
+              <div class="line_text bo">Wouldn't it be nice</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">if you could style text</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">just like any other element?</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">Why specify text in terms of font size</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">when you specify <em>everything else</em> in terms of width?</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">I just wanted each of these lines to take up 100% of their parent,</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">and to do so in a responsive way using CSS alone would have involved <em>a looot</em> of breakpoints.</div>
+              <div class="line_effect"></div>
+            </div>
+            <div class="s2_line">
+              <div class="line_text">So, I tinkered with jQuery, and came up with this implementation that dynamically changes letter-spacing and font-size to fit.</div>
+              <div class="line_effect"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Section 3 - Why Percentext? -->
+    <section id="section_3" class="main_section">
+      <div class="section_dark_bg">
+        <div class="grid" id="s3_grid">
+          <!-- "Why Percentext?" Column -->
+          <div class="c8 full_height">
+            <h2 id="why_percentext_header">Why Percentext?</h2>
+            <div id="why_percentext_container">
+              <p>Percentext brings traditional DOM arrangement to text-based elements, allowing developers and designers the ability to quickly, easily and responsively size headers to be 'just right' across devices. </p>
+              
+              <h4>Alternatives</h4>
+              <p>Many people who find it irksome to deal with font sizes use <a href="http://fittextjs.com/">FitText.js</a>. FitText is a great little plugin, but it isn't quite the same as Percentext. FitText arbitrarily sets font-size to be equal to a fraction of the parent container's width, allowing users to tweak via a 'compressor' to get the size just right.</p>
+
+              <h4>Pros and Cons</h4>
+              <p>Percentext's advantage is that it allows you to set a percentage and be done with it&mdash;no tweaking required. It also lets you achieve some pretty cool effects, without much work. The downside to this convenience is performance; FitText is a very simple plugin that works lightning fast. Percentext is pretty quick too, but it can be a bit sluggish if you have many headers that you wish to size in <a href="#preciseMode" id="go_to_precise">preciseMode</a>.</p>
+            </div>
+          </div>
+          <!-- -->
+
+          <!-- Decorative "Math Tools" Column -->
+          <div class="c4 full_height" id="mathtools_column">
+          
+            <div id="mathtools">
+              <!-- @include mathtools -->
+            </div>
+          </div>
+          <!-- -->
+
+        </div>
+      </div>
+      <div class="s3_line_decoration_container">
+        <div class="s3_line_decoration"></div>
+      </div>
+    </section>
+
+
+
+    <!-- Section 4 - Quick Start Guide -->
+    <a id="quick_start_anchor"></a>
+    <section id="section_4" class="main_section">
+      <h2 id="s4_title">Quick Start Guide.</h2>
+      <div class="section_dark_bg">
+        <div class="grid padded_grid">
+          <div class="c6">
+            
+            <h4 class="s4_header">Installation</h4><div class="s4_header_edge"></div>
+            <div class="s4_textblock" style="position: relative;">
+              <h3 class="quickstart_header">With Bower <span class="new">new!</span></h3>
+              <p>Easy! CD into your project directory, and run:</p>
+              <p class="mono"><span class="terminal-indicator">$</span>bower install percentext</p>
+              <p>By default, bower installs packages into <span class="mono">bower_components</span>. If you haven't tinkered with the defaults, you can then include percentext like so:</p>
+              <div class="code code_block">
+                   <span class="tag">&lt;script</span> 
+                   <span class="attr">type</span>=<!--
+                --><span class="val">"text/javascript"</span> 
+                   <span class="attr">src</span>=<!--
+                --><span class="val">"bower_components/percentext/percentext.js"</span><!--
+                --><span class="tag">&gt;</span>
+              </div>
+              <div class="bower_link"><a href="http://bower.io/" target="_blank"><img src="<!-- @path bower-logo.png -->"> Learn more about awesome Bower!</a></div>
+
+              <h3 class="quickstart_header" style="margin-top: 3rem;">Without Bower</h3>
+              <ol>
+                <li data-number="A.">First thing's first, make sure you have <a href="http://jquery.com/download/">jQuery</a> installed! Percentext depends on it.</li>
+                <li data-number="B.">Download percentext.js (or the minified version) <a href="https://github.com/joshwcomeau/Percentext" target="_blank">from GitHub</a> .</li>
+                <li data-number="C.">Throw your new download into your project folder. Right next to all the other scripts. It'll fit right in. 
+                <li data-number="D.">
+                  Include the following line of HTML into the 
+                  <span class="code code_inline"><span class="tag">&lt;head&gt;</span></span> 
+                  section of the page(s) you want to use Percentext in:
+                  <br>
+                  <div class="code code_block">
+                       <span class="tag">&lt;script</span> 
+                       <span class="attr">type</span>=<!--
+                    --><span class="val">"text/javascript"</span> 
+                       <span class="attr">src</span>=<!--
+                    --><span class="val">"path/to/percentext.js"</span><!--
+                    --><span class="tag">&gt;</span>
+                  </div>
+                </li>
+
+                <li data-number="E.">That's it! You're loaded and ready to rock.</li>
+              </ol>            
+            </div>
+          </div>
+          <div class="c6">
+            <h4 class="s4_header">Usage</h4><div class="s4_header_edge"></div>
+            <div class="s4_textblock">
+              <h3 class="quickstart_header">Percentext is super easy to use.</h3>
+              <p>If you're happy with the default settings, you can just call it on any element you want:</p>
+              <div class="code code_block">
+                <span class="val">$</span>(<span class="string">".some-class"</span>).percentext();
+              </div>
+              <p>The default assumes you want the header's text to take up 100% of the width. If you want to specify a custom width, you can do so in the following ways:</p>
+              <div class="code code_block">
+                <span class="comment">// As a percentage:</span><br>
+                <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({ <span class="object">width: <span class="string">"80%"</span></span> });<br>
+                <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({ <span class="object">width: <span class="tag">80</span></span> });
+                <br><br>
+                <span class="comment">// As a pixel value:</span><br>
+                <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({ <span class="object">width: <span class="string">"500px"</span></span> });
+              </div>
+
+              <p>There are a whole bunch of ways to customize Percentext to suit your needs (see below), but one more critical option to know about: <strong class="red_text">Precise Mode</strong>.</p>
+              <p>Precise mode isn't happy to just grab the most appropriate font size, it uses letter spacing to try and match your requested width <em>to the pixel</em>. The downside is it can be pretty greedy with your CPU's cycles. If you're noticing the performance of Percentext leaves something to be desired, turn it off like so:</p>
+
+              <div class="code code_block">
+                <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({ <span class="object">preciseMode: <span class="attr">false</span></span> });<br>
+              </div>
+              <div class="PENGUIN" title="Good job, mister! You're ready to roll."><!-- @include penguin.html --></div>
+
+            </div>
+          </div>
+      </div>
+    </section>
+
+
+    <!-- Section 5 - Documentation -->
+    <section id="section_5" class="main_section">
+      <div id="s5_title">The Documentation.</div>
+      <div class="section_light_bg">
+        <h3 class="s5_header">Customizing with Options</h3>
+        <p>
+          Percentext features a number of options that allow you to change how the plugin works. Most are pretty self-explanatory, but there are some pretty cool tweaks that might not be immediately obvious.
+        </p>
+
+        <a id="precise_mode_anchor"></a>
+
+        <div class="grid options_grid">
+<!--      <div class="bottom_triangle_big"></div>
+          <div class="bottom_triangle_small"></div>
+ -->          
+          <div class="c4">
+            <div class="option_container">
+              <div class="option_header">width<h6 class="default">Default: <span class="mono">100</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> <span class="mono"><span class="n">n</span>, "<span class="n">n</span>%", "<span class="n">n</span>px"</span>, where <span class="n">n</span> is any integer.
+                </h6>
+                <p class="description">The meat of the plugin. Will adjust font size so that the text element takes up the specified width. Can be given in pixels or as a percentage of the parent container. Only works on single-line text elements.</p>
+                <div class="code code_block tiny">
+                  <span class="comment">// Example, takes up 400 pixels</span><br>
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">width: <span class="string">"400px"</span></span> 
+                  <br>});
+                </div>
+              </div>
+            </div>
+
+            <div class="option_container">
+              <div class="option_header">letterSpacing<h6 class="default">Default: <span class="mono">100</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> Any number
+                </h6>
+                <p class="description">Provide a value, in pixels, for desired letter spacing. Note that Percentext will examine your CSS for <span class="mono">letter-spacing</span>, so you can provide it there instead. If it is provided in both places, <em>Percentext will prioritize the value submitted through this option.</em></p>
+                
+                <p class="description"><strong class="red_text">letterSpacing and preciseMode:</strong> please note that if you have <span class="mono">preciseMode</span> enabled, Percentext will use this value as the starting point, and may adjust it to achieve a perfect fit.</p>
+                <div class="code code_block tiny">
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">letterSpacing: <span class="tag">-3</span></span> 
+                  <br>});
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="c4">
+
+            <div class="option_container">
+              <div class="option_header">preciseMode<h6 class="default">Default: <span class="mono">true</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> <span class="mono">true, false</span>
+                </h6>
+                <p class="description">Precise mode uses line spacing to fine-tune the text element to take up as close to the desired width as possible. Set to <span class="mono">false</span> when you don't need pixel-perfection, to improve performance.</p>
+                <div class="code code_block tiny">
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">width: <span class="tag">40</span>,
+                  <br>&nbsp;&nbsp;preciseMode: <span class="attr">false</span></span> 
+                  <br>});
+                </div>
+              </div>
+            </div>
+
+            <div class="option_container">
+              <div class="option_header">relativeSpacing<h6 class="default">Default: <span class="mono">true</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> <span class="mono">true, false</span>
+                </h6>
+                <p class="description">If a custom value is passed in for <span class="mono">letterSpacing</span>, this boolean will decide whether to scale that value depending on the font size, or use the given value as absolute, regardless of font size.</strong></p>
+                <div class="code code_block tiny">
+                  <span class="comment">// letterSpacing will always be 2px.</span><br>
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">letterSpacing: <span class="tag">2</span>,
+                  <br>&nbsp;&nbsp;relativeSpacing: <span class="attr">false</span></span> 
+                  <br>});
+
+                  <br><br><br><span class="comment">// letterSpacing will scale with font size.</span><br>
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">letterSpacing: <span class="tag">2</span>
+                  <br>});
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="c4">
+
+
+            <div class="option_container">
+              <div class="option_header">textAlign<h6 class="default">Default: <span class="mono">null</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> <span class="mono">left, right, center, justify</span>
+                </h6>
+                <p class="description">Set the desired alignment for your text. Acts as a higher specificity than applying CSS directly to the element.</p>
+                <div class="code code_block tiny">
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">textAlign: <span class="string">"right"</span></span> 
+                  <br>});
+                </div>
+              </div>
+            </div>
+
+            <div class="option_container">
+              <div class="option_header">minFontSize<h6 class="default">Default: <span class="mono">null</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> Any integer
+                </h6>
+                <p class="description">Limits Percentext from setting a font size below this supplied value. Given in pixels.</p>
+                <div class="code code_block tiny">
+                  <span class="comment">// Will not set font-size below 12px.</span><br>
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">minFontSize: <span class="tag">12</span>
+                  <br>});
+                </div>
+              </div>
+            </div>
+
+            <div class="option_container">
+              <div class="option_header">maxFontSize<h6 class="default">Default: <span class="mono">null</span></h6></div>
+              <div class="option_text">
+                <h6 class="accepted">
+                  <strong>Accepted values:</strong> Any integer
+                </h6>
+                <p class="description">Limits Percentext from setting a font size above this supplied value. Given in pixels.</p>
+                <div class="code code_block tiny">
+                  <span class="comment">// Will not set font-size above 60px.</span><br>
+                  <span class="val">$</span>(<span class="string">".some-class"</span>).percentext({
+                  <br>&nbsp;&nbsp;<span class="object">maxFontSize: <span class="tag">60</span>
+                  <br>});
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section id="license_and_bugs" class="grid">
+          <div class="c7">
+            <h3 class="s5_header">Known Bugs</h3>
+            <p>All currently-unfixed known issues are listed here:</p>
+            <ol>
+              <li data-number="1.">
+                <strong>Elements inside hidden containers.</strong> Percentext crashes if it's called on an element whose parent has been hidden with <span class="mono">display: none;</span>. This is a pretty big deal, for those who want to hide sections with media queries, and I'm working on finding a solution.
+              </li>
+              <li data-number="2.">
+                <strong>Inconsistent position at high negative <span class="mono">letter-spacing</span>.</strong> 
+                Really high (20px+) negative <span class="mono">letter-spacing</span> can cause the element to shift outside its container. I've tried to combat this situation with negative <span class="mono">text-indent</span>, but I haven't quite cracked it yet.
+              </li>
+            </ol>
+          </div> 
+
+          <div class="c5 license">
+            <h3 class="s5_header">License</h3>
+            <p class="justify">
+              This plugin released under the <strong>MIT open-source license</strong>. You can read all about it <a href="http://opensource.org/licenses/MIT">here</a>, but the long and short of it is you can do pretty much whatever you want with this plugin, personal or commercial, as long as you give me credit and don't hold me liable for anything.
+            </p>
+            <p class="justify">
+              Are you using this plugin? I'd love to see what you've done with it! Please <a href="mailto:joshwcomeau@gmail.com">drop a line</a> and let me know =)
+            </p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+
+    <footer>
+      <p class="line1">
+        &copy; <a class="name" href="https://github.com/joshwcomeau/Percentext">Percentext</a>, 2014 and beyond. All rights, wrongs and grey areas reserved.
+      </p>
+      <p class="line2">
+        Thanks to <a href="http://fittextjs.com/">FitText.js</a> for the inspiration, and <a href="http://thenounproject.com/nebson/">Ben Johnson</a> and <a href="http://thenounproject.com/bashburn">Brad Ashburn</a> for the plug-in and penguin SVG icons, respectively.
+      </p>
+      <p class="line3">
+        Created by <a href="http://www.github.com/joshwcomeau" class="to_my_github">Joshua Comeau</a>.
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
