@@ -1,0 +1,9 @@
+<h2>Mixes index</h2>
+
+<ul>
+<% @mixes.each do |mix| %>
+   <li><%= link_to mix.name, mix_path(mix) %> - <%= link_to "Delete",  mix_path(mix), method: :delete, confirm: 'Are you sure you want to delete ' + mix.name + '?' %></li>
+<% end %>
+</ul>
+
+<strong><%= link_to "Add New Set", new_mix_path %></strong>
