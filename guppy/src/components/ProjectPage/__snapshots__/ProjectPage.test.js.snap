@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProjectPage component Rendering should render project page (done) 1`] = `
+<React.Fragment>
+  <Connect(DevelopmentServerPane)
+    leftSideWidth={300}
+  />
+  <styled.div
+    size={30}
+  />
+  <Connect(TaskRunnerPane)
+    leftSideWidth={200}
+  />
+  <styled.div
+    size={30}
+  />
+  <Connect(DependencyManagementPane) />
+</React.Fragment>
+`;
+
+exports[`ProjectPage component Rendering should render project page (fail) 1`] = `
+<styled.div>
+  <styled.div>
+    <Styled(Icon) />
+  </styled.div>
+  <styled.div>
+    <strong>
+      Oh no!
+    </strong>
+     Looks like your project dependencies are missing.
+  </styled.div>
+  <styled.div>
+    This can happen if you've freshly cloned a project from GitHub. In order to run scripts in Guppy, you'll need to install them now.
+  </styled.div>
+  <styled.div
+    size={30}
+  />
+  <Styled(styled.div)>
+    <FillButton
+      colors={
+        Array [
+          "#00C853",
+          "#69db0d",
+        ]
+      }
+      onClick={[Function]}
+      size="large"
+      textColor="#FFF"
+    >
+      Install Dependencies
+    </FillButton>
+  </Styled(styled.div)>
+</styled.div>
+`;
+
+exports[`ProjectPage component Rendering should render project page (loading) 1`] = `
+<MountAfter
+  delay={100}
+  reason="Don't show spinner if we're really fast."
+>
+  <Styled(styled.div)>
+    <Spinner
+      size={50}
+    />
+  </Styled(styled.div)>
+</MountAfter>
+`;
+
+exports[`ProjectPage component should render header FlexRow 1`] = `
+<styled.div>
+  <PixelShifter
+    reason="Align left edge of title with the modules on page"
+    x={-2}
+  >
+    <ProjectTitle
+      tooltip="path/to/project"
+    />
+  </PixelShifter>
+  <Connect(SettingsButton) />
+</styled.div>
+`;

@@ -1,0 +1,15 @@
+{
+  "editor.tabSize": 2,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/release-builds": true
+  },
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+  "flow.enabled": true,
+  "eslint.enable": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.parser": "flow",
+  "editor.formatOnSave": true
+}

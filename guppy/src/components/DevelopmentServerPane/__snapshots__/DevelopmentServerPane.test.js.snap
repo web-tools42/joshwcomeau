@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DevelopmentServerPane component Rendering should render 1`] = `
+<Pane
+  moreInfoHref="https://github.com/joshwcomeau/guppy/blob/master/docs/getting-started.md#development-server"
+  primaryActionChildren={
+    <Toggle
+      isToggled={false}
+      onToggle={[Function]}
+      padding={2}
+      size={32}
+    />
+  }
+  title="Development Server"
+>
+  <MediaQuery
+    query="(min-width: 901px)"
+    values={Object {}}
+  >
+    <Component />
+  </MediaQuery>
+</Pane>
+`;

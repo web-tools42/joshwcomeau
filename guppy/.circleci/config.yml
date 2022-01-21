@@ -1,0 +1,35 @@
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: node:8.10
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          # don't fallback to using the latest cache if no exact match is found
+          # because it yarn doesn't pick some changes (for example, flow doesn't update)
+
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+      # run tests!
+      - run: yarn test:report-coverage
+
+      # Flowjs check
+      - run: yarn flow
+
+      # Linter
+      - run: yarn lint
+
