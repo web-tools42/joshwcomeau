@@ -1,0 +1,24 @@
+{
+  "name": "empowered-workflows-talk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "mdx-deck deck.mdx --port 7777",
+    "build": "mdx-deck build deck.mdx"
+  },
+  "keywords": [],
+  "author": "Josh Comeau",
+  "devDependencies": {
+    "mdx-deck": "^3.0.13"
+  },
+  "resolutions": {
+    "mdx-deck/**/gatsby": "2.18.4"
+  },
+  "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
+    "react-live": "^2.2.2",
+    "react-tweet-embed": "^1.2.2",
+    "styled-components": "^5.0.0"
+  }
+}

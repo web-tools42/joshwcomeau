@@ -1,0 +1,668 @@
+import myTheme from "./theme";
+
+export const theme = myTheme;
+
+import SpeakerNote from './SpeakerNote'
+import gatsbyLogo from "./assets/gatsby-logo.svg";
+
+
+
+<img src={gatsbyLogo} />
+
+---
+
+So I built a website for my mom.
+
+
+import pamWebsiteHero from "./assets/pam-website-hero.png";
+
+<img src={pamWebsiteHero} style={{ minHeight: 583, maxWidth: "80vw", maxHeight: "70vh" }} />
+
+<SpeakerNote>
+  My mom is an artist.
+  Built this a few years back with Inferno
+</SpeakerNote>
+
+---
+
+It features a list of works:
+
+import pamWebsiteGrid from "./assets/pam-website-grid.png";
+
+<img src={pamWebsiteGrid} style={{ minHeight: 583, maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+This data was sourced from a .js file in the repo:
+
+import pamWebsiteData from "./assets/pam-website-data.png";
+
+<img src={pamWebsiteData} width={628} height={366} />
+
+<SpeakerNote>
+  Data is sourced from the filesystem in
+</SpeakerNote>
+
+---
+
+### Question
+
+How easy do you think it is for my mom to update this website?
+
+<ul>
+  <Appear>
+    <li>Unclear structure</li>
+    <li>Strict validation</li>
+    <li>It's checked into Git</li>
+  </Appear>
+</ul>
+
+---
+
+**High** barrier to entry
+
+---
+
+Wordpress:
+
+import wpUpload from "./assets/wp-upload.gif";
+
+<img src={wpUpload} />
+
+---
+
+**Lower** barrier to entry
+
+---
+
+We always talk about:
+
+- user experience
+- developer experience
+
+---
+
+There's another seat at this table though! The _non-technical\*_ people who work on our products.
+
+---
+
+_*non-technical_, in this case, referring to people who build websites but don't call themselves "software developers".
+
+---
+
+Experience for the **JS-file-in-codebase** approach:
+
+<table>
+  <thead>
+    <tr>
+      <Appear>
+        <th>UX</th>
+        <th>DX</th>
+        <th>CCX</th>
+      </Appear>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <Appear>
+      <td>
+        <Big>😄</Big>
+      </td>
+      <td>
+        <Big>🥳</Big>
+      </td>
+      <td>
+        <Big>🙁</Big>
+      </td>
+      </Appear>
+    </tr>
+  </tbody>
+</table>
+
+<Small>
+  See also: JSON, MDX, anything that lives in source control.
+</Small>
+
+---
+
+Experience for the **monolithic CMS** approach:
+
+<table>
+  <thead>
+    <tr>
+      <Appear>
+      <th>UX</th>
+      <th>DX</th>
+      <th>CCX</th>
+      </Appear>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <Appear>
+      <td>
+        <Big>😐</Big>
+      </td>
+      <td>
+        <Big>😬</Big>
+      </td>
+      <td>
+        <Big>😄</Big>
+      </td>
+      </Appear>
+    </tr>
+  </tbody>
+</table>
+
+<Small>
+  AKA Wordpress, Squarespace, Shopify, etc
+</Small>
+
+---
+
+import pickTwo from './assets/pick-2.png';
+
+<img src={pickTwo} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+### Users, Devs, Content Creators.
+
+### Pick 2?
+
+---
+
+"There's got to be a better way!"
+
+
+import failTaco from "./assets/fail-taco.gif";
+
+<img src={failTaco} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+import TitleSlide from './TitleSlide';
+
+<TitleSlide />
+
+---
+
+👋🏻 I'm Josh
+
+- Staff software eng Gatsby
+- Cat person
+- Beat Saber fanboy
+
+---
+
+👋🏻 I'm Josh
+
+- Staff software eng Gatsby
+- **Cat person**
+- Beat Saber fanboy
+
+---
+
+# #GatsbyDaysPets
+
+---
+
+# The Headless CMS
+
+import headlessCms from "./assets/headless.jpg";
+
+<img src={headlessCms} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+### What is a CMS?
+
+- Structured relational data model
+- Friendly admin UI to update that data
+
+---
+
+### 1. Structured relational data model
+
+import cmsModel from "./assets/cms-model.png";
+
+<img src={cmsModel} style={{ maxWidth: "80vw", height: 430 }} />
+
+---
+
+### 1. Structured relational data model
+
+import cmsRelationships from "./assets/cms-relationships.png";
+
+<img src={cmsRelationships} style={{ maxWidth: "80vw", height: 430 }} />
+
+---
+
+### 2. Friendly admin UI
+
+For the gatsbyjs.com site, we use **Contentful**.
+
+---
+
+import contentfulSrc from "./assets/contentful.png";
+
+<img src={contentfulSrc} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+Monolithic CMS' like Wordpress also include a bunch of other stuff:
+
+- Website builders
+- Templates
+- User accounts
+- E-commerce
+- Pretty much anything via plugins
+
+---
+
+All that other stuff is the "head".
+
+This naming feels backwards to me.
+
+---
+
+A "headless" CMS exposes its data via an API.
+
+It has zero opinions about how the data is used.
+
+---
+
+### How we use it
+
+<CodeSnippet
+  code={`const AllTheFaqs = () => {
+  const { allContentfulFaq } = useStaticQuery(
+    graphql\`
+      {
+        allContentfulFaq(filter: { category: { eq: "Docs" } }) {
+          edges {
+            node {
+              id
+              question
+              answer {
+                html
+              }
+            }
+          }
+        }
+      }
+    \`
+  )
+  return (
+    <div>
+      {allContentfulFaq.edges.map(({ node }) => (
+        <FaqCard key={node.id}>
+          <FaqCard.Question question={node.question} />
+          <FaqCard.Answer answer={node.answer.html} />
+        </FaqCard>
+      ))}
+    </div>
+  )
+}`}
+/>
+
+---
+
+# The Content Mesh
+
+We can wire _many different_ services together instead of relying on one monolith for everything.
+
+---
+
+### The bet: 
+
+Specialized companies create better stuff than monolithic ones
+
+---
+
+import nightMarkets from './assets/night-markets.jpg';
+
+<img src={nightMarkets} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+# Who does it better?
+
+- Payments: Stripe or Wordpress?
+- E-commerce: Shopify or Wordpress?
+- Auth: Auth0 or Wordpress?
+
+---
+
+So _in theory_ headless CMS' can do the "CMS" part better than monolithic ones...
+
+---
+
+But we also lose the _integration benefits_ of a cohesive system.
+
+---
+
+### For example
+
+Content creators have a friendly UI to update copy in a headless CMS...
+
+<Appear>
+  <p>But no way to preview it!</p>
+</Appear>
+
+---
+
+import news from "./assets/news.png";
+
+<img src={news} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+<Small>
+  nytimes.com
+</Small>
+
+---
+
+import newsCms from "./assets/news-cms.png";
+
+<img src={newsCms} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+
+---
+
+Content creators need _real-time feedback_, just like developers do.
+
+---
+
+import previewSplash from './assets/preview.jpg';
+
+<img src={previewSplash} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+🔌 Gatsby Cloud does this now
+
+---
+
+
+import previewInCms from './assets/preview-in-cms.png';
+
+<img src={previewInCms} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+It's a _whole site_ preview, not just a _page_ preview.
+
+Stakeholders can check any part of the site or app.
+
+---
+
+It features _hot reload_ with _preserved scroll position_.
+
+Low-latency, real-time feedback.
+
+---
+
+Sanity uses Gatsby Preview to do something pretty amazing
+
+import sanity from './assets/sanity.gif';
+
+<img src={sanity} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+Live-previewing copy changes is just the beginning :o
+
+---
+
+### It's more than copy.
+
+---
+
+# Case Study
+
+Gatsbyjs.com navigation
+
+---
+
+import dotCom from './assets/dot-com.png';
+
+<img src={dotCom} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+import dotComMenuOpen from './assets/dot-com-menu-open.png';
+
+<img src={dotComMenuOpen} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+### Navigation data lives in the CMS
+
+---
+
+import contentfulNav from './assets/contentful-nav.png';
+
+<img src={contentfulNav} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+import contentfulNavDropdown from './assets/contentful-nav-dropdown.png';
+
+<img src={contentfulNavDropdown} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+import contentfulNavLowest from './assets/contentful-nav-lowest.png';
+
+<img src={contentfulNavLowest} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+import modelMap from './assets/model-map.png';
+
+<img src={modelMap} style={{ width: "80vw" }} />
+
+---
+
+"Content" is more than copy.
+
+---
+
+React components are building blocks.
+
+Why not empower content creators to use them too?
+
+---
+
+import blocks from './assets/blocks.svg';
+
+<img src={blocks} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+<ul>
+  <li>Marketing is empowered to build their own landing pages</li>
+  <Appear>
+    <li>Customer service can build their own resource center pages</li>
+    <li>Developers create platforms, not pages</li>
+  </Appear>
+</ul>
+
+---
+
+### Not theoretical
+
+https://www.starlight.org
+
+A Delicious Simplicity project
+
+---
+
+There's a webinar showing how they did this!
+
+https://www.youtube.com/watch?v=v88snd6EUaY
+
+---
+
+### Pssst
+
+Gatsby has amazing webinars
+
+gatsbyjs.com/resources/webinars
+
+---
+
+# From the community
+
+---
+
+# Limited CSS Subset
+
+import pierre1 from './assets/pierre-1.png';
+
+<img src={pierre1} style={{ maxWidth: "80vw", maxHeight: "70vh" }}  />
+
+<br />
+
+<a href="https://twitter.com/pierre_nel/status/1222601162609786880">Pierre Nel</a>
+
+
+<SpeakerNote>
+  Pierre Nel, a designer/developer in London, essentially figured out a DSL for the content creators, to be able to shape stuff like color and content position.
+</SpeakerNote>
+
+---
+
+# Limited CSS Subset
+
+import pierre2 from './assets/pierre-2.png';
+
+<img src={pierre2} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+ 
+
+---
+
+# "Rich text" 2.0
+
+import contentClip from './assets/content.mp4';
+
+<video muted autoPlay controls loop src={contentClip} />
+
+<br />
+
+<a href="https://twitter.com/eunjae_lee/status/1218662468681183236">Eunjae Lee</a>
+
+
+---
+
+# Drawbacks
+
+<ul>
+<Appear>
+  <li>This stuff is pretty bleeding-edge</li>
+  <li>Can be more work upfront</li>
+  <li>Combinatorial explosion means that design problems may occur</li>
+</Appear>
+</ul>
+
+---
+
+# Conclusion
+
+---
+
+Experience for the **headless CMS** approach:
+
+import rupaulUser from './assets/rupaul-user.gif'
+import rupaulOk from './assets/rupaul-ok.gif'
+import cheer from './assets/cheer.gif'
+
+<table>
+  <thead>
+    <tr>
+      <Appear>
+      <th>UX</th>
+      <th>DX</th>
+      <th>CCX</th>
+      </Appear>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <Appear>
+      <td>
+        <img src={rupaulUser} style={{objectFit: 'cover', width: 300, height: 400}} />
+      </td>
+      <td>
+        <img src={cheer} style={{objectFit: 'cover', width: 300, height: 400}} />
+      </td>
+      <td>
+        <img src={rupaulOk} style={{objectFit: 'cover', width: 300, height: 400}} />
+      </td>
+      </Appear>
+    </tr>
+  </tbody>
+</table>
+
+
+---
+
+"JS Fatigue"?
+
+---
+
+Things are stabilizing
+
+import downloads from './assets/downloads.png'
+
+<img src={downloads} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+Now that things are broadly settled, we can _iterate_ and _improve_.
+
+---
+
+import spiderman from './assets/spiderman.jpg'
+
+<img src={spiderman} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+---
+
+We're still niche (according to trends.builtwith.com)
+
+
+import wordpressVsReact from "./assets/top-10k.png";
+
+<img src={wordpressVsReact} style={{ maxWidth: "80vw", maxHeight: "70vh" }} />
+
+
+---
+
+If we want to build tools that _most websites_ use, we need to focus on content creators. 
+
+---
+
+# One last thing...
+
+---
+
+import CatTweets from './CatTweets';
+
+<CatTweets />
+
+---
+
+<div style={{ textAlign: 'center' }}>
+  <h1>
+    Thanks!
+  </h1>
+  <Small>
+    <strong>Slides:</strong> 
+    <br />
+    gatsby-days-josh-talk.netlify.com
+    <br />
+    <br />
+    <strong>Links:</strong>
+    <br />
+    github.com/joshwcomeau/empowered-development-with-gatsby
+  </Small>
+</div>
