@@ -1,0 +1,3 @@
+class ColoursController < ApplicationController
+
+end

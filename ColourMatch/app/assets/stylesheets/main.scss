@@ -1,0 +1,165 @@
+@import 'variables';
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+::-moz-selection { /* Code for Firefox */
+    color: white;
+    background: $red;
+}
+
+::selection {
+    color: white; 
+    background: $red;
+}
+
+html { 
+  width:        100%;
+  height:       100%; 
+}
+
+body {
+  position:     relative;
+  width:        100%;
+  min-height:   100%;
+  border:       1rem solid darken($darkgrey, 4%);
+  background:   $darkgrey;
+  font-family:  'Whitney';
+  font-weight:  300;
+  padding-bottom: 10rem;
+
+  header.main-header {
+    text-align: center;
+    padding: 2rem 0;
+
+    h1 {
+      font-size: 4rem;
+      font-weight: 900;
+    }
+
+    h4 {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: lighten($beige, 10%);
+    }
+
+    h6 {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: #CCC;
+      animation-delay: 0.5s;
+      animation-duration: 2s;
+      animation-name: fadeInDown;
+      animation-fill-mode:both;
+
+
+      a {
+        color: $blue;
+        text-decoration: underline;
+        font-weight: 500;
+      }
+    }
+
+    a {
+      color: $red;
+      text-decoration: none;
+    }
+
+    sup {
+      color: lighten($green, 10%);
+      font-weight: 500;
+    }
+  }
+
+
+  & > footer {
+    position:     absolute;
+    z-index:      1;
+    left:         0;
+    right:        0;
+    bottom:       0;
+    margin:       0 auto;
+    padding:      2rem 2rem 1rem 2rem;
+    text-align:   center;
+    color:        $lightgrey;
+    font-size:    0.8rem;
+    font-weight:  100;
+    background:   darken($darkgrey, 4%);
+
+    a {
+      text-decoration:  none;
+      color:            $beige;
+      font-weight:      500;
+
+      &:hover {
+        text-decoration:  underline;
+      }
+    }
+
+  }
+
+}
+
+.flash {
+  position: relative;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  border-radius: 4px;
+  color: #FFF;
+
+  &.error {
+    background: $red;
+  }
+
+  &.notice {
+    background: $green;
+  }
+
+  &.ng-hide-remove.ng-hide-remove-active {
+    animation-name: bounce;
+    transform-origin: center bottom;
+    animation-duration: 0.5s !important;  
+  }
+
+  h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  h5 {
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+  .close {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    font-size: 1.2em;
+    color: #FFF;
+    opacity: 0.75;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+em {
+  font-style:   italic;
+}
+
+input {
+  font-family:  'Whitney';
+}
+button {
+  outline:      none;  
+}
+
+sup {
+  vertical-align: super;
+  font-size: 0.65em;
+}

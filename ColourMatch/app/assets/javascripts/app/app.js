@@ -1,0 +1,1 @@
+angular.module('colourMatch', ['ngRoute', 'ngResource', 'angularFileUpload', 'ngAnimate-animate.css']);

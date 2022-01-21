@@ -1,0 +1,183 @@
+
+
+<div class="photos-wrapper" ng-controller="DashboardController as dash" data-auth-token="<%= form_authenticity_token %>">
+  <%= render partial: 'layouts/header', locals: { subheader: 'Find beautiful photos from 500px, using colour.' } %>
+  <%= render partial: 'stats.html.erb' %>
+  <div class="content-wrapper" ng-class="{widemode: dash.manager.state > 1}" ng-cloak>
+    <div class="flash" ng-show="dash.manager.flash.type &amp;&amp; dash.manager.state === 0" 
+    ng-class="{notice: dash.manager.flash.type === 'notice', error: dash.manager.flash.type === 'error'}">
+      <div class="close" ng-click="dash.manager.flash.type = null"><i class="fa fa-times"></i></div>
+      <h2>{{dash.manager.flash.message}}</h2>        
+      <h5>{{dash.manager.flash.details}}</h5>      
+    </div>
+    <div class="grid padded-grid">
+      <div id="left-col" ng-class="{c6: dash.manager.state <= 1, c3: dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'photo', c9: dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'colour'}" ng-mouseleave="dash.manager.active = null">
+        <div class="left-side-wrapper follower" follow-scroll min-scroll-top="30" initial-offset="211" enabled="false">
+          <section class="photo-upload card" ng-hide="dash.manager.state > 0 &amp;&amp; dash.manager.mode !== 'photo'" ng-class="{fadeInUp: dash.manager.state === 0}">
+            <h3>
+              <span class="card-header" ng-show="dash.manager.state <= 1">Upload a Photo</span>
+              <span class="card-header" ng-show="dash.manager.state > 1 ">Your Photo</span>
+            </h3>
+            <button class="photo_box" 
+            ng-class="{'with-image': dash.manager.state !== 0, 'without-image': dash.manager.state === 0 }"
+            ng-style="{'background-image': dash.manager.preview }"
+            ng-file-drop 
+            ng-model="dash.manager.photo" 
+            accept="image/*"
+            ng-rejected-file-model="rejected"
+            allowDir="true"
+            dropAvailable="dropSupported"
+            defer-click-to destination="#click-handler">
+              <div class="upload-text">
+                <i class="fa fa-cloud-upload"></i>
+                <h4>Click or Drag Photo</h4>
+              </div>
+            </button>
+
+            <div class="palette" ng-show="dash.manager.palette">
+              <ul>
+                <li class="children-fill-width" ng-repeat="item in dash.manager.palette" 
+                  ng-style="{'background-color': '#'+item.hex}"
+                  ng-mouseenter="dash.manager.active = item"
+                ></li>
+              </ul>
+            </div>
+
+            <div ng-no-file-drop>File Drag/drop is not supported</div>   
+            <!-- 
+              This invisible div holds our click-to-upload logic. 
+              Clicking on our photo-box causes the event to be sent here. 
+            -->
+            <div id="click-handler"
+            ng-file-select 
+            ng-model="dash.manager.photo" 
+            accept="image/*"
+            ng-rejected-file-model="rejected"
+            allowDir="true">
+            </div>
+          </section>
+
+          <div class="active-palette" ng-show="dash.manager.active">
+            <div class="active-palette-colour"
+            ng-class="{white: dash.manager.active.lab.l <= 68, black: dash.manager.active.lab.l > 68}"
+            ng-style="{'background-color': '#'+dash.manager.active.hex}"
+            >
+              <h4>{{dash.manager.active.label}}</h4>
+              <h6>#{{dash.manager.active.hex}}</h6>
+            </div>
+
+            <div class="active-palette-stats">
+              <p ng-if="dash.manager.active.outlier === false">Primary Colour <span class="translucent">(covers {{dash.manager.active.coverage | number:1}}%)</span></p>
+              <p ng-if="dash.manager.active.outlier === true">{{dash.manager.active.outlier_channel}} Outlier <span class="translucent">({{dash.manager.active.z_score}}<em>z</em>)</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="results results-left" id="colour-results" ng-if="dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'colour'">
+          <%= render partial: 'results' %>
+        </div>
+
+      </div>
+      
+      <div class="or animated rotateIn" ng-show="dash.manager.state === 0">OR</div>
+
+      <div id="right-col" ng-class="{c6: dash.manager.state <= 1, c3: dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'colour', c9: dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'photo'}">
+        <div class="photo-processing-loadscreen" ng-show="dash.manager.state === 1 &amp;&amp; dash.manager.mode === 'photo'">
+          <div class="processing-animation sk-spinner-cube-grid">
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+            <div class="sk-cube"></div>
+          </div>
+          <h2>Processing Photo...</h2>
+        </div>
+
+        <section class="colour-select card follower" ng-show="dash.manager.state === 0 || dash.manager.mode === 'colour'" 
+        ng-class="{fadeInUp: dash.manager.state === 0, shortenedHeight: dash.manager.state > 0}" 
+        follow-scroll min-scroll-top="30" initial-offset="211" enabled="false">
+          <h3>
+            <span class="card-header" ng-show="dash.manager.state <= 1">Choose a Colour</span>
+            <span class="card-header" ng-show="dash.manager.state > 1 ">Your Colour</span>
+          </h3>
+          <div class="minicolors minicolors-theme-default minicolors-position-top minicolors-position-left minicolors-inline" ng-class="{'move-off-canvas': dash.manager.state > 0 &amp;&amp; dash.manager.mode === 'colour'}">
+            <div class="minicolors-panel minicolors-slider-hue">
+              <div class="minicolors-slider minicolors-sprite">
+                <div class="minicolors-picker" style="top: 0px;"></div>
+              </div>
+              <div class="minicolors-grid minicolors-sprite" style="background-color: rgb(255, 0, 0);">
+                <div class="minicolors-grid-inner"></div>
+                <div class="minicolors-picker" style="top: 160px; left: 0px;">
+                  <div></div>
+                </div>
+              </div>
+            </div>
+            <div class="colour-details">
+              <div class="colour-preview" ng-style="{'background-color': dash.manager.colour}"></div>
+              <input type="text" minicolor-picker="" ng-model="dash.manager.colour" class="ng-pristine ng-untouched ng-valid minicolors-input" size="7">
+            </div>
+          </div>
+
+          <div class="colour-selection" 
+          ng-class="{white: dash.manager.closestColour.lab.l <= 68, black: dash.manager.closestColour.lab.l > 68, 'move-into-canvas': dash.manager.state > 0 &amp;&amp; dash.manager.mode === 'colour'}"
+          ng-style="{'background-color': dash.manager.colour}"
+          >
+            <h4>{{dash.manager.colour}}</h4> 
+            <h6>{{dash.manager.closestColour.label}}</h6>
+          </div>
+        </section> 
+        
+        <div class="submit-button-wrapper" ng-class="{'hide-behind-card': dash.manager.state > 1}" ng-hide="dash.manager.mode === 'photo' || dash.manager.state > 1">
+          <button ng-click="dash.manager.requestImages(dash.manager.colour, dash.auth, 'colour')">
+            <i class="fa fa-check" ng-show="dash.manager.state === 0"></i>
+            <i class="fa fa-circle-o-notch loading-icon" ng-show="dash.manager.state === 1"></i>
+          </button>
+        </div>    
+
+        
+
+        <div class="results results-right" id="photo-results" ng-if="dash.manager.state > 1 &amp;&amp; dash.manager.mode === 'photo'">
+          <%= render partial: 'results' %>
+        </div>    
+
+      </div>
+
+    </div>  
+  </div>
+
+  <div class="suggested-photos width-wrapper" ng-hide="dash.manager.state !== 0  || dash.manager.suggestions.length < 4">
+    <h4>Try one of these <strong>recent user uploads</strong>:</h4>
+    <div class="grid">
+      
+      <div class="suggested-cell-wrapper c3" ng-repeat="sug in dash.manager.suggestions">
+        
+        <div class="suggested-cell" 
+        ng-click="dash.manager.useSuggestion(sug)" 
+        ng-style="{'background-image': 'url(' + sug.photo.image.url +')'}"
+        ng-mouseenter="dash.manager.activeSuggestion = sug.photo.id"
+        ng-mouseleave="dash.manager.activeSuggestion = null">
+          <div class="suggested-cell-palette" ng-class="{active: dash.manager.activeSuggestion === sug.photo.id}">
+            <ul>
+              <li class="children-fill-width" 
+              ng-repeat="item in sug.palette" 
+              ng-style="{'background-color': '#'+item.hex}">
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        
+      </div>
+    
+      
+    </div>
+  </div>
+
+
+</div>
+
+<%= render partial: 'layouts/footer' %>
