@@ -1,0 +1,236 @@
+// Variables
+$grey:      #484A47;
+$green:     #C1CE96;
+$offwhite:  #ECEBF0;
+$turq:      #687D77;
+$brown:     #353129;
+$orange:    #C47A18;
+$red:       #C43215;
+
+.grey     { color: $grey }
+.green    { color: $green }
+.offwhite { color: $offwhite }
+.turq     { color: $turq }
+.brown    { color: $brown }
+.orange   { color: $orange; }
+.red      { color: $red; }
+.black    { color: #000; }
+
+.dkred    { color: mix(#000, $red, 10%); }
+.vdkred   { color: mix(#000, $red, 25%); }
+.vvdkred  { color: mix(#000, $red, 45%); }
+
+
+// Font weights
+$normal:    400;
+$semibold:  600;
+$bold:      700;
+$extrabold: 800;
+
+.fw-normal    { font-weight: 400; }
+.fw-semibold  { font-weight: 600; }
+.fw-bold      { font-weight: 700; }
+.fw-extrabold { font-weight: 800; }
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  height:     100%;
+}
+
+body {
+  height:     100%;
+  background: $grey;
+  color:      $offwhite;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.turq-stripe {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 11.4rem;
+  background: $turq;
+}
+
+.main {
+  position:   relative;
+  z-index:    2;
+  width:      100%;
+  max-width:  850px;
+  margin:     0 auto;
+  padding:    2rem 0;
+  text-align: center;
+
+  .jerry {
+    position: relative;
+    margin: 0 auto;
+    border-radius: 100%;
+  }
+
+  .line {
+    position: relative;
+    z-index: 1;
+    display: block;
+    font-weight: $bold;
+    text-align: center;
+
+    &.vbig {
+      font-weight: $extrabold;
+    }
+  }
+
+  .block {
+    padding: 5rem 0;
+  }
+
+  .block1 {
+    padding-top: 0rem !important;
+  }
+
+  .block2 {
+    background: $brown;
+  }
+
+  .block3 {
+    background: $orange;
+    color: $grey;
+  }
+
+  .block4 {
+    background: #000;
+  }
+
+  .block5 {
+    background: $offwhite;
+    color: $grey;
+    font-family: 'Indie Flower', cursive;
+    padding: 5rem 2rem;
+
+
+    .foreward {
+      font-size: 1.5rem;
+      text-align: left;
+      margin-bottom: 2.25em;
+    }
+
+    .blessing {
+      font-size: 2.2rem;
+      text-align: right;
+      margin-bottom: 0.2rem;
+      margin-right: 20%;
+    }
+    .signature {
+      font-size: 3rem;
+      text-align: right;
+      margin-top: 0.2rem;
+      margin-right: 20%;
+    }
+
+    .fa-heart {
+      color: $red;
+    }
+  }
+}
+.z3 { z-index: 3; }
+.z4 { z-index: 4; }
+.z5 { z-index: 5; }
+.z6 { z-index: 6; }
+.z7 { z-index: 7; }
+.z8 { z-index: 8; }
+
+
+.orangeunder {
+  position: relative;
+  z-index: 2;
+
+  &:before {
+    z-index: -1;
+    content: " ";
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    bottom: 1px;
+    height: 4px;
+    background: $orange;
+  }
+}
+.redunder {
+  position: relative;
+  z-index: 2;
+
+  &:before {
+    z-index: -1;
+    content: " ";
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    bottom: 0.2em;
+    height: 10px;
+    background: $red;
+  }
+}
+
+.chevs {
+  position: absolute;
+  top: 3rem;
+  right: -3.5rem;
+  
+  i {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: -1.2rem;
+    color: $green;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-name: fadeInDown;
+    -webkit-animation-fill-mode:both;
+    -webkit-animation-iteration-count: infinite;
+
+    animation-duration: 1.5s;
+    animation-name: fadeInDown;
+    animation-fill-mode:both;
+    animation-iteration-count: infinite;
+
+    &:nth-child(1) {
+      animation-delay: 0.2s;
+      -webkit-animation-delay: 0.2s;
+
+    }
+    &:nth-child(2) {
+      animation-delay: 0.5s;
+      -webkit-animation-delay: 0.5s;
+
+    }
+    &:nth-child(3) {
+      animation-delay: 0.8s;
+      -webkit-animation-delay: 0.8s;
+
+    }
+  }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles for mobile */
+
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles for tablet */
+
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5) {
+
+  /* Don't forget your Retina CSS! */
+  
+  body {
+    background-size: 72px 72px;
+  }
+
+}
