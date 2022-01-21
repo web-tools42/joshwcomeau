@@ -1,0 +1,21 @@
+body {
+  padding: 40px;
+}
+
+button {
+  border: 0px;
+  background: blue;
+  color: white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  transition: transform 300ms;
+  outline: none;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+button:focus {
+  background: darkblue;
+}
