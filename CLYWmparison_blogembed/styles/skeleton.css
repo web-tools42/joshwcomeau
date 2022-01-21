@@ -1,0 +1,197 @@
+.max_width_875 {
+  max-width: 875px;
+  margin: 0 auto;
+}
+
+
+
+#main_content_wrapper {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  top: 0;
+  padding-top: 3px;
+}
+  #browser_warning {
+    margin: -5px 10px 20px 10px;
+    padding: 10px 15px;
+  }
+  #browser_warning i {
+    float: left;
+    margin-right: 15px;
+  }
+  #browser_warning h2 {
+    margin-bottom: 8px;
+  }
+  #browser_warning p {
+    margin-bottom: 5px;
+  }
+  #radar_chart_wrapper {
+    position: relative;
+    z-index: 5;
+    clear: both;
+    width: 380px;
+    padding-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+  }
+    .chart_label {
+      position: absolute;
+      font-size: 0.75rem;
+      text-align: center;
+      height: 20px;
+      line-height: 20px;
+    }
+      #label_diameter {
+        width: 100px;
+        top: 10px;
+        left: 0;
+        right: 0;
+        margin: auto;
+        text-align: center;
+      }
+      #label_width {
+        bottom: 22%;
+        left: 0%;
+        transform:rotate(-30deg);
+        -ms-transform:rotate(-30deg); /* IE 9 */
+        -webkit-transform:rotate(-30deg); /* Opera, Chrome, and Safari */
+      }
+      #label_weight {
+        bottom: 22%;
+        right: 0%;
+        transform:rotate(30deg);
+        -ms-transform:rotate(30deg); /* IE 9 */
+        -webkit-transform:rotate(30deg); /* Opera, Chrome, and Safari */
+      }
+
+  #yoyo_selection_wrapper {
+    width: 480px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+    #yoyo_selection_avatars {
+      position: relative;
+      padding: 4px;
+      height: 400px;
+      text-align: left;
+    }
+
+      .yoyo_avatar {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 4px;
+        width: 16.66%;
+        height: 20%;
+        overflow: hidden;
+        text-align: center;
+      }
+
+        .yoyo_avatar img {
+          width: 100%;
+        }
+        .avatar_label {
+          z-index: 5;
+          position: absolute;
+          width: 100%;
+          margin-left: -4px;
+          height: 25px;
+          bottom: -25px;
+          line-height: 25px;
+          background: rgba(0,0,0,0.8);
+        }
+        .avatar_checked {
+          z-index: 5;
+          position: absolute;
+          top: -78px;
+          left: -23px;
+          width: 45px;
+          height: 45px;
+          transform:rotate(45deg);
+          -ms-transform:rotate(45deg); /* IE 9 */
+          -webkit-transform:rotate(45deg); /* Opera, Chrome, and Safari */
+        }
+    #yoyo_selection_controls {
+      line-height: 32px;
+      height: 32px;
+    }
+      #yoyo_selection_controls > span {
+        vertical-align: top;
+        display: inline-block;
+        padding: 0px 10px;
+      }
+      #yoyo_selection_controls li, #yoyo_selection_controls ul {
+        vertical-align: top;
+        display: inline-block;
+        margin: 0px 3px;
+        width: auto;
+      }
+      #yoyo_selection_controls label {
+        display: block;
+        padding: 0px 13px 0px 6px;
+      }
+  #yoyo_detail_wrapper {
+    clear: both; 
+    position: relative;
+    z-index: 10;
+    margin-top: 7px; 
+    padding-top: 15px;
+    border-top: 1px solid #DDD;
+    min-height: 170px;
+    text-align: center;
+  }
+    #yoyo_detail_wrapper_header {
+      margin-bottom: 1rem;
+    }
+    .yoyo_more_info {
+      position: relative;
+      width: 210px;
+      display: none;
+      vertical-align: top;
+      padding: 10px;
+
+    }
+      .yoyo_more_info h2 {
+        position: relative;
+        z-index: 20;
+      }
+      .yoyo_more_info > div {
+        padding: 1px;
+      }
+      .yoyo_more_info ul {
+        position: relative;
+        z-index: 10;
+      }
+
+      .yoyo_more_info li {
+        display: inline-block;
+        vertical-align: top;
+        width: 68px;
+        padding: 8px;
+      }
+      .yoyo_more_info li:nth-child(2) {
+        padding: 8px 0px;
+        width: 52px;
+      }
+      .stat_holder {
+        padding: 5px;
+      }
+
+    .yoyo_more_info_template {
+      display: none;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

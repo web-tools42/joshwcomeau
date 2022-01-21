@@ -1,0 +1,141 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>CLYWmparison.</title>
+  <meta name="description" content="A nifty little Caribou Lodge Yoyo Works return-top comparison tool.">
+  <meta name="author" content="Joshua Comeau">
+
+  <meta name="viewport" content="width=875, initial-scale=1.0, user-scalable=no">
+
+  <link rel="shortcut icon" href="/favicon.ico">
+
+  <link href='http://fonts.googleapis.com/css?family=ABeeZee' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="styles/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/reset.css">
+  <link rel="stylesheet" href="styles/skeleton.css">
+  <link rel="stylesheet" href="styles/skin.css">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  <script src="http://use.edgefonts.net/cabin.js"></script>
+  <script src="scripts/underscore.min.js"></script>
+  <script src="scripts/d3.min.js"></script>
+  <script src="scripts/cowboy.js"></script>
+  <script src="scripts/radarchart.js"></script>
+
+  <script src="scripts/models/math.js"></script>
+  <script src="scripts/models/yoyo.js"></script>
+  <script src="scripts/models/listBuilders.js"></script>
+  <script src="scripts/models/gameLogic.js"></script>
+
+  <script src="yoyo_data.js"></script>
+
+</head>
+
+<body>
+  
+  <section id="main">
+    <div id="main_content_wrapper" class="max_width_875">
+            <div id="radar_chart_wrapper">
+        <div id="label_diameter" class="chart_label">Diameter</div>
+        <div id="label_width" class="chart_label">Width</div>
+        <div id="label_weight" class="chart_label">Weight</div>
+        <div id="chart" style="width: 100%"></div>
+      </div><!--
+   --><div id="yoyo_selection_wrapper">
+        <div id="yoyo_selection_avatars">
+          <!-- Dynamically generated JS goes here -->
+        </div>
+        <div id="yoyo_selection_controls">
+          <span>Show:</span>
+          <ul>
+            <li id="show_category_all_li">
+              <label>
+                <input type="radio" name="show_category" class="show_category" id="show_category_all" value="all">
+                All CLYW
+              </label>
+            </li><li id="show_category_current_li">
+              <label>
+                <input type="radio" name="show_category" class="show_category" id="show_category_current" value="current">
+                Current
+              </label>
+            </li><li id="show_category_discontinued_li">
+              <label>
+                <input type="radio" name="show_category" class="show_category" id="show_category_discontinued" value="discontinued">
+                Discontinued
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="yoyo_detail_wrapper">
+        <h2 id="yoyo_detail_wrapper_header">
+          <span id="num_of_selected"></span> Yoyos Selected<span id="num_selected_colon">:</span>
+        </h2>
+      </div>
+    </div>
+  </section>
+
+<!-- An invisible template. Used to create clones. -->
+<div class="yoyo_more_info_template"><div>
+  <h2><span class="mi_name"></span></h2>
+  <ul>
+    <li>
+      <div class="stat_holder">
+        <i class="fa fa-arrows-v"></i><br>
+        <span class="mi_dia"></span><br>mm
+      </div>
+    </li><!--
+ --><li>
+      <div class="stat_holder">
+        <i class="fa fa-arrows-h"></i><br>
+        <span class="mi_wid"></span><br>mm
+      </div>
+    </li><!--
+ --><li>
+      <div class="stat_holder">
+        <i class="fa fa-anchor"></i><br>
+        <span class="mi_wei"></span><br>g
+      </div>
+    </li>
+  </ul>
+</div></div>
+
+<script>
+
+var yoyo_list   = build_object_array(yoyos),
+    color_list  = build_color_array(yoyo_list),
+    radar_data  = build_radar_array(yoyo_list),
+    avatar_list = build_avatar_array(yoyo_list);
+
+
+var selection_stack = [];
+
+
+build_more_info_array(yoyo_list);
+build_avatar_check_array(yoyo_list);
+
+
+
+
+
+initialize();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
