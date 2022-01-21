@@ -1,0 +1,5 @@
+exports[`Stick renders correctly 1`] = `
+<div
+  className=" is-not-stuck"
+  style={undefined} />
+`;

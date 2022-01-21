@@ -1,0 +1,18 @@
+exports[`Hero renders correctly 1`] = `
+<div
+  className="hero"
+  style={
+    Object {
+      "backgroundImage": "url(test-file-stub)"
+    }
+  }>
+  <div
+    className="sticky-logo is-not-stuck"
+    style={undefined}>
+    <h2
+      className="logo">
+      Basilica
+    </h2>
+  </div>
+</div>
+`;

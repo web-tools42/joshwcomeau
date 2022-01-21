@@ -1,0 +1,52 @@
+@import '../../variables';
+@import '../../mixins';
+
+.map {
+  position: relative;
+  z-index: 1;
+  height: 525px;
+
+  .map-controls {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 64px;
+
+    .zoom-controls {
+      position: absolute;
+      bottom: 35px;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+
+      .button:first-of-type {
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+      }
+    }
+  }
+
+  .map-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(0,0,0,0.05);
+  }
+
+  @media screen and (max-width: $mq-tablet) {
+
+  }
+
+  @media screen and (max-width: $mq-mobile) {
+
+  }
+}
+
+.mapboxgl-ctrl-attrib {
+  font-size: 10px;
+  opacity: 0.75;
+}

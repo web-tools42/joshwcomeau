@@ -1,0 +1,40 @@
+@import '../../variables';
+
+.editorial {
+  min-height: 1200px;
+  padding: 150px 0;
+  background: $offwhite;
+  overflow: hidden;
+
+  .intro {
+    p {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .photo-row {
+    display: flex;
+    margin-top: 50px;
+
+    .editorial-photo {
+      margin: 0 12px;
+
+      &:first-of-type {
+        margin: 0 24px 0 0;
+      }
+
+      &:last-of-type {
+        margin: 0 0 0 24px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $mq-tablet) {
+
+  }
+
+  @media screen and (max-width: $mq-mobile) {
+
+  }
+}

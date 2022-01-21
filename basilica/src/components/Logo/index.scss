@@ -1,0 +1,21 @@
+@import '../../variables';
+
+.logo {
+  display: block;
+  width: 145px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+
+  svg {
+    height: 40px;
+  }
+
+  @media screen and (max-width: $mq-tablet) {
+
+  }
+
+  @media screen and (max-width: $mq-mobile) {
+
+  }
+}

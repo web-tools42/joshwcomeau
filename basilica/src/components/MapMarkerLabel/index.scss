@@ -1,0 +1,21 @@
+@import '../../variables';
+
+// needed for mapbox to position correctly
+.map-marker-label-wrapper {
+  position: absolute;
+  // By default, the top of the marker is set to the coordinate location.
+  // Since we're using a pin, we want the bottom to align instead.
+  // transform: translateY(-44px);
+  top: -35px;
+  left: 22px;
+}
+
+.map-marker-label {
+  position: relative;
+  font-family: 'gotham';
+  font-weight: bold;
+  // -webkit-font-smoothing: subpixel-antialiased;
+  text-transform: uppercase;
+  color: $grey;
+  font-size: 16px;
+}

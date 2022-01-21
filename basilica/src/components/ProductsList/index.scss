@@ -1,0 +1,47 @@
+@import '../../variables';
+@import '../../mixins';
+
+.products-list {
+  position: relative;
+  z-index: 2;
+  min-height: 1000px;
+  background: $offwhite;
+
+  .products-list-card {
+    position: relative;
+    min-height: 800px;
+    box-shadow: $light-shadow;
+    background: $white;
+    transform: translateY(-64px);
+  }
+
+  .products-list-item {
+    border-bottom: 1px solid $lightgrey;
+  }
+
+  .products-list-filter {
+    height: 64px;
+    background: $white;
+    text-align: center;
+    border-bottom: 1px solid $lightgrey;
+
+    li {
+      line-height: 64px;
+      margin: 0 10px;
+
+      button {
+        height: 64px;
+        padding: 0 90px;
+        font-size: 18px;
+      }
+    }
+  }
+
+  @media screen and (max-width: $mq-tablet) {
+
+  }
+
+  @media screen and (max-width: $mq-mobile) {
+
+  }
+}

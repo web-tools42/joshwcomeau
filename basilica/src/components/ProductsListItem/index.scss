@@ -1,0 +1,48 @@
+@import '../../variables';
+
+.products-list-item {
+  display: flex;
+  padding: 50px;
+
+  .product-list-item-photo {
+    flex: 4;
+    margin-right: 50px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .product-info {
+    flex: 6;
+
+    h3 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .product-year-select {
+      height: 35px;
+      line-height: 35px;
+
+      button {
+        height: 35px;
+        padding: 0 20px;
+        font-size: 16px;
+      }
+    }
+
+    .add-to-cart-button, .checkout-button {
+      margin-top: 22px;
+    }
+
+  }
+
+  @media screen and (max-width: $mq-tablet) {
+
+  }
+
+  @media screen and (max-width: $mq-mobile) {
+
+  }
+}
