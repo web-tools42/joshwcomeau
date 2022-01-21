@@ -1,0 +1,22 @@
+{
+  "name": "aggressive_fitness",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Joshua Comeau",
+  "license": "MIT",
+  "dependencies": {
+    "asyncawait": "^1.0.3",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
+    "mongodb": "^2.1.20",
+    "mongoose": "^4.4.19",
+    "request": "^2.72.0"
+  }
+}

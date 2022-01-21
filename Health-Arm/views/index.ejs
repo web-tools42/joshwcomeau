@@ -1,0 +1,47 @@
+<html>
+<head>
+  <title>HealthArm – Personal hydration is within arm's reach</title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="reset.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1>HealthArm™</h1>
+      <img class="logoIMG" src="img/logo.png" alt="HealthARM™ Logo">
+    </div>
+    <h2>Meet HealthArm: a disruptive hydration experience™</h2>
+  </header>
+
+  <% if (authenticated) { %>
+    <div class="hydration-zone">
+      <div class="fitbit-info">
+        <h2>Hello, <span id="username"><%= name %></span>.</h2>
+        <p>You drank <span id="water-drank"><%= cupsDrank %></span> glasses of water today.</p>
+
+        <% if (needsMoreWater) { %>
+          <p>That’s under your recommended intake for this time of day. You should HYDRATE.</p>
+        <% } %>
+
+        <img class="waterglass" src="img/waterglass.png" alt="a water glass">
+        <div class="glasscount"><%= cupsDrank %>/<%= cupsRequired %></div>
+      </div>
+
+      <div class="THROWSHIT">
+        <button>HYDRATE</button>
+      </div>
+
+    </div>
+  <% } else { %>
+
+    <div class="button-spacer">
+      <button class="auth-button js-fitbit-auth">
+        CONNECT FITBIT
+      </button>
+    </div>
+  <% } %>
+
+  <script src="/index.js"></script>
+</body>
+</html>
