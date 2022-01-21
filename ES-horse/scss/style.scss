@@ -1,0 +1,112 @@
+@import 'reset';
+@import 'variables';
+
+$track-height:      50px;
+$track-flat-width:  700px;
+$track-edge-width:  $track-height;
+$track-full-width:  $track-flat-width + ($track-edge-width * 2);
+$finish-line-position: 40px;
+
+h1, h2, h3, h4, h5, h6, p, input, textarea, select {
+  font-family: sans-serif;
+}
+
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  background: $offwhite;
+  // background: -moz-linear-gradient(top,  $sky 0%, $aqua 100%);
+  // background: -webkit-linear-gradient(top,  $sky 0%, $aqua 100%);
+  // background: linear-gradient(to bottom,  $sky 0%, $aqua 100%);
+}
+
+header {
+  padding: 32px;
+  text-align: center;
+  background: $yellow;
+
+  .title {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    color: $darkgray;
+  }
+
+  .subtitle {
+    margin-top: 4px;
+    font-size: 18px;
+    color: lighten($darkgray, 10%);
+  }
+}
+
+.main-content {
+  padding: 96px 48px;
+}
+
+.track {
+  position: relative;
+  margin-bottom: 140px;
+
+  .track-background {
+    width: 100%;
+
+    .track-surface {
+      height: $track-height;
+      background: $lgreen;
+
+      .finish-line {
+        position: absolute;
+        height: $track-height;
+        top: 0;
+        right: $finish-line-position;
+      }
+    }
+
+    .track-surface-left, .track-surface-right {
+      width: $track-edge-width;
+      height: $track-height;
+
+      div {
+        width: 0;
+        height: 0;
+        border-style: solid;
+      }
+    }
+
+    .track-surface-left div {
+      border-width: 0 0 $track-edge-width+1 $track-edge-width;
+      border-color: transparent transparent $lgreen transparent;
+    }
+
+    .track-surface-right div {
+      border-width: $track-edge-width+1 0 0 $track-edge-width;
+      border-color: transparent transparent transparent $lgreen ;
+    }
+
+    .track-ground {
+      height: 8px;
+      background: $brown;
+
+      .finish-line {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        right: $finish-line-position;
+        background: $white;
+        opacity: 0.6;
+      }
+    }
+
+  }
+
+  .horse {
+    position: absolute;
+    width: 160px;
+    top: -70px;
+    left: 0;
+
+    img { width: 100%;}
+  }
+}
