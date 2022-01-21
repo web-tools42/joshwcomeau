@@ -1,0 +1,53 @@
+{
+  "name": "jwc-discord-bot",
+  "version": "0.0.1",
+  "description": "The bot for Josh Comeau's Course Platform",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Josh W. Comeau <support@joshwcomeau.com> (https://courses.joshwcomeau.com)",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/dev.js",
+    "start:prod": "node ./dist",
+    "build": "babel src -d dist",
+    "bulk-roles": "babel-node ./scripts/bulk-update-roles.js",
+    "test": "jest"
+  },
+  "engines": {
+    "node": "12",
+    "npm": "6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwcomeau/discord-bot"
+  },
+  "bugs": {
+    "url": "https://github.com/joshwcomeau/discord-bot/issues"
+  },
+  "homepage": "https://github.com/joshwcomeau/discord-bot#readme",
+  "dependencies": {
+    "@sentry/node": "^6.3.5",
+    "@sentry/tracing": "^6.3.5",
+    "discord.js": "12.5.1",
+    "dotenv": "^8.2.0",
+    "isomorphic-unfetch": "^3.1.0",
+    "mongodb": "^3.6.5",
+    "pm2": "^4.5.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.13",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/runtime": "^7.13.8",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7"
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist",
+    "*.ignored.*",
+    "*.d.ts"
+  ]
+}
