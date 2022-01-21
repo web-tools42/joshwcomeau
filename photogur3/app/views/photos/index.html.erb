@@ -1,0 +1,19 @@
+<h1>Photogur</h1>
+
+<div class="add_photo_link_container">
+  <%= link_to "+", photos_new_path %>
+</div>
+
+<% @photos.each do |pic| %>
+  <div class="record">
+    
+    <h2 class="photo_title"><%= link_to pic.title, photo_path(pic) %></h2>
+    <h4 class="uploaded_subtitle"><%= pic.uploader %></h4>
+
+    <div class="image_holder">
+      <%= link_to image_tag(pic.url), photo_path(pic) %>
+    </div>
+  </div>
+
+
+<% end %>

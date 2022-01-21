@@ -1,0 +1,26 @@
+<h1>Add A New Photo</h1>
+
+<div class="edit_photo_container">
+  <%= form_for @photo do |f| %>
+    <p><%= f.label :title, "Enter new title: " %>
+    <%= f.text_field :title %>
+
+    <p><%= f.label "uploader" %>
+    <%= f.text_field "uploader" %>
+
+    <p><%= f.label "url" %>
+    <%= f.text_field "url" %>
+
+    <div class="edit_submit_holder">
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+</div>
+
+<div class="nevermind">
+  <%= link_to "-- Nevermind, return to photos --", photos_path %>
+</div>
+
+
+

@@ -1,0 +1,59 @@
+<h1><%= @photo.title %></h1>
+
+<% if prev_photo = @photo.gen_link("prev") %>
+<div class="previous_photo">
+  <%= link_to "<", prev_photo %>
+</div>
+<% end %>
+<% if next_photo = @photo.gen_link("next") %>
+<div class="next_photo">
+  <%= link_to ">", next_photo %>
+</div>
+<% end %>
+
+
+<h3 class="image_show_subtitle">Uploaded by <span class="image_show_uploader"><%= @photo.uploader %></span><br><span class="image_show_createdat"><%= @photo.created_at %></span></h3>
+
+<div class="image_show_edit_container">
+  <%= link_to "Edit this photo", edit_photo_path(@photo) %><%= link_to "Delete this photo", photo_path(@photo), method: :delete %>
+</div>
+
+<div class="comments_container">
+  <h3>Comments</h3>
+  <% if @comments.length > 0 %>
+    <% @comments.each do |comment| %>
+      <div class="comment">
+        <p class="comment_content"><%= comment.content %></p>
+        <p class="comment_author"><%= "#{comment.author}, #{comment.created_at}" %></p>
+        <p class="comment_delete"><%= link_to "Delete Comment", comment_path(comment), method: :delete %></p>
+      </div>
+
+    <% end %>
+  <% else %>
+    <h4 class="no_comments_yet">No comments yet!</h4>
+    <p>Be the first:</p>
+
+  <% end %>
+
+  <%= form_for @comment do |f| %>
+    <%= f.label :author %>
+    <%= f.text_field :author %><br><br>
+
+    <%= f.label :content %>
+    <%= f.text_area :content %><br>
+
+    <%= f.hidden_field :photo_id, :value => @photo.id  %>
+    <%= f.submit %>
+
+  <% end %>
+
+</div>
+
+<div class="image_show_container">
+  <img src="<%= @photo.url %>" />
+</div>
+
+<div class="return_link_container">
+  <%= link_to "Return to Photos", photos_path %>
+</div>
+
