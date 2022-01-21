@@ -1,0 +1,294 @@
+$contact-list-width: 300px;
+$max-width : 1080px;
+$chat-green: #50b55d;
+$chat-blue : #5ca4ce;
+$arrow-size: 12px;
+
+$send-message-size: 6rem;
+$chat-header-size : 8rem;
+
+.full-chat-wrapper {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: $gray-teal;
+
+  .chat-header {
+    height: $chat-header-size;
+    border-bottom: 3px solid #FFF;
+    padding: 3rem 2rem 0 8.5rem;
+
+    h4 {
+      margin: 0;
+      font-family: 'Raleway';
+    }
+    h5 {
+      margin-top: 0.25rem;
+      line-height: 1rem;
+      font-weight: 400;
+    }
+
+    a {
+      color: $navy;
+      text-decoration: none;
+      transition: 0.2s;
+
+      &:hover {
+        text-decoration: underline;
+        color: lighten($navy, 20%);
+        transition: 0.2s;
+      }
+    }
+
+    .chat-thumbnail {
+      position: absolute;
+      top: 1.5rem;
+      left: 2rem;
+      height:5rem;
+      width:5rem;
+      img {
+        height: 100%;
+        width: 100%;
+        border-radius: 100%;
+        border: 3px solid #333;
+        transition: 1s;
+
+        &.online {
+          border: 3px solid $chat-green !important;
+          transition: 1s;
+        }
+        &.offline {
+          border: 3px solid $red !important;
+          transition: 1s;
+        }
+      }
+    }
+  }
+  .chat-contents {
+    height: 77%; // Backup for <= IE8
+    height: calc(100% - 13rem);
+    overflow: scroll;
+
+    .chat-bottom-spacer {
+      height: 7rem; // footer height + 1rem for a bit of padding.
+      width: 100%;
+    }
+    ul {
+      position: relative;
+      height: 100%
+    }
+    .chat-message {
+      display: block;
+      padding: 0.4rem;
+      margin: 0.4rem;
+      width: 80%;
+
+      .arrow {
+        clear: both;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 0; 
+        height: 0; 
+        border-left: $arrow-size solid transparent;
+        border-right: $arrow-size solid transparent;
+      }
+
+      .chat-message-box {
+        clear: both;      
+        color: #FFF;
+        padding: 1.5rem;
+        border-radius: 4px;
+      }
+
+      .message-sender, .message-time {
+        padding: 0.6rem;
+        line-height: 1rem;
+      }
+
+      .message-sender {
+        font-family: 'Raleway';
+      }
+      .message-time {
+        opacity: 0.4;
+        font-size: 0.75em;
+      }
+
+      &.mine {
+        float: right;
+
+        .arrow {
+          border-bottom: $arrow-size solid $chat-blue;
+          float: right;
+          margin-right: 1rem;
+        }
+        .chat-message-box {
+          background: $chat-blue;
+        }
+        .message-sender, .message-time {
+          float: right;
+        }
+
+      }
+
+      &.theirs {
+        float: left;
+
+        .arrow {
+          border-bottom: $arrow-size solid $chat-green;
+          left: 1rem;
+        }
+        .chat-message-box {
+          background: $chat-green;
+        }
+        .message-sender, .message-time {
+          float: left;
+        }
+       
+      }
+    }
+  }
+  .chat-send {
+    position: fixed;
+    z-index: 100;
+    
+    bottom: 0;
+    left: $sidebar-width;
+    right: 0;
+    height: $send-message-size;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    background: #3C3C3C;
+
+
+    .flex-inputs {
+      display: flex;
+    }
+
+    .submit-holder {
+      flex-basis: 94px;
+
+      .interaction-text-button {
+        height: 3rem;
+        margin: 0;
+        border-radius: 0 3px 3px 0;
+        background: $chat-green;
+        border-bottom: 3px solid darken($chat-green, 12%);
+      }
+    }
+    .textarea-holder {
+      flex: 1;
+      position: relative;
+
+      textarea {
+        width: 100%;
+        height: 3rem;
+        padding: 12px;
+        border: 0;
+        border-radius: 4px 0 0 4px;
+        border-bottom: 3px solid #777;
+        outline: none;
+        color: #777;
+
+        &:focus {
+          color: #000;
+          border-bottom: 3px solid darken($chat-green, 12%);
+        }
+      }
+    }
+
+    p {
+      color: #FFF;
+      opacity: 0.5;
+      margin: 0.75rem 0 0 0;
+      font-size: 0.75em;
+      font-weight: 300;
+    }
+  }
+
+  .contact-list-wrapper {
+    display: none;
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    right: 0;
+    width: $contact-list-width;
+    height: 100%;
+    background: #222;
+
+    h3 {
+      text-align: center;
+      color: #DDD;
+      font-family: 'Raleway';
+    }
+
+    h4 {
+      margin: 6px 0 0 0;
+    }
+    p {
+      padding: 0.25rem;
+      margin: 0;
+      color: #888;
+      font-size: 0.75em;
+    }
+
+    a {
+      display: block;
+      text-decoration: none;
+      padding: 1rem;
+      color: #DDD;
+
+      &.selected {
+        color: #FFF;
+        background: $chat-blue !important;
+        text-shadow: 1px 1px 0px darken($chat-blue, 12%);
+
+        p {
+          color: shade($chat-blue, 33%);
+          text-shadow: none !important;
+        }
+      }
+
+      &:hover {
+        background: #333;
+      }
+    }
+
+    li {
+      padding: 0;
+      border-bottom: 1px solid #333;
+      display: block;
+    }
+
+    img {
+      height: 3.5rem;
+      width: 3.5rem;
+      border-radius: 100%;
+      border: 2px solid #111;
+      float: left;
+      margin-right: 0.5rem;
+
+      &.online {
+        border: 2px solid $chat-green;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.26);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1260px) {
+
+
+  .full-chat-wrapper {
+    width: auto;
+    left: 0;
+    right: $contact-list-width;
+    
+    .chat-send {
+      right: $contact-list-width;
+    }
+    .contact-list-wrapper {
+      display: block;
+    }
+  }
+}

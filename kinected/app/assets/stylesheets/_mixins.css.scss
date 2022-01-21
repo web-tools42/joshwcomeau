@@ -1,0 +1,28 @@
+@mixin bg_teal {
+  background: $teal;
+}
+
+@mixin center_wrapper ($width) {
+    width: 100%;
+    max-width: $width;   
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+}
+
+@mixin gradient_button {
+  font-weight: 700;
+  color: #FFF;
+  border-radius: 3px;
+  border: 0;
+  cursor: pointer;
+  vertical-align: middle;
+  outline: 0;
+  font-size: 1.2em;
+  padding: 0.5rem 3rem;
+  background-image: -webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),to(rgba(0,0,0,.1)));
+  background-image: -webkit-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.1));
+  background-image: -moz-linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.1));
+  background-image: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.1));
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset;
+}

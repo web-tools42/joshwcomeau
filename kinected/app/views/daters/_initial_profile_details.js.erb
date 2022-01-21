@@ -1,0 +1,7 @@
+document.addEventListener("DOMContentLoaded", function(event) { 
+  var app = angular.module('kinected');
+
+  app.factory('InitialProfileDetails', function(){
+    return <%= @dater.to_json.html_safe %>;
+  });
+});

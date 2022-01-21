@@ -1,0 +1,61 @@
+<div class="full-chat-wrapper" ng-controller="ChatsController as chat" 
+  data-sender-id="<%= current_user.id %>" 
+  data-sender-name="<%= current_user.display_name %>" 
+  data-sender-thumb="<%= current_user.primary_profile_photo_thumb.url %>"
+  data-receiver-id="<%= @other_user.id %>" 
+  data-receiver-name="<%= @other_user.display_name %>"   
+  data-receiver-thumb="<%= @other_user.primary_profile_photo_thumb.url %>"
+  data-room-id="<%= get_room_id(current_user, @other_user) %>" 
+  data-contacts="<%= current_user.get_contacts.map(&:id) %>" 
+  ng-cloak>
+  <div class="chat-header">
+    <div ng-if="chat.selectedContact">
+      <div class="chat-thumbnail">
+        <%= link_to dater_path(@other_user) do %>
+          <img ng-src="{{chat.selectedContact.thumb}}" ng-class="{online: chat.onlineNow(chat.selectedContact)}">
+        <% end %>
+      </div>
+      <h4>Chat with <%= link_to @other_user.display_name, dater_path(@other_user) %></h4>
+      <h5><span am-time-ago="chat.selectedContact.last_seen"></span>&nbsp;&nbsp;•&nbsp;&nbsp;{{chat.messages.length}} messages.</h5>
+    </div>
+  </div>
+
+  <div class="chat-contents">
+    <ul>
+      <li class="chat-message" ng-repeat="msg in chat.messages" ng-class="[chat.fromSelf(msg) ? 'mine' : 'theirs']">
+        <div class="message-sender">{{msg.sender}}</div>
+        <div class="message-time">{{ msg.created_at | date:'h:mma, MMMM d yyyy' }}</div>
+        <div class="arrow"></div><div class="chat-message-box pre-wrap">{{msg.message}}</div>
+      </li>
+
+      <li class="chat-bottom-spacer"></li>
+    </ul>
+
+  </div>
+
+  <div class="chat-send" id="chat-send">
+    <form ng-submit="chat.pushMessage()">
+      <div class="flex-inputs">
+        <div class="textarea-holder">
+          <textarea id="chat-message-input" ng-model="chat.current_input" placeholder="Type a message" ng-enter-to-send="chat.hi()"></textarea>
+        </div>
+        <div class="submit-holder">
+          <input type="submit" value="Send" class="interaction-text-button message">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="contact-list-wrapper">
+    <h3>Contacts</h3> 
+    <ul>
+      <li ng-repeat="contact in chat.contacts">
+        <a ng-href="/chats/{{contact.$id}}" ng-class="contact.$id == chat.receiverId ? 'selected' : ''">
+          <img ng-src="{{contact.thumb}}" alt="" ng-class="{online: chat.onlineNow(contact)}">
+          <h4>{{contact.display_name}}</h4>
+          <p am-time-ago="contact.last_seen"></p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

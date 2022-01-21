@@ -1,0 +1,472 @@
+// Some basic project-wide styles
+
+@import 'variables';
+@import 'mixins';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  padding: 0;
+  height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  min-height: 100%;
+  z-index: 2;
+
+  &.with-sidebar {
+    height: 100%; // The 'section' a few lines below takes care of min-height, for footer placement
+    padding-left: $sidebar-width;
+  }
+
+  // main sidebar
+  & > aside {
+    width: $sidebar-width;
+    z-index: 3;
+    position: fixed;
+    left: 0;
+    height: 100%;
+    overflow-y: auto;
+    background: shade($teal, 15%);
+    color: #FFF;    
+    // box-shadow: 0px 0px 20px rgba(0,0,0,0.3);
+
+    li.selected {
+      background: rgba(0,0,0,0.1);
+
+      &::before {
+        content: "";
+        float: left;
+        
+        margin-left: -8px;
+        height: 39px;
+        width: 8px;
+        background: $green;
+      }
+    }
+
+    a {
+      position: relative;
+    }
+
+    header {
+      margin: 0;
+      font-family: 'Raleway';
+      font-weight: 700;
+      text-align: center;
+      background: #333;
+
+      h1 {
+        padding: 0.6rem 0;
+        margin: 0;
+        text-shadow: 
+          0.5px 0.5px 0px #111,
+          1px 1px 0px #111,
+          1.5px 1.5px 0px #000,
+          2px 2px 0px #000
+        ;
+      }
+      a {
+        color: #FFF;
+        text-decoration: none;
+      }
+    }
+    
+    .profile-img-container {
+      padding: 1rem;
+      background: shade($teal, 40%);
+      border-top: 1px solid shade($teal, 80%);
+      border-bottom: 3px solid tint($teal, 15%);
+      
+      .profile-link {
+        display: block;
+        position: relative;
+        color: #FFF;
+        text-decoration: none;
+        overflow: hidden;
+        height: 171px;
+        border-radius: 0.5rem;
+        
+        img {
+          width: 100%;
+          border-radius: 0.5rem;
+          border-bottom: 3px solid shade($teal, 80%);
+          border-top: 1px solid tint($teal, 10%);
+        }
+
+        .edit-profile-mouseover {
+          position: absolute;
+          bottom: -50px;
+          width: 168px;
+          padding: 0.5rem;
+          border-radius: 0 0 0.5rem 0.5rem;
+          text-align: center;
+          background: darken($green, 5%);
+          text-shadow: 1px 1px 0px darken($green, 15%);
+          transition: 0.2s;
+        }
+        &:hover .edit-profile-mouseover {
+          bottom: 0;
+          transition: 0.5s;
+        }
+      }
+    }
+
+
+
+    h2 {
+      color: $green;
+      font-size: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+      
+      li {
+        display: block;
+        text-align: right;
+
+        &:hover {
+          background: darken($teal, 10%);
+        }
+        &:last-of-type a {
+          border-bottom: 0px;
+        }
+      }
+      span {
+        float: left;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 400;
+        padding: 0.6rem;
+        border-bottom: 1px solid darken($teal, 10%);
+
+        &:hover {
+          color: $gold;
+        }
+      }
+    }
+    
+    .bottom-buttons {
+      position: absolute;
+      bottom: 1rem;
+      width: 100%;
+      text-align: center;
+
+      button {
+        @include gradient_button;
+        background: #222;
+        width: 168px;
+        padding: 0.5rem;
+        font-size: 1rem;
+        margin: 0.3rem 0;
+
+        &:hover {
+          transition: 0.3s;
+          background: $green;
+          color: #000;
+        }
+      }
+    }
+
+  }
+
+  // main content
+  & > section {
+    position: relative;
+    background: #222;
+    padding: 2rem;
+    min-height: 100%;
+
+    &.chat-section {
+      padding: 0;
+      background: #f3f5f9;
+    }
+  }
+
+
+  // Mobile header
+  .mobile-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    margin: 0;
+    text-align: left;
+    color: #FFF;
+
+    .top-bit {
+      height: 56px;
+      background: $teal;
+      position: relative;
+      z-index: 2;
+      border-bottom: 3px solid darken($teal, 12%);
+    }
+
+    h1 {
+      font-family: 'Raleway';
+      font-weight: 700;      
+      padding: 0.6rem 1rem;
+      margin: 0;
+      text-shadow: 
+        0.5px 0.5px 0px #111,
+        1px 1px 0px #111,
+        1.5px 1.5px 0px #000,
+        2px 2px 0px #000
+      ;
+    }
+
+    .menu-toggle {
+      position: absolute;
+      cursor: pointer;
+      font-size: 1.75em;
+      line-height: 53px;
+      height: 53px;
+      padding: 0 1rem;
+      right: 0;
+      color: tint($teal, 60%);
+      background: rgba(0,0,0,0.2);
+
+      &.selected {
+        background: #333;
+        color: #FFF;
+        transition: 0.4s;
+      }
+    }
+
+    nav {
+      position: absolute;
+      width: 100%;
+      top: -200px;
+      z-index: 1;
+      background: darken($teal, 5%);
+      transition: 0.2s;
+
+      &.selected {
+        top: 56px;
+        transition: 0.5s;
+      }
+      
+      li {
+        display: block;
+        text-align: right;
+
+        &:hover {
+          background: darken($teal, 8%);
+        }
+        &:last-of-type a {
+          border-bottom: 0px;
+        }
+      }
+      span {
+        float: left;
+      }
+      a {
+        display: block;
+        text-decoration: none;
+        color: #FFF;
+        font-weight: 400;
+        padding: 0.6rem;
+        border-bottom: 1px solid darken($teal, 11%);
+
+        &:hover {
+          color: $gold;
+        }
+
+
+      }
+    }
+
+  }
+}
+
+// Because our footer is absolute, we don't want stuff getting hidden behind it.
+// This simple div adds empty space behind it, if needed.
+.footer-spacing {
+  position: relative;
+  height: $footer-padding;
+}
+.main-footer {
+  width:100%;
+  text-align: center;
+  background: #111;
+  height:$footer-height;
+  position:absolute;
+  z-index: 3;
+  bottom:0;
+  left:0;
+  padding: 1rem;
+
+  a {
+    color: $gold;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+li {
+  display: inline-block;
+  padding: 0 0.5rem;
+}
+
+.flash {
+  position: fixed;
+  min-height: 54px;
+  top: 0;
+  left: $sidebar-width;
+  right: 0;
+  z-index: 10000;
+  padding: 1rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 400;
+  font-size: 1.1em;
+  color: #FFF;
+  text-align: center;
+
+  .background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+
+    &.notice {
+      background-color: shade($green, 5%);
+      border-bottom: 3px solid shade($green, 40%);
+    }
+
+    &.alert {
+      background-color: shade($red, 15%);
+      border-bottom: 3px solid shade($red, 50%);
+    }
+  }
+
+  .message {
+    position: relative;
+    z-index: 1;
+  }
+  .close {
+    position: absolute;
+    z-index: 2;
+    height: 100%;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding: 1rem;
+
+    &:hover {
+      background: rgba(0,0,0,0.2);
+    }
+  }
+  &.notice {
+    text-shadow: 1px 1px 0px shade($green, 15%);
+  }
+  &.alert {
+    background-color: shade($red, 15%);
+    text-shadow: 1px 1px 0px shade($red, 25%);
+  }
+}
+
+
+
+.tooltip {
+  font-size: 0.7em;
+  vertical-align: super;
+  color: $gold;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+
+
+// Resolutions under 1024px
+@media screen and (max-width: 1024px) {
+  .wrapper {
+    .alert {
+      left: $mobile-sidebar-width;
+
+    }
+    &.with-sidebar {
+      padding-left: $mobile-sidebar-width;
+    }
+
+    & > aside {
+      width: $mobile-sidebar-width;
+
+
+      .hidden-in-mobile, .nav-text-link, .bottom-buttons {
+        display: none;
+      }
+      .profile-img-container {
+        padding: 0;
+      }
+      .profile-link {
+        height: auto !important;
+        border-radius: 0 !important;
+
+        img { 
+          border-radius: 0 !important;
+          border: 0 !important;
+        }
+
+      }
+    }
+
+    .profile-link:hover .edit-profile-mouseover {
+      display: none !important;
+    }
+  }
+  .full-chat-wrapper {
+    #chat-send {
+      left: $mobile-sidebar-width;
+    }
+  }
+}
+
+// Phone resolutions (480px and under)
+@media screen and (max-width: 480px) {
+  .wrapper {
+    .alert {
+      top: 56px;
+      left: 0;
+    }
+    &.with-sidebar {
+      padding-left: 0;
+    }
+
+    & > aside {
+      display: none;
+    }
+
+    .mobile-header {
+      display: block;
+    }
+  }
+
+  #chat-send {
+    left: 0 !important;
+  }
+
+
+}

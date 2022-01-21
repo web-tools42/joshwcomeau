@@ -1,0 +1,98 @@
+<div class="loading-overlay" ng-if="user.loading">
+  <div class="spinner-container"><%= fa_icon 'spinner', class: 'fa-spin' %></div>
+</div>
+
+<div class="first-row">
+  <div class="profile-photo-container">
+    <a ng-repeat="photo in user.profile.profile_photos"><img ng-src="{{photo.photo_object.rectangle_thumb.url}}" ng-click="user.toggleImgModal(photo)"></a><%= image_tag "default_profile_photo_rect_dark.png" %><%= image_tag "default_profile_photo_rect_dark.png" %><%= image_tag "default_profile_photo_rect_dark.png" %>
+  </div>
+
+
+
+  <header class="title-area">
+    <div class="title-text" ng-cloak ng-class="{editable: user.isMe}">
+      <pencil region="title"></pencil>
+      <h1>{{user.profile.display_name}}</h1>
+      <h3>{{user.profile.birthdate | dateToAge}} year-old {{user.profile.work_industry}} from {{user.profile.city}}, {{user.profile.state}}</h3>
+    </div>
+    <div class="title-actions" ng-if="!user.isMe">
+      <a class="interaction-icon-button message raleway" id="message-button" ng-click="user.toggleMsgModal()">K</a>
+      <button class="interaction-icon-button favorite" ng-click="user.favorite()" ng-class="{favorited: user.profile.favorited}">
+        <span ng-if="user.profile.favorited"><%= fa_icon "star" %></span>
+        <span ng-if="!user.profile.favorited"><%= fa_icon "star-o" %></span>
+      </button>
+      <button class="interaction-icon-button block" ng-click="user.block()"><%= fa_icon "ban" %></button>
+    </div>
+  </header>
+</div>
+
+<div class="second-row" ng-show="!user.viewingPhotos">
+  <div class="dater-questions">
+    <p class="see-all-q"><a class="see-all-q-link" ng-click="user.showAll = true" ng-if="!user.isMe">Show all questions</a></p><h2>Questions</h2>
+
+
+    <section class="question" ng-repeat="q in user.master.answers_attributes" ng-show="user.isMe || ($index < 3 || user.showAll)">
+      <h4><span ng-click="user.editSection(q.id)">
+        <pencil region="subtitle"></pencil>
+        {{q.question_body}}
+      </span></h4>
+      <p class="pre-wrap" ng-class="{cursor: user.isMe}" ng-hide="user.editing === q.id" ng-click="user.editSection(q.id)">{{q.body}}</p>
+      <div ng-show="user.editing === q.id">
+        <textarea auto-grow ng-model="user.profile.answers_attributes[$index].body" name="self-summary" id="edit-self-summary" class="about-textarea"></textarea>
+        <button class="interaction-text-button save" ng-click="user.update()">{{ user.saving ? "Saving..." : "Save" }}</button>
+        <button class="interaction-text-button block" ng-click="user.cancelUpdate()">Cancel</button>
+      </div>
+    </section>
+  </div>
+
+  <div class="quick-stats" ng-class="{editable: user.isMe}">
+    <h3><pencil region="stats"></pencil>Activity</h3>
+    <ul>
+      <li>
+        <div class="stat-label">Join Date:</div>
+        <div class="stat-value" ng-if="user.profile.joined_ago">{{user.profile.joined_ago}}</div>
+        <div class="stat-value not-specified" ng-if="!user.profile.joined_ago">Not Specified</div>
+      </li>
+      <li>
+        <div class="stat-label">Last Seen:</div>
+        <div class="stat-value" ng-if="user.profile.last_seen_ago">{{user.profile.last_seen_ago}}</div>
+        <div class="stat-value not-specified" ng-if="!user.profile.last_seen_ago">Not Specified</div>
+      </li>
+      <li>
+        <div class="stat-label">Distance:</div>
+        <div class="stat-value" ng-if="user.profile.distance">{{user.profile.distance}}</div>
+        <div class="stat-value not-specified" ng-if="!user.profile.distance">Not Specified</div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Message modal -->
+<modal-dialog show='user.msgModalShown' width="700" id="message-modal">
+  <%= form_for @message do |m| %>
+    <h3>Request to Kinect with {{user.profile.display_name}}</h3>
+    <%= m.text_area :body, placeholder: 'Send this user a message', "ng-model" => "profile.message.input", maxlength: 200 %>
+    <footer>
+      <div class="character-count">{{200-profile.message.input.length}}</div>
+      <%= m.hidden_field :user_id, value: current_user.id %>
+      <%= m.hidden_field :recipient_id, value: "{{user.profile.id}}" %>
+      <%= m.submit "Send", id: 'send-message' %>
+    </footer>
+
+  <% end %>
+</modal-dialog>
+
+<!-- Image Modal -->
+<modal-dialog show='user.imgModalShown' id="image-modal">
+  <img ng-src="{{user.selectedPhoto.photo_object.url}}" alt="" class="big-image">
+  <p class="selected-photo-caption">{{user.selectedPhoto.caption}}</p>
+</modal-dialog>
+
+
+<script>
+  // These two factories get loaded to manage users.
+  <%= render "initial_profile_details.js.erb" %>
+  // this factory grabs an array of hashes containing basic information about other matches.
+  <%= render "initial_profile_list.js.erb" %>
+  
+</script>

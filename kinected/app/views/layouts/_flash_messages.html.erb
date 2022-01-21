@@ -1,0 +1,9 @@
+<div ng-controller="FlashMessagesController as flash" data-initial='<%= flash.to_json.html_safe %>' ng-cloak ng-show="flash.factory.show">
+  <div class="flash">
+    <div class="close" ng-click="flash.factory.setShow(false)"><%= fa_icon "close" %></div>
+    <div class="message">{{flash.factory.message}}</div>
+    <div class="background notice" ng-show="flash.factory.show === 'notice'"></div>
+    <div class="background alert" ng-show="flash.factory.show === 'alert'"></div>
+  </div>
+  <div class="flash-spacer" size-spacer-by-flash></div>
+</div>

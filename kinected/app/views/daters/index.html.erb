@@ -1,0 +1,36 @@
+<div ng-controller="ProfileController as user" class="dater-profile-wrapper" ng-cloak data-my-profile="<%= current_user.id %>">
+  <div class="top-strip">
+    <div class="control-title-bar">
+      <div class="nav-button previous-button" ng-click="user.goToMatch(-1)" ng-if="user.selectedProfileIndex > 0">
+        <div class="button-icon"><%= fa_icon "arrow-left" %></div>
+      </div>
+
+      <h2>Browsing Matches</h2>
+      
+      <div class="nav-button next-button" ng-click="user.goToMatch(1)">
+        <div class="button-icon"><%= fa_icon "arrow-right" %></div>
+      </div>
+      
+    </div>
+
+    <div class="filter-bar">
+      <label for="order-select">Order by: </label>
+      <select name="order-select" id="order-select" ng-model="user.selectedOrder" ng-change="user.orderMatches()">
+        <option value="last_seen" selected>most recent login.</option>  
+        <option value="joined">newest members.</option>  
+        <option value="random">random.</option>  
+      </select>
+    </div>
+
+  </div>
+
+  <div ng-if="user.profile">
+    <%= render partial: 'profile' %>
+  </div>
+
+  <div class="no-matches" ng-if="!user.profile">
+    <h2>No Matches.</h2>
+    <p>Sorry! We don't have any matches for you just yet. Please check back soon!</p>
+  </div>
+
+</div>

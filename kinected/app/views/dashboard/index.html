@@ -1,0 +1,65 @@
+<div class="dashboard-wrapper">
+  <div class="first-row">
+    <section class="concierge">
+      <header>Your Concierge</header>
+      <div class="content-box concierge-box">
+        <%= image_tag @concierge.primary_profile_photo_thumb %>
+        <h3><%= @concierge.display_name %></h3>
+        <h5><%= @concierge.age %> • <%= @concierge.sex[0].upcase %> • <%= @concierge.city %></h5>
+        <p><%= fetch_content(:concierge_description) %></p>
+        <div class="center">
+          <button><%= fetch_content(:concierge_button_text) %></button>
+        </div>
+      </div>
+    </section>
+    <section class="notifications">
+      <header>Notifications</header>
+      <div class="content-box notifications-box">
+        <ul>
+          <% @notifications.each do |n| %>
+            <li class="notification-row">
+              <div class="right actions"><%= fa_icon 'close' %></div>
+              <div class="right timestamp"><%= time_ago_in_words n.created_at %></div>
+              <div class="message"><%= render partial: "activities/#{ n.trackable_type.downcase.pluralize}/#{n.action.downcase}", locals: { n: n } %></div>
+            </li>
+          <% end %> 
+        </ul>
+      </div>    
+    </section>
+  </div>
+
+  <div class="second-row">
+    <section class="favorites">
+      <header>Your Favorites</header>
+      <div class="content-box">
+        
+      </div>
+    </section>
+  </div>
+
+  <div class="third-row">
+    <section class="events">
+      <header>Nearby Events</header>
+      <div class="content-box">
+        
+      </div>
+    </section>
+    <section class="blog">
+      <header>From the Kinected Blog</header>
+      <div class="content-box">
+        
+      </div>    
+    </section>
+  </div>
+  
+</div>
+
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', function() {
+  $(window).on("load resize", function() {
+    var conciergeHeight = $(".concierge-box").height();
+
+    $(".notifications-box").height(conciergeHeight);
+  });
+});
+</script>

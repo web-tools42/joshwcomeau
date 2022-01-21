@@ -1,0 +1,122 @@
+@import 'variables';
+@import 'mixins';
+
+.message-wrapper {
+  overflow: auto;
+  max-width: $content-max-width;
+  
+  .messages-title-bar {
+    position: relative;
+    background: $navy;
+    border-top: 2px solid lighten($navy, 15%);
+    border-radius: 0.8rem 0.8rem 0 0;
+    padding-left: 1rem;
+    text-shadow: 1px 1px 0px darken($navy, 10%), 2px 2px 0px darken($navy, 10%);
+
+    h2 {
+      color: #FFF;
+      margin: 0;
+      padding: 0.5rem;
+      font-size: 2.3em;
+      line-height: 60px;
+      height: 76px;
+    }
+  }
+
+  .messages-box {
+    background: $beige;
+    padding: 1rem;
+    border-bottom: 5px solid darken($beige, 40%);
+    border-radius: 0 0 6px 6px;
+  }
+  
+  nav {
+    background: $teal;
+    border-bottom: 3px solid darken($teal, 12%);
+    text-shadow: 1px 1px 1px darken($teal, 12%);
+    color: #FFF;
+
+    ul {
+      margin-left: 1.25rem;
+    }
+    li {
+      padding: 0.7rem 1.25rem;
+      margin-bottom: -3px;
+      cursor: pointer;
+      transition: 0.5s;
+      border-bottom: 3px solid darken($teal, 12%);
+
+
+      &.selected {
+        background: $green;
+        border-bottom: 3px solid darken($green, 12%);
+        text-shadow: 1px 1px 1px darken($green, 12%);
+        transition: 0.5s;
+      }
+    }
+  }
+  table {
+    width: 100%;
+    background: #EEE;
+
+    td {
+      background: #FFF;
+      padding: 5px;
+      border-right: 1px dotted #CCC;
+      border-bottom: 2px solid #EEE;
+    }
+    td:last-of-type {
+      border-right: 0px;
+    }
+
+    tr.unread {
+      td {
+        background: tint($teal, 80%);  
+        border-right: 1px dotted tint($teal, 50%);
+      }    
+      .message-dir {
+        background: $teal;
+      }
+
+      .user-name {
+        color: $teal;
+      }
+    }
+  }
+  .message-dir {
+    width: 40px;
+    text-align: center;
+    background: #BEBEBE;
+    
+    i {
+      font-size: 1em;
+      opacity: 0.8;
+      color: #FFF;
+    }
+  }
+  .message-thumbnail-cell {
+    width: $message-thumbnail-size;
+  }
+  .message-thumbnail {
+    width: $message-thumbnail-size;
+    height: $message-thumbnail-size;
+    border-radius: 5px;
+  }
+
+  .user-name {
+    margin: 0;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #444;
+  }
+  .message-preview {
+    font-size: 0.75em;
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+  .message-actions {
+    width: 130px;
+    font-size: 0.8em;
+    color: #444;
+  }
+}
