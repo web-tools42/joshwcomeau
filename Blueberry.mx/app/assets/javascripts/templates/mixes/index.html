@@ -1,0 +1,11 @@
+<h2>Mixes Index</h2>
+
+<input type="text" ng-model="mixes.keywords" name="keywords">
+<button ng-click="mixes.search(keywords)">Search</button>
+
+<ul ng-if="mixes.selectedMixes">
+  <li ng-repeat="mix in mixes.selectedMixes">
+    <h4>{{mix.name}}</h4>
+    <p>{{mix.description}}</p>
+  </li>
+</ul>
