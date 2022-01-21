@@ -1,0 +1,163 @@
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+p {
+  margin: 0;
+}
+#wrapper {
+	width:640px;
+	height:960px;
+	border:1px solid black;
+	position:relative;
+  background: #FFFFFF;
+}
+
+/****** NAV *******/
+#top_nav {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+  background: #EEE;
+  border-bottom: 4px solid #CCC;
+}
+.navigation {
+  position: absolute;
+  left: 0;
+  color: #00B7FF;
+  font-size: 25px;
+}
+  .navigation .left_arrow {
+    float: left;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-weight: 700;
+    font-size: 60px;
+  }
+.page_header {
+  position: relative;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 700;
+}
+/****** QUESTIONS ********/
+#question_box {
+  position: relative;
+  height: 90%;
+  width: 90%;
+  margin: 5% auto;
+  background: #FFF;
+  border-radius: 30px;
+}
+#question {
+  margin: 10px;
+  font-size: 2.5rem;
+  padding: 25px;
+  color: #666;
+}
+#question_image {
+  text-align: center;
+  margin-top: 10px;
+}
+#question_image img {
+  width: 50%;
+}
+
+#button_wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 5%;
+  margin-top: 50px;
+}
+  #yes {
+  }
+  
+  #maybe {
+  }
+
+  #button_wrapper input {
+    position: relative;
+    display:block;
+    margin: 10px auto;
+    padding: 20px;
+    background: #F3F3F3;
+    width: 90%;
+    border: 0px;
+    border-bottom: 4px solid #CCC;
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: dhyana, sans-serif;
+    outline: none;
+    border-radius: 10px;
+  }
+
+  
+
+
+/****** NEW REGISTRATION ******/
+#register_wrapper {
+  position: relative;
+  width: 90%;
+  margin: 50px auto;
+}
+
+  #register_wrapper input[type=text] {
+    width: 100%;
+    margin: 1%;
+    padding: 10px;
+  }
+
+  #dob_wrapper {
+    margin: 40px 0px;
+  }
+    #dob_wrapper .dob {
+      width: 31%;
+      margin: 1%;
+      padding: 10px;
+      -webkit-appearance:none 
+
+    }
+
+  .registration_subheader {
+    font-size: 30px;
+    text-align: center;
+    color: #555;
+
+  }
+
+  #register_wrapper input[type=submit] {
+    position: relative;
+    display:block;
+    margin: 80px auto 0px auto;
+    padding: 20px;
+    background: #F3F3F3;
+    width: 90%;
+    border: 0px;
+    border-bottom: 4px solid #CCC;
+    color: #00A4E6;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: dhyana, sans-serif;
+    outline: none;
+    border-radius: 10px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
