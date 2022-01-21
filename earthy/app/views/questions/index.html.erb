@@ -1,0 +1,177 @@
+
+<script>
+$(document).ready(function() {
+  var bgCanvas = document.getElementById('bgCanvas');
+  function render() { 
+    bgCanvas.patternizer({
+      stripes : [
+          {
+          color: '#000000',
+          rotation: 76,
+          opacity: 22,
+          mode: 'plaid',
+          width: 104,
+          gap: 104,
+          offset: 0
+        },
+        {
+          color: '#232323',
+          rotation: 76,
+          opacity: 59,
+          mode: 'plaid',
+          width: 15,
+          gap: 2,
+          offset: 0
+        },
+        {
+          color: '#262626',
+          rotation: 76,
+          opacity: 43,
+          mode: 'plaid',
+          width: 2,
+          gap: 4,
+          offset: 0
+        },
+        {
+          color: '#897f78',
+          rotation: 70,
+          opacity: 87,
+          mode: 'normal',
+          width: 1,
+          gap: 2,
+          offset: 0
+        },
+        {
+          color: '#6d6d7f',
+          rotation: 300,
+          opacity: 100,
+          mode: 'normal',
+          width: 2,
+          gap: 2,
+          offset: 0
+        }
+      ],
+      bg : '#999999'
+    
+    });
+  }
+  
+  // resize the canvas to the window size
+  function init() {
+   
+    // number of pixels of extra canvas drawn
+    var buffer = 100;
+   
+    // if extra canvas size is less than the buffer amount
+    if (bgCanvas.width - window.innerWidth < buffer ||
+      bgCanvas.height - window.innerHeight < buffer) {
+   
+      // resize the canvas to window plus double the buffer
+      bgCanvas.width = window.innerWidth + (buffer * 2);
+      bgCanvas.height = window.innerHeight + (buffer * 2);
+   
+      render();
+    }   
+   
+  }
+   
+   
+  init();
+
+
+  // Opening effects
+  $("#question_div").delay(2000).animate({
+    bottom : 0  
+  }, 800);
+  $("#question_label").delay(1500).animate({
+    bottom : 0  
+  }, 800).delay(3000).fadeOut(2000);
+    $("#start_label").delay(1500).animate({
+    bottom : 0  
+  }, 800).delay(3000).fadeOut(2000);
+
+
+  // Manual info effect
+  $("#manual_trigger").mouseenter(function() {
+    $("#manual_howto").stop().animate({
+      left: '0px'
+    }, 300);
+  }).mouseout(function() {
+    $("#manual_howto").stop().animate({
+      left: '-260px'
+    }, 300);
+  })
+
+
+  // Handle disabling  and styling the submit button
+  $("input:radio").click(function() { // If we click a radio button's label
+    if (!$("input[name='html_elements']:checked").val()) {
+      $("#question_div label").attr("style","")
+      $(this).parent().attr("style","background: #8FBD06")
+      $(this).siblings(".a_title").attr("style","color: #FFF")
+      $("#submit_button").removeAttr("disabled")
+      $("#submit_button").attr("class","submit_enabled")    
+    } else {
+
+    }
+  });
+  
+
+
+
+
+  
+});
+
+</script>
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49988017-1', 'earthy.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Background pattern -->
+<canvas id="bgCanvas"></canvas>
+
+<!-- MAIN IMAGE -->
+<div id="start_img" style="background-image:url(<%= @background %>);"></div>
+
+<div id="logo"><%= image_tag "earthy_corner_cutout.png" %></div>
+
+
+<div id="manual_howto">
+  <h3>How To Play</h3>
+  <p>Your mission is to identify the region shown in this NASA satellite image. Select the corresponding region from the 4 choices at the bottom of the screen, and click 'Lock in' to confirm your selection. </p>
+</div>
+
+
+<div id="manual_trigger">i</div>
+
+<div id="start_title">
+    <h2>Welcome to the earthy</h2>
+</div>
+
+<div id="start_info">
+    <p>discover the world by satellite pictures</p>
+</div> 
+
+<div id="start">
+    <%= form_tag(questions_ask_path, method: "post", class:"name") do %>
+    <%= text_field_tag(:name, nil, placeholder: "your name", class: "name") %>
+    <%= hidden_field(:counter,"") %>
+    <%= submit_tag("Start", :class => "go") %>
+    <% end %>
+</div>
+
+  
+<!-- Side gradients -->
+<div id="gradient-left"></div>
+<div id="gradient-right"></div>
+<div id="gradient-bottom-home"></div>
