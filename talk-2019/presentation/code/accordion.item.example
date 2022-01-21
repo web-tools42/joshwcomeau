@@ -1,0 +1,65 @@
+import React from 'react'
+
+import Icon from './icon.js'
+import AccordionContext from './Accordion.ctx'
+import useId from './just-an-example.hook'
+
+import './AccordionItem.css'
+
+const AccordionItem = ({ title, children }) => {
+  const {
+    openItemId,
+    setOpenItemId,
+  } = React.useContext(AccordionContext)
+
+  const itemId = useId()
+
+  const isOpen = itemId === openItemId
+
+  const titleId = `${itemId}-title`
+  const contentId = `${itemId}-content`
+
+  const handleToggle = () => {
+    if (isOpen) {
+      setOpenItemId(null)
+    } else {
+      setOpenItemId(itemId)
+    }
+  }
+
+  return (
+    <div>
+      <button
+        className="accordion-title"
+        onClick={handleToggle}
+        id={titleId}
+        aria-controls={contentId}
+        aria-expanded={isOpen}
+      >
+        <Icon
+          name="caret-right"
+          style={{
+            transition: 'transform 400ms',
+            transform:
+              `rotate(${isOpen ? 90 : 0}deg)`,
+          }}
+        />
+
+        {title}
+      </Title>
+
+      {isOpen && (
+        <div
+          className="accordion-body"
+          id={contentId}
+          aria-labelledby={titleId}
+          role="region"
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default AccordionItem

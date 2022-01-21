@@ -1,0 +1,50 @@
+{
+  "private": true,
+  "author": "Joshua Comeau",
+  "homepage": "https://github.com/joshwcomeau/redux-vcr",
+  "license": "MIT",
+  "scripts": {
+    "demo": "npm run start --prefix ./packages/_demo",
+
+    "test:capture": "npm run test --prefix ./packages/capture",
+    "test:persist": "npm run test --prefix ./packages/persist",
+    "test:retrieve": "npm run test --prefix ./packages/retrieve",
+    "test:replay": "npm run test --prefix ./packages/replay",
+    "test:shared": "npm run test --prefix ./packages/_shared",
+    "test": "npm run test:capture && npm run test:persist && npm run test:retrieve && npm run test:replay && npm run test:shared",
+
+    "install:capture": "npm install --prefix ./packages/capture",
+    "install:persist": "npm install --prefix ./packages/persist",
+    "install:retrieve": "npm install --prefix ./packages/retrieve",
+    "install:replay": "npm install --prefix ./packages/replay",
+    "install:shared": "npm install --prefix ./packages/_shared",
+    "install": "npm run install:capture && npm run install:persist && npm run install:retrieve && npm run install:replay && npm run install:shared",
+
+    "publish": "lerna publish --force-publish=*",
+
+    "bootstrap": "node scripts/bootstrap.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwcomeau/redux-vcr.git"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "3.3.0",
+    "eslint-config-airbnb": "10.0.0",
+    "eslint-loader": "1.5.0",
+    "eslint-plugin-import": "1.13.0",
+    "eslint-plugin-jsx-a11y": "2.0.1",
+    "eslint-plugin-react": "6.0.0",
+    "invariant": "^2.2.1",
+    "lerna": "2.0.0-beta.26",
+    "npm-watch": "^0.1.6",
+    "nwb": "0.11.x",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "redux": "^3.5.2",
+    "semver": "^5.3.0",
+    "shelljs": "^0.7.3",
+    "sinon": "^2.0.0-pre.2"
+  }
+}

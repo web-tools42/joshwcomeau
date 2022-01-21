@@ -1,0 +1,32 @@
+<div class="restaraurant_container">
+      
+<div class="update_restaurant_container" id="update">
+        <h3>Update Restaurant Info:</h3>
+<div class="update_restaurant_details">
+<% if authenticated? %>
+  <%= form_for [@restaurant] do |f| %>
+      <p><%= f.label 'name', "Restaurant name" %></p><p><%= f.text_field 'name' %></p>
+      <p><%= f.label 'description', "Description" %></p><p><%= f.text_area 'description' %></p>
+      <p><%= f.label 'cuisine', "Cuisine" %></p><p><%= f.text_field 'cuisine' %></p>
+      <p><%= f.label 'address', "Address" %></p><p><%= f.text_field 'address' %></p>
+      <p><%= f.label 'location', "Neighborhood" %></p><p><%= f.text_field 'location' %></p>
+      <p><%= f.label 'opening_hour', "Opening hour" %></p><p><%= f.text_field 'opening_hour' %></p>
+      <p><%= f.label 'closing_hour', "Closing hour" %></p><p><%= f.text_field 'closing_hour' %></p>
+      <p><%= f.label 'capacity', "Capacity" %></p><p><%= f.text_field 'capacity' %></p>
+      <p><%= f.label 'reservation_length_minutes', "Reservation lengths (minutes)" %></p><p><%= f.text_field 'reservation_length_minutes' %></p>
+      <p><%= f.label 'display_image_url', "Image link" %></p><p><%= f.text_field 'display_image_url' %></p>
+</div>
+    <div class="reservation_form_submit">
+      <%= f.submit 'Update restaurant details' %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="not_allowed_reserve">
+    <h4>Please log in first!</h4> 
+  </div>
+<% end %>
+
+
+</div>
+
+</div>

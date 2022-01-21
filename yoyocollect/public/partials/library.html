@@ -1,0 +1,12 @@
+<h2>This is the library!</h2>
+
+<h4>Check out all the yoyos:</h4>
+
+<div ng-repeat="manufacturer in yoyoList">
+	<h3>{{ manufacturer.name }}</h3>
+	<ul>
+		<li ng-repeat="yoyo in manufacturer.yoyos"><a ng-click="loadDetails(yoyo.id)" href="">{{ yoyo.model }}</a></li>
+	</ul>
+</div>
+
+<h4><a ng-click="newYoyo()" href="">Add a Yoyo</h4>

@@ -1,0 +1,51 @@
+@import './reset.scss';
+@import './variables.scss';
+
+@import './flash_message.scss';
+@import './forms.scss';
+@import './game.scss';
+@import './games_list.scss';
+@import './header.scss';
+@import './parts.scss';
+@import './register.scss';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: $teal;
+}
+
+html, body, input, button, textarea, select {
+  font-family: cabin, sans-serif;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+  color: $red;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.hide {
+  display: none !important;
+}
+
+.flexbox {
+  display: flex;
+}
+.flex-item {
+  flex: 1;
+}
+
+// DevTools take up 30% of the width.
+// To avoid overlap, we're setting the width of all main components to
+// 70%. This class is only added in development environments.
+.wrapped-for-devtools {
+  width: 70%;
+}

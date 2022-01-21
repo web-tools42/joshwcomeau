@@ -1,0 +1,14 @@
+<template name="sidebarProfile">
+  <div class="profile-image" style="background-image: url('{{profile.photo}}')">
+
+  </div>
+  <h5>{{ profile.displayName }}</h5>
+  <p>
+    {{ profile.summary }}
+  </p>
+  {{#if profile.location}}
+    <p class="location">
+      <i class="fa fa-map-marker"></i> {{ profile.location }}
+    </p>
+  {{/if}}
+</template>

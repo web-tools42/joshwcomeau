@@ -1,0 +1,8 @@
+{
+  "body": {
+    "author": "james dean",
+    "mediaTypes": ["print"],
+    "notificationMethod": "email",
+    "email": "josh@test.com"
+  }
+}

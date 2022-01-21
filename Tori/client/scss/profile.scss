@@ -1,0 +1,162 @@
+@import 'variables';
+@import "{francocatena:compass}/compass";
+
+#profile {
+  padding: 2rem;
+
+  .stats {
+
+    a {
+      flex: 1;
+      text-align: center;
+      padding: 1.25rem;
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.selected {
+        border-bottom: 5px solid $grass;
+      }
+    }
+    h4 {
+      margin: 0;
+      font-weight: $fw-heavy;
+      font-size: 1.2rem;
+      color: #222;
+
+    }
+    h6 {
+      text-transform: uppercase;
+      font-weight: $fw-light;
+      color: $mediumgray;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+  }
+
+  .haikus {
+    margin-top: 2rem;
+    font-weight: $fw-medium;
+
+    .haiku {
+      height: 13rem;
+      // MOST haiku styles are in their own file, haiku.scss
+
+    }
+  }
+
+  .followers, .following {
+    padding: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .follow {
+    width: 34%;
+    float: left;
+    display: flex;
+    padding: 0.5rem;
+
+    &:nth-child(3n+1) {
+      width: 33%;
+      padding-left: 0;
+    }
+
+    &:nth-child(3n+3) {
+      width: 33%;
+      padding-right: 0;
+    }
+
+    .card {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+
+      .header {
+        position: relative;
+        height: 5rem;
+        background: $green;
+        color: $white;
+        padding: 0.5rem 0.75rem 0 0.75rem;
+        text-align: right;
+        overflow: hidden;
+
+        a {
+          color: $white;
+          text-decoration: none;
+        }
+
+        .profile-photo {
+          position: absolute;
+          top: -0.8rem;
+          left: -1rem;
+          height: 6.25rem;
+          width: 6.25rem;
+          background-size: cover;
+          background-position: center center;
+          border-radius: 100%;
+          border: 3px solid $white;
+          box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        h3 {
+          font-size: 1rem;
+          font-weight: 700;
+          margin: 0;
+        }
+        h5 {
+          font-size: 0.7rem;
+          font-weight: 100;
+          margin: 0;
+        }
+
+        .follow-button {
+          position: absolute;
+          bottom: 0.5rem;
+          right: -1.25rem;
+          padding: 0.25rem;
+          width: 7rem;
+          text-align: center;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+      }
+
+      .body {
+        padding: 0.75rem;
+
+        .summary {
+          margin: 0;
+          font-size: 13px;
+        }
+
+        .location {
+          margin: 0.5rem 0 0 0;
+          font-size: 13px;
+          opacity: 0.85;
+        }
+
+        .joined-spacer {
+          position: relative;
+          height: 4rem;
+        }
+        .joined {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0.4rem;
+          padding: 0.5rem;
+          font-size: 12px;
+          opacity: 0.6;
+          text-align: center;
+
+          .divider:before {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+@import '../variables';
+
+.redux-vcr-component {
+  .vcr-screen {
+    position: absolute;
+    bottom: $vcr-standard-padding;
+    left: 80px;
+    height: 30px;
+    width: 295px;
+    background: rgba(0,0,0,0.5);
+    color: $neon-green;
+    font-family: "Lucida Console", Monaco5, monospace;
+    font-size: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 12px;
+    border-radius: 2px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    cursor: pointer;
+
+    .red {
+      color: #ef4b3f;
+    }
+
+    .green {
+      color: $neon-green;
+    }
+
+    .vcr-screen-label {
+      position: absolute;
+      top: 0;
+      left: 10px;
+
+      font-size: 8px;
+      line-height: 16px;
+      color: $white;
+    }
+
+    .vcr-screen-buffer {
+      &.vertical {
+        margin: 5px auto;
+        width: 66%;
+        overflow: hidden;
+      }
+    }
+
+    .vcr-screen-contents {
+      line-height: 30px;
+      text-align: left;
+
+      &.edged-down {
+        margin-top: 4px;
+      }
+
+      &.flashing {
+        animation: flashing 1s both;
+      }
+
+      &.scrolling {
+        line-height: 20px;
+        animation: scrolling 10s linear infinite;
+      }
+
+      &.centered {
+        text-align: center;
+      }
+    }
+  }
+}
+
+@keyframes flashing {
+  0% { opacity: 0; }
+  9% { opacity: 0; }
+  10% { opacity: 1; }
+  29% { opacity: 1; }
+  30% { opacity: 0; }
+  39% { opacity: 0; }
+  40% { opacity: 1; }
+  59% { opacity: 1; }
+  60% { opacity: 0; }
+  69% { opacity: 0; }
+  70% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+@keyframes scrolling {
+  0% { transform: translateX(110%); }
+  100% { transform: translateX(-110%); }
+}

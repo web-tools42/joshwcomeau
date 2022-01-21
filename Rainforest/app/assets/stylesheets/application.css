@@ -1,0 +1,140 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+body {
+  font-family: 'Ruluko';
+}
+p {
+  font-family: 'Sniglet';
+}
+
+a, a:visited {
+  color: #02CFF7;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+.flash_alert {
+  border-top: 1px solid #FFB39E;
+  border-bottom: 1px solid #FFB39E;
+  width: 110%;
+  margin: 15px -25px;
+  padding: 7px;
+  background: #FFD0C9;
+  text-align: center;
+}
+  .flash_alert strong {
+    color: #DB3E2A;
+  }
+.flash_notice {
+  border-top: 1px solid #5BE1F0;
+  border-bottom: 1px solid #5BE1F0;
+  width: 110%;
+  margin: 15px -25px;
+  padding: 7px;
+  background: #B1EFFC;
+  text-align: center;
+}
+
+
+.logo {
+  width: 350px;
+  margin-left: 20px;
+}
+.add_product_button {
+  position: absolute;
+  z-index: 5;
+  width: 200px;
+  height: 200px;
+  right: -100px;
+  top: -100px;
+  background: #02CFF7;
+  border-radius: 150px;
+}
+.add_product_link {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 100px;
+  text-align: center;
+  line-height: 70px;
+  padding: 0;
+  margin: 0;
+  font-size: 100px;
+}
+.add_product_link a {
+  color: #96EEFF;
+  display: block;
+}
+.add_product_link a:hover {
+  text-decoration: none;
+  color: #FFF;
+}
+
+
+.user_panel {
+  position: absolute;
+  z-index: 2;
+  top: 0px;
+  right: 85px;
+  padding: 5px 26px 5px 20px;
+  background: rgba(0,0,0,0.25);
+  border-radius: 0px 0px 10px 10px;
+}
+.user_panel ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.user_panel li {
+  display: inline-block;
+  padding: 4px 15px;
+  border-right: 1px solid #999;
+  font-size: 11px;
+}
+.user_panel li:last-child {
+  border-right: 0px;
+}
+.user_panel a {
+  color: #000;
+}
+.current_user_email {
+  font-style: italic;
+  color: #005A6E;
+}
+
+input[type=text], input[type=email], input[type=password], textarea {
+  display: block;
+  width: 400px;
+  margin: 5px 0px;
+  padding: 4px;
+  border: 1px solid #AAA;
+  border-radius: 5px;
+  vertical-align: top;
+  outline: none;
+}
+input[type=text]:focus, input[type=email]:focus, input[type=password]:focus, textarea:focus {
+  border: 1px solid #FC0;
+  box-shadow: 
+    1px 1px 0px #FFEA00,
+    2px 2px 0px #FFFF00,
+    3px 3px 0px #ACDB00,
+    4px 4px 0px #7BC200;
+  
+}

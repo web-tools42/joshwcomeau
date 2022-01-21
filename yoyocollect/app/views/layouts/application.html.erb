@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Yoyocollect</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="login-panel">
+	<div class="logged_out" ng-hide="current_user">Not Logged In.</div>
+	<div class="logged_in" ng-show="current_user">Logged in as {{current_user.email}}</div>
+</div>
+
+<div ng-view="">
+	<%= yield %>
+</div>
+
+</body>
+</html>

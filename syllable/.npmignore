@@ -1,0 +1,15 @@
+.*
+*.log
+*.sh
+build/
+bower_components/
+components/
+coverage/
+node_modules/
+test/
+benchmark.js
+build.js
+example.js
+bower.json
+component.json
+History.md

@@ -1,0 +1,36 @@
+{
+  "name": "rafthrottle",
+  "version": "1.0.0",
+  "description": "Describe rafthrottle here",
+  "main": "lib/index.js",
+  "jsnext:main": "es6/index.js",
+  "files": [
+    "es6",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build": "nwb build",
+    "clean": "nwb clean",
+    "test": "nwb test",
+    "test:watch": "nwb test --server"
+  },
+  "dependencies": {
+    "lodash.throttle": "^4.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^2.10.0",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.0",
+    "eslint-plugin-react": "^5.1.1",
+    "karma-chai-plugins": "^0.7.0",
+    "nwb": "0.11.x",
+    "sinon": "git+https://github.com/uberVU/Sinon.JS"
+  },
+  "author": "",
+  "homepage": "",
+  "license": "MIT",
+  "repository": ""
+}

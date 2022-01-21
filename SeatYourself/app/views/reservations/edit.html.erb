@@ -1,0 +1,31 @@
+<div class="update_reservation_container" id="update">
+        <canvas id="reservationCanvas"></canvas>
+        <h3>Update the Reservation:</h3>
+    
+<% if authenticated? %>
+  <%= form_for [@restaurant, @reservation] do |f| %>
+    <div class="reservation_form_container">
+    
+      <div>
+        <%= select_tag "start_date",  options_for_select(@dates_array) %>
+        <%= f.select(:start_time, @times_array) %>
+      </div>
+      <div style="text-align: right;">
+        <%= f.label :seats, "Number of seats:" %><%= f.select(:seats, [ ["1 seat",1], ["2 seats",2], ["3 seats",3], ["4 seats",4], ["5 seats",5], ["6 seats",6], ]) %>
+      </div>
+
+    
+    </div>
+    <div class="reservation_form_submit">
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% else %>
+  <div class="not_allowed_reserve">
+    <h4>Please log in first!</h4> 
+    <p>You need an account to make a reservation.
+  </div>
+<% end %>
+
+
+</div>

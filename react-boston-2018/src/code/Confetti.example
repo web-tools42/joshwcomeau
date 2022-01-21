@@ -1,0 +1,105 @@
+class Confetti extends Component {
+  static propTypes = {
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+
+    numParticles: PropTypes.number,
+    emitDuration: PropTypes.number,
+    gravity: PropTypes.number,
+    spin: PropTypes.number,
+    twist: PropTypes.number,
+    minSpeed: PropTypes.number,
+    maxSpeed: PropTypes.number,
+    minScale: PropTypes.number,
+    maxScale: PropTypes.number,
+
+    makeItRainOn: PropTypes.oneOf([
+      'click',
+      'mount', // Not implemented
+    ]),
+  };
+
+  state = {
+    particles: [],
+  };
+
+  componentDidUpdate(
+    prevProps: Props,
+    prevState: State
+  ) {
+    if (
+      prevState.particles.length === 0 &&
+      this.state.particles.length > 0
+    ) {
+      this.tick();
+    }
+  }
+
+  generateParticles = () => {
+    const newParticles =
+      range(0, this.props.numParticles)
+        .map(() => {
+          const image = createZigzag();
+
+          // ✂️ More particle init stuff,
+          // ✂️ generate random values.
+        });
+
+    this.setState({
+      particles: [
+        ...this.state.particles,
+        ...newParticles,
+      ],
+    });
+  };
+
+  tick = () => {
+    window.requestAnimationFrame(() => {
+      const particles =
+        this.getNextParticleState();
+
+      this.setState(
+        { particles },
+        this.tick
+      );
+    });
+  };
+
+  draw = ctx => {
+    const { particles } = this.state;
+
+    ctx.clearRect(0, 0, width, height);
+
+    particles.forEach(particle => {
+      ctx.translate(/* ✂️ */);
+      ctx.rotate(/* ✂️ */);
+      ctx.scale(/* ✂️ */);
+
+      ctx.drawImage(particle.image);
+
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+    });
+  };
+
+  render() {
+    const {
+      width,
+      height,
+      makeItRainOn,
+    } = this.props;
+
+    return (
+      <Canvas
+        width={width}
+        height={height}
+        draw={this.draw}
+        onClick={
+          makeItRainOn === 'click' &&
+          this.generateParticles
+        }
+      />
+    );
+  }
+}
+
+export default Confetti;

@@ -1,0 +1,5 @@
+const composeBtnNode =
+  document.querySelector('.compose-btn');
+
+const clientRect =
+  composeBtnNode.getBoundingClientRect();

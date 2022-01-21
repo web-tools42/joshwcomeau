@@ -1,0 +1,370 @@
+@import 'variables';
+@import "{francocatena:compass}/compass";
+
+.haiku-container {
+  overflow: hidden;
+}
+
+.haiku-container > li {
+  position: relative;
+  border-top: 2px solid $white;
+
+  &:first-of-type {
+    border-top: none;
+
+    .haiku {
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}
+
+.haiku {
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  background-color: $white;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  height: 11rem;
+
+  &.with-white-bg {
+    border-top: 1px solid #EEE;
+  }
+
+  ///////////////// PROPERTIES /////////////////
+
+  //// Text Color
+  &[data-text-color="white"] {
+    color: $white;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  }
+  &[data-text-color="black"] {
+    color: #222;
+  }
+
+  //// Text Horizontal Alignment
+  &[data-text-align="right"] {
+    .haiku-text, .placeholder {
+      text-align: right;
+      right: 2.2rem;
+      left: 0;
+    }
+  }
+  &[data-text-align="left"] {
+    .haiku-text, .placeholder {
+      text-align: left;
+      left: 2.2rem;
+      right: 0;
+    }
+  }
+  &[data-text-align="center"] {
+    .haiku-text, .placeholder {
+      text-align: center;
+      left: 0;
+      right: 0;
+    }
+  }
+
+  //// Text Vertical Alignment
+  &[data-text-valign="top"] {
+    .haiku-text, .placeholder { top: 2rem; }
+  }
+  &[data-text-valign="bottom"] {
+    .haiku-text, .placeholder { bottom: 1.5rem; }
+
+    // IF we're including actions in the same container (as is the case
+    // on the main profile page), we need to add 2rem spacing for the
+    // actions bar.
+    &[data-include-actions="true"] {
+      .haiku-text, .placeholder { bottom: 1.5rem + 2rem; }
+    }
+  }
+  &[data-text-valign="center"] {
+    .haiku-text, .placeholder {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  // Image On/Off
+  // (styles for haikus without images)
+  &[data-show-image="false"] {
+    border-top: 1px solid #EEE;
+  }
+
+  // Image Horizontal Position
+  $horizontal-align: ('left', 'center', 'right');
+  $vertical-align: ('top', 'center', 'bottom');
+
+  @each $horizontal in $horizontal-align {
+    @each $vertical in $vertical-align {
+      &[data-background-align="#{$horizontal}"][data-background-valign="#{$vertical}"] {
+        background-position: #{$horizontal} #{$vertical};
+      }
+    }
+  }
+
+  // Overlay On/Off
+  &[data-show-overlay='true'] {
+    .visibility-gradient {
+      display: block;
+    }
+  }
+
+  // Overlay Direction and Color
+  $directions: ('top', 'bottom', 'left', 'right');
+
+  @each $direction in $directions {
+    &[data-overlay-direction="#{$direction}"][data-overlay-color="black"] {
+      .visibility-gradient {
+        background: linear-gradient(to #{$direction}, rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+      }
+    }
+    &[data-overlay-direction="#{$direction}"][data-overlay-color="white"] {
+      .visibility-gradient {
+        background: linear-gradient(to #{$direction}, rgba(255,255,255,0) 0%,rgba(255,255,255,0.45) 100%);
+        background-blend-mode: multiply;
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+      }
+    }
+  }
+
+  // Manually adding a 'center' overlay, where it just tints the whole screen.
+  &[data-overlay-direction="center"][data-overlay-color="black"] {
+    .visibility-gradient {
+      background: rgba(0,0,0,0.2);
+      background-blend-mode: color-burn;
+    }
+  }
+  &[data-overlay-direction="center"][data-overlay-color="white"] {
+    .visibility-gradient {
+      background: rgba(255,255,255,0.2);
+      background-blend-mode: color-burn;
+    }
+  }
+
+  #haiku-body {
+    z-index: 10;
+  }
+
+  .visibility-gradient {
+    position: absolute;
+    display: none; // Toggled on by data attributes, specified above.
+    z-index: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .haiku-text {
+    position: absolute;
+    z-index: 1;
+    font-size: 1.3rem;
+  }
+}
+
+$footer-height: 3.2rem;
+$shared-indentation: 3rem;
+
+.haiku-footer {
+  position: relative;
+  height: $footer-height;
+  box-shadow: 0px 1px 5px -2px rgba(0,0,0,0.3);
+
+  &.haiku-has-white-bg {
+    border-top: 3px solid $green;
+  }
+  &.haiku-has-bg-image {
+
+  }
+
+
+  .haiku-author {
+    position: relative;
+    white-space: nowrap;
+
+    .portrait {
+      position: relative;
+      width: $footer-height*1.5;
+      height: $footer-height*1.5;
+      background-size: cover;
+      background-position: center center;
+      margin: 0 0.5rem;
+      top: -$footer-height/4;
+      border-radius: 100%;
+      border: 3px solid $white;
+    }
+
+    .shared-icon-container {
+      position: absolute;
+      z-index: 5;
+      top: 0;
+      bottom: 0;
+      overflow: hidden;
+      width: 32px;
+      left: 44px;
+
+      i {
+        position: absolute;
+        left: 0;
+        bottom: -8px;
+        width: 28px;
+        height: 28px;
+        line-height: 24px;
+        padding-left: 1px;
+        text-align: center;
+        background: $white;
+        border-radius: 100%;
+        color: darken($green, 10%);
+        font-size: 1rem;
+      }
+    }
+
+    // When a haiku is shared, the author's avatar is nudged over a little.
+    // This is because it overlaps the sharER's avatar.
+    .original-author-shared {
+      position: absolute;
+      top: 0;
+      left: $shared-indentation;
+    }
+
+    .author-and-time {
+      position: absolute;
+      top: 0;
+      left: $footer-height*1.5 + 1.5rem;
+      bottom: 0;
+
+      &.indented {
+        left: $footer-height*1.5 + 1.5rem + $shared-indentation;
+      }
+
+
+      .author-name {
+        position: absolute;
+        top: 0.8rem;
+        left: 0;
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: #333;
+        line-height: 1rem;
+
+        &:hover {
+          color: darken($green, 10%);
+        }
+      }
+      .relative-date {
+        position: absolute;
+        bottom: 0.6rem;
+        left: 0;
+        font-size: 0.7rem;
+        font-weight: 300;
+        color: #666;
+        line-height: 0.6rem;
+      }
+    }
+  }
+
+  .haiku-actions {
+    text-align: right;
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $white;
+
+    li {
+      display: inline-block;
+      padding: 0;
+      line-height: $footer-height * 1.1;
+      width: 4rem;
+      text-align: left;
+
+      button:disabled {
+        opacity: 0.5;
+      }
+
+      &.liked {
+        // the user likes this haiku.
+        color: $fuscia;
+
+        button {
+          color: $fuscia;
+        }
+      }
+
+      &.shared {
+        // the user likes this haiku.
+        color: darken($green, 15%);
+
+        button {
+          color: darken($green, 15%);
+        }
+      }
+
+      button {
+        position: relative;
+        margin: 0;
+        padding: 0;
+        width: 2rem;
+        height: $footer-height;
+        background: transparent;
+        border: 0;
+        outline: none;
+        color: #222;
+        text-align: center;
+
+        i { }
+
+      }
+      .count {
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.no-haikus {
+  padding: 2rem;
+  text-align: center;
+
+  h4 {
+    position: relative;
+    display: block;
+    margin: 0;
+  }
+
+  h4:nth-child(1) {
+    font-size: 2rem;
+    letter-spacing: -1px;
+    font-weight: 900;
+
+    span {
+      position: relative;
+      display: inline-block;
+    }
+
+    span:after {
+      content: '';
+      position: absolute;
+      left: 0.4rem;
+      right: 0.4rem;
+      bottom: 0px;
+      border-bottom: 3px solid $orange;
+    }
+  }
+  h4:nth-child(2) {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 3rem;
+    color: $green;
+  }
+  h4:nth-child(3) {
+    font-weight: 100;
+    font-size: 1.1rem;
+    color: $darkgray;
+  }
+}

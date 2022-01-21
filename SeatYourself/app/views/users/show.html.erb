@@ -1,0 +1,121 @@
+
+<% if current_user.user_type == "diner" %>
+
+<div class="black_stripe"></div>
+<h1 class="registration_logo"><%= link_to "Seat Yourself", restaurants_path %></h1>
+
+<div class="user_info">
+
+  <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+  <p><%= current_user.email %></p>
+
+</div>
+
+<div class="registration_form_outer"><div class="registration_form_inner">
+
+  <div class="reservation_listing">
+    <% if flash[:alert] %>
+      <div class="alert_cp"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice_cp"><%= flash[:notice] %></div>
+    <% end %>
+    <h3 class="reservation_upcoming_header">Upcoming Reservations:</h3>
+    <% @upcoming.each do |reservation| %>
+
+      <div class="reservation_restaurant_name"><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %></div>
+      <div class="reservation_details">
+        <span class="line1">
+          Party of <%= reservation.seats %> at <%= reservation.start_time.strftime("%l:%M %p") %>
+        </span>
+        <br>
+        <span class="line2">
+          <%= reservation.start_time.strftime("%B %-d %Y") %>
+        </span>
+      </div>
+      <div class="reservation_modify">
+        <ul>
+          <li><%= link_to "Edit Reservation", edit_restaurant_reservation_path(reservation.restaurant, reservation), class: 'modify' %></li><li><%= link_to "Delete Reservation", restaurant_reservation_path(reservation.restaurant, reservation), method: :delete, class: "delete" %></li>
+        </ul>
+      </div>
+      <div class="edit_reservation">
+        
+      </div>
+
+
+    <% end %>
+
+    <h2>Past Reservations:</h2>
+    <% @past.each do |reservation| %>
+      <div class="past_reservation">
+        <p class="line1"><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %></p>
+        <p class="line2">Party of <%= reservation.seats %> at <%= reservation.start_time.strftime("%l:%M %p") %> on <%= reservation.start_time.strftime("%B %-d %Y") %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div></div>
+
+
+<% else %>
+
+
+<div class="black_stripe"></div>
+<h1 class="registration_logo"><%= link_to "Seat Yourself", restaurants_path %></h1>
+
+<div class="user_info">
+
+  <p><%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></p>
+  <p><%= current_user.email %></p>
+
+</div>
+
+
+  <%= link_to(new_restaurant_path, class: 'add_rest_link') do %>
+    <div class="add_restaurant"><p>Add a restaurant</p></div>
+  <% end %>
+
+<div class="registration_form_outer"><div class="registration_form_inner">
+
+  <div class="reservation_listing">
+    <% if flash[:alert] %>
+      <div class="alert_cp"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice_cp"><%= flash[:notice] %></div>
+    <% end %>
+    <h3 class="reservation_upcoming_header">Your restaurants:</h3>
+    <% @restaurants_owned.each do |restaurant| %>
+      <div class="individual_restaurant">
+      <div class = "restaurant_name"><%= link_to restaurant.name, restaurant_path(restaurant) %></div>
+      <%= image_tag(restaurant.display_image_url, class: "restaurant_image") %>
+        <div class="restaurant_attributes"> 
+        <p><span class = "line1">Description:</span> <span class="line2"><%= truncate(restaurant.description,length:100) %></span></p>
+        <p><span class = "line1">Cuisine:</span> <span class="line2"><%= restaurant.cuisine %></span></p>
+        <p><span class = "line1">Address:</span> <span class="line2"><%= restaurant.address %></span></p>
+        <p><span class = "line1">Neighborhood:</span> <span class="line2"><%= restaurant.location %></span></p>
+        <p><span class = "line1">Average diner rating:</span> <span class="line2"><%= restaurant.rating %></span></p>
+
+        <p><span class = "line1">Opening hour:</span> <span class="line2"><%= restaurant.opening_hour %></span></p>
+        <p><span class = "line1">Closing hour:</span> <span class="line2"><%= restaurant.closing_hour %></span></p>
+        <p><span class = "line1">Reservation capacity:</span> <span class="line2"><%= restaurant.capacity %></span></p>
+        <p><span class = "line1">Reservation length (minutes):</span> <span class="line2"><%= restaurant.reservation_length_minutes %></span></p>
+        <p><span class = "line1">Image link:</span> <span class="line2"><%= restaurant.display_image_url %></span></p>
+        </div>
+        <div class="restaurant_modify">
+          <ul>
+            <li><%= link_to "Edit Restaurant", edit_restaurant_path(restaurant), class: 'modify' %></li><li><%= link_to "Delete Restaurant", restaurant_path(restaurant), method: :delete, class: "delete" %></li>
+          </ul>
+      </div>
+
+      
+    <% end %>
+
+  </div>
+
+</div></div>
+
+
+<% end %>

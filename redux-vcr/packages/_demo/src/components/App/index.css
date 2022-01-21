@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+
+body, button, input, select {
+  font-family: 'Lucida Grande', Tahoma, sans-serif;
+}
+
+header {
+  background-color: #222;
+  padding: 2rem;
+  color: white;
+}
+
+section {
+  margin: 4rem;
+}

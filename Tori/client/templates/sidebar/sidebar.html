@@ -1,0 +1,9 @@
+<template name="sidebar">
+  {{#if Template.subscriptionsReady}}
+    {{> sidebarProfile profile }}
+
+    {{#if showFollowButton}}
+      <button class="follow-button {{#if isFollowing}}following{{else}}not-following{{/if}}"></button>
+    {{/if}}
+  {{/if}}
+</template>

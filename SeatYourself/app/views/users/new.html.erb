@@ -1,0 +1,46 @@
+
+<div class="black_stripe"></div>
+
+<h1 class="registration_logo"><%= link_to "Seat Yourself", restaurants_path %></h1>
+
+<div class="registration_form_outer"><div class="registration_form_inner">
+  <h2>Register Account</h2>
+  <% if flash[:alert] %>
+    <div class="alert_login"><%= flash[:alert] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="notice_login"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if @user.errors.any? %>
+    <div class="registration_error_wrapper">
+      <h3>Found <%= pluralize(@user.errors.count, "Error") %>.</h3>
+      <ul>
+      <% @user.errors.full_messages.each do |error| %>
+        <li><%= error %></li>  
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_for @user do |f| %>
+
+    <p><%= f.text_field 'email', placeholder: "Email Address" %></p>
+
+    <%= f.password_field 'password', placeholder: "Password" %></p>
+
+    <%= f.password_field 'password_confirmation', placeholder: "Password (confirm)" %></p>
+
+    <%= f.text_field 'first_name', placeholder: "First Name" %></p>
+
+    <%= f.text_field 'last_name', placeholder: "Last Name" %></p>
+
+    <p style="text-align: left; padding: 5px 20px;">
+      <%= f.radio_button 'user_type','diner', checked:true %><%= f.label 'user_type_diner', 'Diner' %><br>  
+      <%= f.radio_button 'user_type','restaurant' %><%= f.label 'user_type_restaurant', 'Restaurant Owner' %>
+    </p>
+
+    <p><%= f.submit 'Click to sign up' %></p>
+
+  <% end %>
+</div></div>

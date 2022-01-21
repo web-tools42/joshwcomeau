@@ -1,0 +1,16 @@
+<h2>Add a New Yoyo</h2>
+<h4>Select Manufacturer:</h4>
+<select name="new_yoyo_manufacturer" id="new_yoyo_manufacturer" name="manufacturer" ng-model="yoyo.manufacturer">
+	<option ng-repeat="m in manufacturers" value="{{m.id}}">{{ m.name }}</option>
+</select>
+<p>
+	<a href="">- This yoyo is a collaboration (multiple manufacturers) -</a>
+</p>
+<label>Name: <input type="text" name="model" ng-model="yoyo.model"></label><br>
+<label>Diameter: <input type="text" name="diameter" ng-model="yoyo.diameter"></label><br>
+<label>Width: <input type="text" name="width" ng-model="yoyo.width"></label><br>
+<label>Weight: <input type="text" name="weight" ng-model="yoyo.weight"></label><br>
+<input type="submit" ng-click="submitYoyo()">
+<hr>
+<div>{{ submitStatus }}</div>
+

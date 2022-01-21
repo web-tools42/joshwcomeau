@@ -1,0 +1,346 @@
+@import '../variables';
+
+$cassette-width: 380px;
+$front-height: 120px;
+$spine-height: 45px;
+$square-offset: 12px;
+$square-size: $spine-height / 2 - 5px;
+$spool-size: 60px;
+
+.redux-vcr-component .cassette {
+  position: relative;
+  width: $cassette-width;
+  height: $spine-height;
+  margin: 1px;
+  background: $darkgray;
+  border-radius: 1px 1px 2px 2px;
+  cursor: default;
+  text-align: left;
+  font-family: "Lucida Grande", verdana, sans-serif;
+
+  .cassette-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $front-height;
+    background: lighten($darkgray, 10%);
+    transform: translateY(-100%) perspective(200px) rotateX(60deg);
+    transform-origin: bottom center;
+
+    .cassette-head {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $front-height * 0.25;
+      background: rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .cassette-spool {
+      position: absolute;
+      width: $spool-size;
+      height: $spool-size;
+      background: #FFF;
+      bottom: 20%;
+      overflow: hidden;
+
+      &.left-spool {
+        left: 3px;
+        .cassette-tape {
+          right: -$spool-size * 0.45;
+        }
+      }
+      &.right-spool {
+        right: 3px;
+        .cassette-tape {
+          left: -$spool-size * 0.45;
+        }
+
+      }
+
+      .cassette-tape {
+        position: absolute;
+        width: $spool-size * 0.9;
+        height: $spool-size * 0.9;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        border-radius: 100%;
+        border: 20px solid $darkgray;
+      }
+    }
+  }
+
+  .cassette-mould-marks {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    .cassette-seam {
+      position: absolute;
+      height: 1px;
+      width: 100%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      background: rgba(0,0,0,0.2);
+    }
+
+    .cassette-square {
+      position: absolute;
+      width: $square-size;
+      height: $square-size;
+      top: 50%;
+      left: $square-offset;
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+  }
+
+  // THEMES
+  // Different VHS cassettes have slightly different labels/footers.
+
+  .cassette-label {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    left: $square-offset * 2 + $square-size;
+    right: 30px;
+    bottom: 5px;
+    background: $offwhite;
+    border-radius: 4px;
+    font-size: 10px;
+
+    .cassette-flex-line-group {
+      position: relative;
+      display: flex;
+      margin: 3px 6px;
+      padding: 0 4px 4px;
+
+      &.with-bottom-border {
+        border-bottom: 1px solid $lightgray;
+      }
+    }
+
+    .cassette-line {
+      flex: 1;
+      line-height: 1em;
+      color: $black;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &.cassette-line-right {
+        text-align: right;
+      }
+
+      &.cassette-line-long {
+        flex: 2;
+      }
+    }
+
+    .cassette-line-name {
+      font-weight: bold;
+    }
+  }
+
+  .cassette-label-footer {
+    position: absolute;
+    z-index: 2;
+    right: -30px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 16px;
+    line-height: 15px;
+    font-size: 13px;
+    transform: rotate(-90deg);
+  }
+
+
+  &.theme-generic {
+    .cassette-label {
+      right: 24px;
+    }
+    .cassette-label-footer {
+      right: -26px;
+      color: $lightgray;
+      background: $darkgray;
+      border: 1px solid $lightgray;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+  }
+
+  &.theme-tdk {
+    $tdk-red: #e81740;
+    $tdk-green: #47bf32;
+    $tdk-blue: #1988bc;
+
+    .cassette-label {
+      padding-left: 16px;
+    }
+
+    .cassette-flex-line-group.with-bottom-border {
+      border-bottom: 1px dotted rgba(0,0,0,0.3);
+    }
+
+    .tdk-bars {
+      position: absolute;
+      left: -2px;
+      top: 0;
+      border-radius: 4px 0 0 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 16px;
+      height: $spine-height - 10px;
+
+      div {
+        flex: 1;
+
+        &:nth-of-type(1) {
+          background-color: $tdk-red;
+        }
+        &:nth-of-type(2) {
+          background-color: $tdk-green;
+        }
+        &:nth-of-type(3) {
+          background-color: $tdk-blue;
+        }
+      }
+    }
+
+    .cassette-label-footer {
+      text-align: center;
+      color: $offwhite;
+
+      .tdk-logo {
+        font-size: 14px;
+        font-weight: bold;
+        letter-spacing: 0;
+        line-height: 0.7em;
+      }
+      .tdk-source {
+        font-size: 4px;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  &.theme-kodak {
+    $kodak-yellow: #fdca3d;
+    $kodak-red: #dc492c;
+    $kodak-black: #38362f;
+    $kodak-block-width: $spine-height - 12px;
+
+    .cassette-label {
+      background: $kodak-yellow;
+      left: 6px;
+      right: 6px;
+      padding-left: $kodak-block-width + $kodak-block-width / 2;
+      padding-right: 20px;
+
+      .kodak-header {
+        position: absolute;
+        left: 1px;
+        top: 1px;
+        border-radius: 3px 0 0 3px;
+        background: $kodak-black;
+        width: $kodak-block-width / 2;
+        height: $kodak-block-width;
+
+        &:after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 0;
+          right: -$kodak-block-width;
+          border-style: solid;
+          border-width: $kodak-block-width 0 0 $kodak-block-width;
+          border-color: transparent transparent transparent $kodak-black;
+        }
+      }
+
+      &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        left: $kodak-block-width;
+        top: 1px;
+      }
+    }
+    .cassette-flex-line-group.with-bottom-border {
+      border-bottom: none;
+    }
+
+    .cassette-label-footer {
+      right: -8px;
+      font-size: 10px;
+      color: $kodak-red;
+      font-weight: bold;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  &.theme-polaroid {
+    $polaroid-blue: #4898b6;
+    $polaroid-green: #8ca95c;
+    $polaroid-yellow: #fcc05f;
+    $polaroid-orange: #f19355;
+    $polaroid-red: #c45363;
+
+    .cassette-label {
+      background: $white;
+      right: 23px;
+
+      .cassette-line-name {
+        color: $darkgray;
+      }
+    }
+
+    .cassette-flex-line-group {
+      margin-right: 8px;
+    }
+
+    .cassette-label-footer {
+      right: -24px;
+      font-size: 9px;
+      color: $white;
+      letter-spacing: -0.5px;
+      text-align: center;
+
+      .polaroid-boxes {
+        display: flex;
+        width: $spine-height - 9px;
+        transform: translateX(1px);
+        height: 9px;
+
+        div {
+          flex: 1;
+
+          &:nth-of-type(1) {
+            background-color: $polaroid-blue;
+          }
+          &:nth-of-type(2) {
+            background-color: $polaroid-green;
+          }
+          &:nth-of-type(3) {
+            background-color: $polaroid-yellow;
+          }
+          &:nth-of-type(4) {
+            background-color: $polaroid-orange;
+          }
+          &:nth-of-type(5) {
+            background-color: $polaroid-red;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+@import 'variables';
+@import 'animations';
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+
+body {
+  height: 100%;
+  position: relative;
+  background: $color-background;
+  font-family: 'Lato', sans-serif !important; 
+}
+
+.app {
+  position: relative;
+  height: 100%;
+}
+
+.gameboard-wrapper {
+  position: relative;
+  min-height: 100%;
+  margin-left: $sidebar-width;
+}
+
+
+.gameboard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: ($cell-width * 1.5 + $cell-spacing) * $cell-col-num + 16px;
+  height: ($cell-height + $cell-spacing) * $cell-row-num + ($cell-height/2);
+  outline: $board-outline solid $color-gameboard;
+  background: $color-gameboard;
+
+}
+
+.flash-message {
+  position: absolute;
+  top: -3.6rem;
+  height: 5rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+  h4 {
+    font-size: 2rem;
+    color: $color-flash-head;
+  }
+
+  h6 {
+    font-size: 1.3rem;
+    color: $color-flash-info;
+  }
+}
+
+.flash-msg-enter {
+  opacity: 0;
+  top: 1rem;
+  transition: 0.5s;
+}
+.flash-msg-enter-active {
+  opacity: 1;
+  top: -3.6rem;
+}
+.flash-msg-leave {
+  opacity: 1;
+  top: -3.6rem;
+  transition: 0.5s;
+}
+.flash-msg-leave-active {
+  opacity: 0;
+  top: -6rem;
+}
+
+
+

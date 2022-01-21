@@ -1,0 +1,4 @@
+== README
+
+SeatYourself, an Open Table clone. Bitmaker Labs assignment.
+Created by Steven Long and Joshua Comeau

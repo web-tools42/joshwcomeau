@@ -1,0 +1,34 @@
+<template name="profileFollow">
+  <div class="follow">
+    <div class="card">
+      <div class="header">
+        <a href="{{profileLink}}">
+          <div class="profile-photo" style="background-image: url('{{profile.photo}}')"></div>
+          <h3>{{profile.displayName}} </h3>
+          <h5>@{{username}}</h5>
+        </a>
+
+        <button class="follow-button {{#if isFollowing}}following{{else}}not-following{{/if}}"></button>
+      </div>
+      <div class="body">
+        <p class="summary">
+          {{#if profile.summary}}
+            {{profile.summary}}
+          {{else}}
+            {{defaultSummary}}
+          {{/if}}
+        </p>
+        {{#if profile.location}}
+          <p class="location">
+            <i class="fa fa-map-marker"></i> {{ profile.location }}
+          </p>
+        {{/if}}
+        <div class="joined-spacer"></div>
+        <div class="joined">
+          <div class="divider" data-text="Joined on"></div>
+          {{ joinedOn}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

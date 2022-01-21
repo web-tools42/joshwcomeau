@@ -1,0 +1,18 @@
+<template name="register">
+
+  <div id="register">
+
+    <div class="card">
+
+      {{#unless currentUser}}
+
+        {{> registerStep1}}
+      {{else}}
+
+        {{> registerStep2}}
+      {{/unless}}
+
+
+    </div>
+  </div>
+</template>

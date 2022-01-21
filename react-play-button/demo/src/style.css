@@ -1,0 +1,91 @@
+.textGreen1     { color: #96CA2D }
+.textGreen2     { color: #B5E655 }
+.textBlue1      { color: #5DC8EB }
+.textBlue2      { color: #7FC6BC }
+.textWhite      { color: #FFFFFF }
+.textOffwhite   { color: #EDF7F2 }
+.textLightGray  { color: #F2F2F2 }
+.textDarkGray   { color: #333333 }
+
+.bgGreen1       { background-color: #96CA2D }
+.bgGreen2       { background-color: #B5E655 }
+.bgBlue1        { background-color: #5DC8EB }
+.bgBlue2        { background-color: #7FC6BC }
+.bgWhite        { background-color: #FFFFFF }
+.bgOffwhite     { background-color: #EDF7F2 }
+.bgLightGray    { background-color: #F2F2F2 }
+.bgDarkGray     { background-color: #333333 }
+.bgDarken       { background-color: rgba(0,0,0,0.1) }
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+.demo {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+body, input, select, textarea {
+  font-family: Lato, sans-serif;
+}
+
+
+.header {
+  composes: bgWhite;
+}
+
+.mainHeading {
+  composes: textBlue1;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: left;
+  line-height: 80px;
+  flex: 0 0 80px;
+}
+
+.reactLogo {
+  height: 50px;
+  float: left;
+  margin: 15px;
+}
+
+.headerBorder {
+  composes: bgDarken;
+  position: relative;
+  height: 4px;
+}
+
+.content {
+  composes: bgLightGray;
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playButtonContainer {
+  flex: 0 0 350px;
+  height: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #CCC;
+}
+
+.playButtonControls {
+  flex: 0 0 350px;
+  height: 350px;
+}
+
+.footer {
+  composes: bgDarkGray textWhite;
+  flex: 0 0 12rem;
+}

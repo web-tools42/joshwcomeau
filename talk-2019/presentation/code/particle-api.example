@@ -1,0 +1,6 @@
+<Particle
+  angle={45}
+  distance={100}
+>
+  <Circle color="red" />
+</Particle>

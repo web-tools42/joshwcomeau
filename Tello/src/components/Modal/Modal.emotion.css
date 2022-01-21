@@ -1,0 +1,17 @@
+.css-Wrapper-1qyhqdj { position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: var(--css-Wrapper-1qyhqdj-0); }
+.css-Backdrop-x7jlfk { position: absolute;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: var(--css-Backdrop-x7jlfk-0);
+  -webkit-transition: opacity 750ms;
+  transition: opacity 750ms; }

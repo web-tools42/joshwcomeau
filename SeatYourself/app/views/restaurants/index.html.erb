@@ -1,0 +1,62 @@
+<%= render 'shared/header' %>
+
+<div class="body">
+
+    <div class="cuisine_filter">
+      <h3>Filter by cuisine</h3>
+      <ul>
+        <li><%= link_to "European", "/restaurants/view/European" %></li>
+        <li><%= link_to "French", "/restaurants/view/French" %></li>
+        <li><%= link_to "Italian", "/restaurants/view/Italian" %></li>
+        <li><%= link_to "Sushi", "/restaurants/view/Sushi" %></li>
+        <li><%= link_to "Chinese", "/restaurants/view/Chinese" %></li>
+        <li><%= link_to "Thai", "/restaurants/view/Thai" %></li>
+        
+        <li><%= link_to "Asian Fusion", "/restaurants/view/Asian_Fusion" %></li>
+        <li><%= link_to "American", "/restaurants/view/American" %></li>
+        <li><%= link_to "Bar", "/restaurants/view/Bar" %></li>
+        <li><%= link_to "Moroccan", "/restaurants/view/Moroccan" %></li>
+        <li><%= link_to "Middle Eastern", "/restaurants/view/Middle_Eastern" %></li>
+        <li><%= link_to "Halal", "/restaurants/view/Halal" %></li>
+      </ul>
+
+    </div>
+
+    <div class="show_restaurants">
+
+        <% @restaurants.each do |restaurant| %>
+
+            <div class="restaurant_card" style="background: url('/assets/<%= restaurant.display_image_url %>'); background-size: cover;">
+            <div class="card_head"><%= link_to restaurant.name, restaurant_path(restaurant.id) %></div>
+
+            </div>
+        <% end %>
+
+    </div>
+
+</div>
+
+
+
+<div class="footer">
+
+</div>
+<% if authenticated? %>
+
+    <p><%= link_to "Log out", session_path("current"), method:"delete" %></p>
+
+<% else %>
+
+    <%= link_to "Sign up", new_user_path %>
+    <%= link_to "Log in", new_session_path %>
+
+<% end %>
+
+<% if @registration_success %>
+  <h3><%= @registration_success %></h3>
+<% end %>
+
+<% if @login_message %>
+  <h3><%= @login_message %></h3>
+<% end %>
+

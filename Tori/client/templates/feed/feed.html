@@ -1,0 +1,13 @@
+<template name="feed">
+  <div id="feed">
+    <div class="card">
+      {{> haikusList haikus}}
+      {{#if loading}}
+        {{> spinner }}
+      {{/if}}
+
+    </div>
+  </div>
+
+
+</template>

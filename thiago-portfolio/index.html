@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8 />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Thiago Costa</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" media="screen" href="assets/fonts/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="styles/reset.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/index.css" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+	<!--[if IE]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+  <div class="background"></div>
+
+  <div class="main-image js-main-image">
+    <img class="thiago" src="assets/images/thiago.png" />
+  </div>
+
+  <section class="home-section js-home-section">
+    <div class="about-me js-about-me">
+      <h1 class="main-heading">
+        <span class="js-translation-control" data-language="en">
+          Hello,
+        </span>
+        <span class="js-translation-control" data-language="fr">
+          Salut,
+        </span>
+        <span class="js-translation-control" data-language="pt">
+          Oi
+        </span>
+      </h1>
+      <div class="about-paragraphs">
+        <p data-translate-key="firstParagraph">
+          I’m Thiago Costa, Lorem ipsium dolor amet.
+        </p>
+        <p data-translate-key="secondParagraph">
+          Rather than telling stories through words, designers strive to interpret their client’s narrative and translate it into a universal language. I have extensive experience in spinning visual tales through the harmony of branding, web design, editorial and typography.
+        </p>
+      </div>
+      <div class="social-media-links">
+        <a href="http://facebook.com">
+          <img src="assets/images/facebook.svg" />
+        </a>
+        <a href="http://dribbble.com">
+          <img src="assets/images/dribbble.svg" />
+        </a>
+        <a href="http://skype.com">
+          <img src="assets/images/skype.svg" />
+        </a>
+        <a href="instagram">
+          <img src="assets/images/instagram.svg" />
+        </a>
+      </div>
+
+      <a class="say-hello js-history-link" href="?contact=true">
+        <span class="say-hello-text" data-translate-key="contactLink">
+          Say hello
+        </span>
+        <img class="arrow-right" src="assets/images/arrow-right.png" />
+      </a>
+    </div>
+  </section>
+
+  <section class="contact-section js-contact-section">
+    <form class="contact-form">
+      <img class="thiago invisible" src="assets/images/thiago.png" />
+      <div class="contact-outline"></div>
+      <div class="contact-contents js-contact-contents">
+
+        <a class="close js-history-link" href="/">
+          <img src="assets/images/close.png" />
+        </a>
+
+        <h3 data-translate-key="contactFormHeading">Say hello!</h3>
+        <div class="input-field">
+          <input id="name" type="text" class="validate">
+          <label for="name" data-translate-key="contactNameLabel">Name</label>
+        </div>
+        <div class="input-field">
+          <input id="email" type="text" class="validate">
+          <label for="email" data-translate-key="contactEmailLabel">Email</label>
+        </div>
+        <div class="input-field">
+          <textarea id="message" class="materialize-textarea"></textarea>
+          <label for="message" data-translate-key="contactMessageLabel">
+            Write me something, tell me a joke...
+          </label>
+        </div>
+
+        <button class="submit" data-translate-key="contactFormSubmit">Submit</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="translation-controls">
+    <div class="translation-control js-translation-control" data-language="en">
+      EN
+    </div>
+    <div class="translation-control js-translation-control" data-language="fr">
+      FR
+    </div>
+    <div class="translation-control js-translation-control" data-language="pt">
+      PT
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <script src="lib/index.js"></script>
+
+</body>
+</html>

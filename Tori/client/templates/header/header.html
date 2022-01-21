@@ -1,0 +1,33 @@
+<template name="header">
+  <header>
+    <div class="left-nav">
+      {{#if currentUser}}
+        <div class="compose-button-container">
+          <a class='compose-button filled'>
+            <i class="fa fa-pencil"></i>
+          </a>
+        </div>
+        {{> headerNotifications }}
+        <div class="popular secondary">
+          <a class="header-button" href="{{popularLink}}">
+            <i class="fa fa-trophy"></i>
+          </a>
+        </div>
+      {{/if}}
+    </div>
+
+    <div class="main-logo">
+      <a href="/">{{> logo }}</a>
+    </div>
+
+    <div class="right-nav">
+      {{> headerSearch }}
+      {{#if currentUser}}
+        {{> headerAccount currentUser }}
+      {{else}}
+        {{> headerLogIn }}
+      {{/if}}
+    </div>
+  </header>
+
+</template>

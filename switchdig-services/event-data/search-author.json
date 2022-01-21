@@ -1,0 +1,6 @@
+{
+  "queryStringParameters": {
+    "author": "jin butchet",
+    "mediaTypes": "{\"print\": true,\"ebook\": false,\"audiobook\": true}"
+  }
+}

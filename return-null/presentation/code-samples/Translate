@@ -1,0 +1,39 @@
+import translate from '../../services/translate';
+
+const LANGUAGES = ['en', 'fr', ...];
+
+
+class Translate extends Component {
+  static propTypes = {
+    message: PropTypes.string.isRequired,
+    source: PropTypes.oneOf(LANGUAGES).isRequired,
+    target: PropTypes.oneOf(LANGUAGES).isRequired,
+    children: PropTypes.function.isRequired,
+  }
+
+  state = {
+    translatedMessage: null,
+  }
+
+  componentWillReceiveProps({ source, target, message }) {
+    // NOTE: snipped some validation business, for brevity.
+
+    translate({ source, target, message })
+      .then(translatedMessage => {
+        this.setState({ translatedMessage });
+      });
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.state.translatedMessage !==
+      nextState.translatedMessage
+    );
+  }
+
+  render() {
+    const { translatedMessage } = this.state;
+
+    return this.props.children(translatedMessage);
+  }
+};

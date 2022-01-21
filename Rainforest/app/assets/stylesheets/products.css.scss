@@ -1,0 +1,94 @@
+// Place all the styles related to the products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/* INDEX */
+.index_product_div {
+  margin-top: 25px;
+}
+.index_product_container {
+  width:300px;
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  border: 1px dotted #AAA;
+  float: left;
+}
+  .index_product_container h3 {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0px;
+  }
+  .index_product_description {
+    margin: 20px 0px;
+    font-size: 14px;
+    color: #333;
+  }
+  .index_product_price {
+    font-size: 17px;
+    font-style: italic;
+    text-align: center;
+    margin: 0px;
+  }
+
+
+
+/* NEW PRODUCT */
+.new_product_container {
+  width: 70%;
+  margin: 25px 0px;
+  border-radius: 14px;
+  border: 1px dotted #AAA;
+  padding: 10px;
+}
+
+.new_product_container label {
+  display: inline-block;
+  width: 170px;
+}
+
+.new_product_container input[type=text], textarea {
+  width: 400px;
+  margin: 5px 0px;
+  padding: 4px;
+  border: 1px solid #AAA;
+  border-radius: 5px;
+  vertical-align: top;
+  outline: none;
+}
+.new_product_container input[type=text]:focus, textarea:focus {
+  border: 1px solid #FC0;
+  box-shadow: 
+    1px 1px 0px #FFEA00,
+    2px 2px 0px #FFFF00,
+    3px 3px 0px #ACDB00,
+    4px 4px 0px #7BC200;
+  
+}
+
+
+
+/* Show product */
+#show_product_edit_link {
+  color: #F00;
+}
+.review {
+  padding: 10px;
+  border-bottom: 1px dotted #CCC;
+}
+
+.review_author {
+  font-size: 0.75em;
+  color: #444;
+}
+
+
+
+
+
+
+
+
+

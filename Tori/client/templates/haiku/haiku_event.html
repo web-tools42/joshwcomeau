@@ -1,0 +1,11 @@
+<template name="haikuEvent">
+  <li>
+    <span class="event-timestamp">{{eventTimestamp}}</span>
+    <span class="event-icon">
+      <i {{eventIconAttrs}}></i>
+    </span>
+    <span class="event-description">
+      {{eventName}} by <a href="/{{userProfileUrl}}">{{userDisplayName}}</a>
+    </span>
+  </li>
+</template>

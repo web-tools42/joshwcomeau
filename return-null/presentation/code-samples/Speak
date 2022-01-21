@@ -1,0 +1,43 @@
+class Speak extends PureComponent {
+  static propTypes = {
+    language: PropTypes.string,
+    children: PropTypes.string.isRequired,
+  }
+
+  static defaultProps = {
+    language: 'en',
+  }
+
+  utterance = new window.SpeechSynthesisUtterance()
+
+  componentDidMount() {
+    window.speechSynthesis.onvoiceschanged = () => {
+      this.forceUpdate()
+    };
+  }
+
+  componentWillUnmount() {
+    window.speechSynthesis.cancel();
+  }
+
+  speak() {
+    const { language, message } = this.props;
+
+    window.speechSynthesis.cancel();
+
+    this.utterance.voice = window.speechSynthesis
+      .getVoices()
+      .find(voice => voice.lang.startsWith(language));
+
+    this.utterance.lang = language;
+    this.utterance.text = message;
+
+    window.speechSynthesis.speak(this.utterance);
+  }
+
+  render() {
+    this.speak();
+
+    return null;
+  }
+}

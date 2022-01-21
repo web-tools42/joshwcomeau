@@ -1,0 +1,14 @@
+{
+  "name": "yadda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Joshua Comeau",
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^19.0.2"
+  }
+}

@@ -1,0 +1,25 @@
+@import 'variables';
+
+@font-face {
+  font-family: 'GothamRounded';
+  src: url('assets/fonts/GothamRounded-Bold.eot?#iefix') format('embedded-opentype'),  url('assets/fonts/GothamRounded-Bold.otf')  format('opentype'),
+       url('assets/fonts/GothamRounded-Bold.woff') format('woff'), url('assets/fonts/GothamRounded-Bold.ttf')  format('truetype'), url('assets/fonts/GothamRounded-Bold.svg#GothamRounded-Bold') format('svg');
+  font-weight: $fw-bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRounded';
+  src: url('assets/fonts/GothamRounded-Book.eot?#iefix') format('embedded-opentype'),  url('assets/fonts/GothamRounded-Book.otf')  format('opentype'),
+       url('assets/fonts/GothamRounded-Book.woff') format('woff'), url('assets/fonts/GothamRounded-Book.ttf')  format('truetype'), url('assets/fonts/GothamRounded-Book.svg#GothamRounded-Book') format('svg');
+  font-weight: $fw-book;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GothamRounded';
+  src: url('assets/fonts/GothamRounded-Light.eot?#iefix') format('embedded-opentype'),  url('assets/fonts/GothamRounded-Light.otf')  format('opentype'),
+       url('assets/fonts/GothamRounded-Light.woff') format('woff'), url('assets/fonts/GothamRounded-Light.ttf')  format('truetype'), url('assets/fonts/GothamRounded-Light.svg#GothamRounded-Light') format('svg');
+  font-weight: $fw-light;
+  font-style: normal;
+}

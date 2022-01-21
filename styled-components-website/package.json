@@ -1,0 +1,44 @@
+{
+  "name": "styled-components-docs",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "test": "jest"
+  },
+  "dependencies": {
+    "babel-plugin-polished": "^1.1.0",
+    "babel-plugin-styled-components": "^1.1.7",
+    "express": "^4.15.2",
+    "isomorphic-fetch": "^2.2.1",
+    "lru-cache": "^4.0.2",
+    "module-alias": "^2.0.0",
+    "next": "https://github.com/styled-components/styled-components-website/blob/master/vendor/next-v2.4.8.tgz?raw=true",
+    "polished": "^1.3.0",
+    "preact": "^8.2.1",
+    "preact-compat": "^3.16.0",
+    "prismjs": "^1.6.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-live": "^1.7.0",
+    "react-octicons-svg": "^1.1.13",
+    "styled-components": "^2.1.1",
+    "sw-precache-webpack-plugin": "^0.11.4",
+    "webpack-bundle-analyzer": "^2.4.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.9.1",
+    "enzyme-to-json": "^1.5.1",
+    "jest": "^20.0.4",
+    "jest-styled-components": "^4.1.0",
+    "react-addons-test-utils": "15.4.2",
+    "react-test-renderer": "15.4.2"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  extends: 'airbnb',
+  parserOptions: {
+    ecmaVersion: 7,
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+      impliedStrict: true,
+      experimentalObjectRestSpread: true
+    }
+  },
+  rules: {
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": 0,
+    "react/no-unused-prop-types": 0,
+    "prefer-template": 0,
+    "no-console": [1, { "allow": ["warn", "error", "info"] }],
+    "no-confusing-arrow": [2, { "allowParens": true }]
+  },
+  env: {
+    browser: true,
+    node: true
+  }
+}

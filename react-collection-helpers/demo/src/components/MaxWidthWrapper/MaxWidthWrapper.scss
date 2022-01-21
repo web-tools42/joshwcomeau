@@ -1,0 +1,13 @@
+.MaxWidthWrapper {
+  width: 100%;
+  max-width: 650px;
+  padding: 20vh 1.5rem 4rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+  .MaxWidthWrapper {
+    padding: 45px 1.5rem;
+
+  }
+}

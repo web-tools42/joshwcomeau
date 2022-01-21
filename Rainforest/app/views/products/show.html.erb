@@ -1,0 +1,13 @@
+<div class="show_product_wrapper">
+  <h1><%= @product.name %></h1>
+  <p class="show_product_description"><%= @product.description %></p>
+  <p class="show_product_price">Only <sup>$</sup><%= @product.format_price %></p>
+  <p><%= link_to "Edit", edit_product_path(@product.id) %> 
+      | 
+     <%= link_to "Delete", product_path(@product.id), method: :delete, id: "show_product_edit_link" %>
+</div>
+
+<div class="reviews_wrapper">
+  <%= render 'products/show_reviews' %>
+  <%= render 'products/add_review' %>
+</div>

@@ -1,0 +1,49 @@
+<div class="black_stripe"></div>
+<h1 class="registration_logo"><%= link_to "Seat Yourself", restaurants_path %></h1>
+
+<div class="registration_form_outer"><div class="registration_form_inner">
+
+  <div class="reservation_listing">
+    <% if flash[:alert] %>
+      <div class="alert_cp"><%= flash[:alert] %></div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="notice_cp"><%= flash[:notice] %></div>
+    <% end %>
+    <h3 class="reservation_upcoming_header">Upcoming Reservations:</h3>
+    <% @upcoming.each do |reservation| %>
+
+      <div class="reservation_restaurant_name"><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %></div>
+      <div class="reservation_details">
+        <span class="line1">
+          Party of <%= reservation.seats %> at <%= reservation.start_time.strftime("%l:%M %p") %>
+        </span>
+        <br>
+        <span class="line2">
+          <%= reservation.start_time.strftime("%B %-d %Y") %>
+        </span>
+      </div>
+      <div class="reservation_modify">
+        <ul>
+          <li><%= link_to "Edit Reservation", edit_restaurant_reservation_path(reservation.restaurant, reservation), class: 'modify' %></li><li><%= link_to "Delete Reservation", restaurant_reservation_path(reservation.restaurant, reservation), method: :delete, class: "delete" %></li>
+        </ul>
+      </div>
+      <div class="edit_reservation">
+        
+      </div>
+
+
+    <% end %>
+
+    <h2>Past Reservations:</h2>
+    <% @past.each do |reservation| %>
+      <div class="past_reservation">
+        <p class="line1"><%= link_to reservation.restaurant.name, restaurant_path(reservation.restaurant) %></p>
+        <p class="line2">Party of <%= reservation.seats %> at <%= reservation.start_time.strftime("%l:%M %p") %> on <%= reservation.start_time.strftime("%B %-d %Y") %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</div></div>

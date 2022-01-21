@@ -1,0 +1,230 @@
+@import 'variables';
+@import 'animations';
+
+
+.high-scores-wrapper {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: $sidebar-width;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.85);
+  outline: 1px solid rgba(0,0,0,0.25);
+
+  .high-scores-container {
+    position: absolute;
+    height: 520px;
+    width: 700px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border-radius: 5px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 60px;
+    font-weight: 700;
+    color: $color-red;
+    text-align: center;
+  }
+
+  .high-scores-loading {
+    color: #DDD;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 200px;
+
+    i {
+      position: absolute;
+      color: $color-orange;
+    }
+
+    .cog1 {
+      left: 200px;
+      top: 40px;
+      font-size: 100px;
+    }
+    .cog2 {
+      left: 266px;
+      top: 17px;
+      font-size: 68px;
+      animation-direction: reverse;
+    }
+    .cog3 {
+      left: 275px;
+      top: 92px;
+      font-size: 50px;
+      animation-direction: reverse;
+    }
+
+
+  }
+
+  .high-scores-table {
+    position: relative;
+    width: 75%;
+    margin: 1rem auto;
+    animation-name: fade-in-drop;
+    animation-duration: 1s;
+    animation-delay: 0.25s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+    text-align: left;
+  }
+
+  .high-score-row {
+    position: relative;
+    padding: 0 1rem;
+    line-height: 46px;
+    height: 46px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    color: #FFF;
+    background: rgba(0,0,0,0.1);
+    z-index: 1;
+
+    &:hover {
+      background: rgba(50,50,50,0.3);
+      transition: 0.2s;
+    }
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
+    &.new-score {
+      z-index: 2;
+      background: $color-highscore;
+      outline: 4px solid $color-highscore;
+      border-bottom: 0;
+      transition: 0.4s;
+
+      &:hover {
+        background: $color-highscore;
+
+      }
+
+      span.score {
+        float: right;
+      }
+    }
+
+    &.error {
+      background: $color-red;
+      outline: 4px solid $color-red;
+      transition: 0.4s;
+    }
+
+    input[type="text"] {
+      position: absolute;
+      top: 3px;
+      height: 40px;
+      width: 100%;
+      background: none;
+      border: 0;
+      border-bottom: 1px solid #CCC;
+      font-size: 30px;
+      color: #FFF;
+      font-family: 'Lato', sans-serif !important; 
+      transition: 0.4s;
+      outline: none;
+
+      &::-webkit-input-placeholder {
+         color: #DDD;
+      }
+
+      &:-moz-placeholder { /* Firefox 18- */
+         color: #DDD;  
+      }
+
+      &::-moz-placeholder {  /* Firefox 19+ */
+         color: #DDD;  
+      }
+
+      &:-ms-input-placeholder {  
+         color: #DDD;  
+      }
+
+    }
+    
+
+    span {
+      display: block;
+      position: relative;
+      float: left;
+
+      &.rank {
+        width: 10%;
+        font-size: 22px;
+        font-weight: 100;
+      }
+      &.name {
+        width: 65%;
+        font-size: 30px;
+
+      }
+      &.score {
+        width: 25%;
+        font-size: 26px;
+        text-align: right;
+      }
+    }
+    .submit-score {
+      position: absolute;
+      height: 54px;
+      width: 0px;
+      top: -4px;
+      right: -4px;
+      border: 0;
+      padding: 0;
+      font-size: 20px;
+      overflow: hidden;
+
+      &:hover {
+        cursor: pointer;
+        background: #FFF;
+        transition: 0.1s;
+      }
+
+      &.shown {
+        width: 70px;
+        right: -74px;
+        transition: 0.5s;
+      }
+    }
+
+  }
+
+  .restart-button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    margin: 0 auto;
+    width: 50%;
+    height: 40px;
+    background: $color-dgreen;
+    color: #FFF;
+    border-top: none;
+    border-left: none;
+    border-right: 1px solid darken($color-dgreen, 7%);
+    border-bottom: 3px solid darken($color-dgreen, 7%);
+    border-radius: 5px;
+    animation-name: fade-in;
+    animation-duration: 1.5s;
+    animation-delay: 0.25s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+
+    &:hover {
+      transition: 0.25s;
+      background: $color-lgreen;
+      border-right: 1px solid $color-dgreen;
+      border-bottom: 3px solid $color-dgreen;
+      cursor: pointer;
+    }
+  }
+}

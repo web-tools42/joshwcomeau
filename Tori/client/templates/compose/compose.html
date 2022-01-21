@@ -1,0 +1,133 @@
+<template name="compose">
+  <div class="modal{{#if modalOpen}} active{{/if}}">
+
+    <div class="modal-backdrop"></div>
+    <div id="compose" class="modal-window">
+      <form class="post-haiku">
+
+        <div class="close">
+          {{> close}}
+        </div>
+        <h2 class="title">Compose a Haiku</h2>
+
+        <!-- Haiku Text Box -->
+        <div class="haiku"
+        data-text-color="{{haikuTextColor}}"
+        data-text-align="{{haikuTextAlign}}"
+        data-text-valign="{{haikuTextValign}}"
+        data-background-align="{{haikuBackgroundAlign}}"
+        data-background-valign="{{haikuBackgroundValign}}"
+        data-overlay-color="{{haikuOverlayColor}}"
+        data-overlay-direction="{{haikuOverlayDirection}}"
+        data-include-actions="false"
+        data-show-overlay="{{haikuShowOverlay}}"
+        style="{{#if haikuBackgroundImage}}background-image: url('{{haikuBackgroundImage}}');{{/if}}">
+
+          <!-- OUR MAIN HAIKU. What the app listens to -->
+          <div id="haiku-body" class="haiku-text" contenteditable="true"></div>
+
+          <!-- Optional underlining for syllable identification. -->
+          {{#if highlightSyllables}}
+            <div class="haiku-text highlight-syllables">
+              {{{formattedHaikuBody}}}
+            </div>
+          {{/if}}
+
+          <!-- Placeholder text. Disappears on focus or content. -->
+          {{#if showPlaceholder}}
+            <span class="placeholder">Write Your Haiku...</span>
+          {{/if}}
+
+          <!-- An overlay that makes text more legible. -->
+          <div class="visibility-gradient"></div>
+
+          <!-- Progress bar for uploading images -->
+          {{#if showProgressBar}}
+            <div class="progress-bar" style="width: {{progress}}%"></div>
+          {{/if}}
+        </div>
+
+        <!-- Background-change and Syllable Indicator -->
+        <div class="under-haiku-text flex">
+          <div class="background-select-container flex-item">
+            <!-- Crazy formatting is to avoid whitespace added between spans -->
+            <!-- TODO: Make this generated from template. -->
+            <h6 class="label">Select Background:</h6>
+
+            <!-- Dynamically generated presets are inserted into this row -->
+            <div class="presets row"><!--
+           --><span class="custom">
+                <input type="file" class="background-select-option upload-background">
+              </span>
+            </div>
+          </div>
+
+          <div class="syllable-indicator-container flex-item">
+            <h6 class="label">Syllable Count</h6>
+            <div class="syllable-indicators">
+              {{> syllableIndicator line=0 limit=5 syllables=syllableData}}
+              {{> syllableIndicator line=1 limit=7 syllables=syllableData}}
+              {{> syllableIndicator line=2 limit=5 syllables=syllableData}}
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Advanced Mode -->
+        <h4 id="advanced-mode-toggle" class="{{#if advancedMode}}active{{/if}}">
+          <i class="fa fa-angle-{{advancedModeArrow}}"></i> Advanced Mode
+        </h4>
+
+        <!-- Advanced Mode controls dynamically added here on render. -->
+        <div class="advanced-mode-controls{{#if advancedMode}} active{{/if}}">
+          <span class="button-group">
+            <button class="button control {{#if haikuHasProperty 'textAlign' 'left'}}selected{{/if}}" data-text-align="left" data-overlay-direction="left">
+              <i class="fa fa-align-left"></i>
+            </button>
+
+            <button class="button control {{#if haikuHasProperty 'textAlign' 'center'}}selected{{/if}}" data-text-align="center" data-overlay-direction="center">
+              <i class="fa fa-align-center"></i>
+            </button>
+
+            <button class="button control {{#if haikuHasProperty 'textAlign' 'right'}}selected{{/if}}" data-text-align="right" data-overlay-direction="right">
+              <i class="fa fa-align-right"></i>
+            </button>
+          </span>
+
+          <span class="button-group">
+            <button class="button control {{#if haikuHasProperty 'textValign' 'top'}}selected{{/if}}" data-text-valign="top" data-overlay-direction="top">
+              <img src="images/vertical-top.png" />
+            </button>
+
+            <button class="button control {{#if haikuHasProperty 'textValign' 'center'}}selected{{/if}}" data-text-valign="center" data-overlay-direction="center">
+              <img src="images/vertical-center.png" />
+            </button>
+
+            <button class="button control {{#if haikuHasProperty 'textValign' 'bottom'}}selected{{/if}}" data-text-valign="bottom" data-overlay-direction="bottom">
+              <img src="images/vertical-bottom.png" />
+            </button>
+          </span>
+
+          <span class="button-group">
+            <button class="button control {{#if haikuHasProperty 'textColor' 'black'}}selected{{/if}}" data-text-color="black" data-overlay-color="white">
+              <i class="fa fa-font"></i>
+            </button>
+
+            <button class="button control dark {{#if haikuHasProperty 'textColor' 'white'}}selected{{/if}}" data-text-color="white" data-overlay-color="black">
+              <i class="fa fa-font"></i>
+            </button>
+          </span>
+
+          <span class="button-group">
+            <button class="button control {{#if haikuHasProperty 'showOverlay' true}}selected{{/if}}" data-show-overlay="true" data-toggleable="true">
+              <i class="fa fa-tint"></i>
+            </button>
+          </span>
+        </div>
+
+        <!-- Submit -->
+        <button class='button submit-haiku'>Publish</button>
+      </form>
+    </div>
+  </div>
+</template>

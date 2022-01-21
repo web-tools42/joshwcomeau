@@ -1,0 +1,19 @@
+@import '../../style-variables';
+
+.Header {
+  position: relative;
+  color: $black;
+  padding-bottom: 1rem;
+
+  h1 {
+    color: $red;
+    letter-spacing: -1px;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 0.25rem;
+  }
+
+  .intro {
+    font-size: 20px;
+    color: $black;
+  }
+}

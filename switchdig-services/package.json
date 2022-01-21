@@ -1,0 +1,37 @@
+{
+  "name": "switchdig-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "microservices/handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy",
+    "invoke:search": "serverless invoke -f searchAuthor -p event-data/search-author.json -l",
+    "invoke:search:local": "serverless invoke local -f searchAuthor -p event-data/search-author.json -l",
+
+    "invoke:subscribe": "serverless invoke -f subscribeToAuthor -p event-data/subscribe-to-author.json -l",
+    "logs:search": "serverless logs -f searchAuthor",
+    "logs:subscribe": "serverless logs -f subscribeToAuthor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshwcomeau/switchdig-services.git"
+  },
+  "author": "Josh W Comeau",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joshwcomeau/switchdig-services/issues"
+  },
+  "homepage": "https://github.com/joshwcomeau/switchdig-services#readme",
+  "dependencies": {
+    "amazon-product-api": "^0.4.2",
+    "async": "^2.1.2",
+    "aws-sdk": "^2.6.12",
+    "bluebird": "^3.4.6",
+    "dotenv": "^2.0.0",
+    "dynamodb": "^0.3.6",
+    "lodash": "^4.16.6",
+    "node-uuid": "^1.4.7",
+    "node-validator": "^0.1.23"
+  }
+}

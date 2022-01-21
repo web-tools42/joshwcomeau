@@ -1,0 +1,11 @@
+<template name="popularHaikus">
+  <div id="popular-haikus">
+    <h2 class="card-cutout-header">Most Popular Haikus</h2>
+    <div class="card">
+      {{> haikusList haikus}}
+      {{#if loading}}
+        {{> spinner }}
+      {{/if}}
+    </div>
+  </div>
+</template>

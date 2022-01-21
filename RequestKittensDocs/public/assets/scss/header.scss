@@ -1,0 +1,75 @@
+@import 'variables';
+
+.header-fill {
+  display: none;
+  position: relative;
+  height: 360px;
+}
+header {
+  position: relative;
+  z-index: 5;
+  padding: 3rem 1rem 5rem 1rem;
+  background: $color-peach;
+  color: #FFF;
+  height: 360px;
+
+  &.float {
+    position: fixed;
+    top: -300px;
+    left: 0;
+    right: 0;
+  }
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 7rem;
+    letter-spacing: -0.05em;
+    font-weight: $fw-bold;
+    text-shadow:
+      1px 1px 0px darken($color-peach, 8%),
+      2px 2px 0px darken($color-peach, 8%),
+      3px 3px 0px darken($color-peach, 8%)
+    ;
+  }
+
+  h5 {
+    margin: 1rem;
+    padding: 0;
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: -0.02em;
+    font-weight: $fw-book;
+    text-shadow:
+      1px 1px 0px darken($color-peach, 5%),
+      2px 2px 0px darken($color-peach, 5%)
+    ;
+  }
+
+  img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    margin: auto;
+  }
+
+  // Our less-intense version for sidepages
+  &.smaller-ver {
+    height: 220px !important;
+    padding: 1rem 1rem 2rem 1rem;
+
+    h5 {
+      margin: 0.5rem;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+      bottom: -20px;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "RequestKittens",
+  "dependencies": {
+    "jquery": "latest",
+    "underscore": "latest",
+    "moment": "~2.10.2",
+    "percentext": "latest"
+  }
+}

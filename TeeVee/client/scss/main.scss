@@ -1,0 +1,272 @@
+@import "{francocatena:compass}/compass";
+
+@import 'reset';
+@import 'variables';
+@import 'mixins';
+
+body, input, select, textarea, button {
+  font-family: 'lato', sans-serif;
+}
+body {
+  background: $deco;
+  font-weight: $fw-normal;
+}
+
+input {
+  outline: none;
+  padding: 0.25rem;
+  border-top: 1px solid rgba(0,0,0,0.04);
+  border-left: 1px solid rgba(0,0,0,0.04);
+  border-right: 1px solid rgba(0,0,0,0.04);
+  border-bottom: 3px solid rgba(0,0,0,0.5);
+  
+  &:focus {
+    border-bottom: 3px solid $olive;
+  }
+}
+
+.wrapper {
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 1rem auto;
+  max-width: 900px;
+}
+.card {
+  position: relative;
+  margin: 1rem;
+  border-radius: 3px;
+  padding: 1rem;
+  background: $white;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.25);
+}
+
+.is-hidden {
+  display: none;
+}
+
+.loading {
+  padding: 4rem 1rem;
+}
+
+header {
+  .logo {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    font-size: 4rem;
+    font-weight: $fw-heavy;
+    padding: 1rem;
+    color: $pink;
+  }
+  .twitter-typeahead {
+    width: 80%;
+    position: relative;
+    display: block !important;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    .tt-menu {
+      background: $offwhite;
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+      width: 100%;
+      padding: 0.75rem;
+    }
+    .tt-suggestion {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-size: 1.2rem;
+      
+      &:last-of-type {
+        border-bottom: 0;
+      }
+    }
+    
+    .tt-hint {
+      color: rgba(0,0,0,0.5);
+      position: absolute;
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 2rem;
+      margin-left: 0 !important;
+    }
+    
+    input[type='text'] {
+      width: 100%;
+      position: relative;
+      padding: 0.75rem;
+      font-size: 2rem;
+    }
+  }
+}
+
+.show-info {
+  display: flex;
+  
+  .show-image {
+    flex: 0 0 200px;
+    
+    img {
+      width: 100%;
+      border-radius: 3px;
+    }
+  }
+  
+  .show-description {
+    flex: 1;
+    padding: 0 1.5rem;
+        
+    h4 {
+      font-size: 2rem;
+      color: $olive;
+      font-weight: $fw-heavy;
+      
+      i {
+        margin-left: 0.5rem;
+        color: lighten($gray, 30%);
+        cursor: pointer;
+        
+        &:hover {
+          &:before {
+            // code for `fa-star`.
+            // Fills in on hover.
+            content: '\f005';
+          }
+        }
+        
+        &.starred {
+          color: $yellow !important;
+        }
+      }
+    }
+    h6 {
+      font-size: 1.2rem;
+      color: #333;
+      font-weight: $fw-heavy;
+      margin-top: 0.5rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.4em;
+      margin: 1rem 0;
+    }
+    
+    .show-status {
+      font-size: 1rem;
+      font-weight: $fw-normal;
+      
+      &.Ended {
+        color: $crimson;
+      }
+      &.Running {
+        color: $olive;
+      }
+    }
+  }
+  
+}
+
+.season-list {
+  -webkit-column-count: 2;
+  -moz-column-count: 2;
+  column-count: 2;
+  
+  
+  input[type=checkbox] {
+    display: none;
+  }
+  
+  
+  button {
+    background: none;
+    border: none;
+    
+    &.all {
+      color: $olive;
+    }
+    &.none {
+      color: $pink;
+    }
+  }
+  
+  .season {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    padding: 1rem 0;
+    
+    h4 {
+      font-size: 1.4rem;
+      margin: 0;
+    }
+  }
+  
+}
+
+.episode-list {
+  padding: 0.6rem 0;
+
+  .show-formatted-season-episode {
+    font-size: 0.8rem;
+    font-weight: $fw-heavy;
+    color: #333;
+  }
+
+  li {
+    position: relative;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    line-height: 2em;
+
+    &.seen {
+      background: $deco;
+    }
+    
+    &:last-of-type {
+      border-bottom: 0;
+    }
+  }
+    
+    
+  .episode-checkbox {
+    position: absolute;
+    opacity: 0;
+    
+    & + label {
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      display: block;
+    }
+    & + label:before {
+      content: '';
+      margin: 0 0.5rem;
+      display: inline-block;
+      vertical-align: text-top;
+      @include square(20px);
+      background: rgba(0,0,0,0.1);
+    }
+    &:checked + label:before {
+      background: $olive;
+    }
+    &:checked + label:after {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 15px;
+      background: $white;
+      @include square(2px);
+      box-shadow:
+        2px 0 0 $white,
+        4px 0 0 $white,
+        4px -2px 0 $white,
+        4px -4px 0 $white,
+        4px -6px 0 $white;
+      @include rotate(45deg);
+    }
+
+
+    
+  }
+  
+}

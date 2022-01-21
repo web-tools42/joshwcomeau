@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Tic Tac Toe!</title>
+  
+  <link rel="stylesheet" type="text/css" href="normalize.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="http://use.edgefonts.net/actor;days-one.js"></script>
+  <script src="throttle.js"></script>  
+  <script src="pattern.js"></script>
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+<script src="gamelogic.js"></script>
+</head>
+<body>
+
+<div id="cp">
+  <h1 id="gametitle"><span class="capT">T</span>i<span class="tl6">c</span><span class="capT">T</span>a<span class="tl6">c</span><span class="capT">T</span>oe</h1>
+  <div id="instructions">
+    <ul>
+    </ul>
+  </div>
+  <div id="decorativeBar4" class="decBar"></div>
+  <div id="decorativeBar3" class="decBar"></div>
+  <div id="decorativeBar2" class="decBar"></div>
+  <div id="decorativeBar1" class="decBar"></div>
+
+</div><div id="game">
+  <div id="gameboard">
+    <span id="winLineTL"></span>
+    <span id="winLineTR"></span>
+
+    <div><div id="cell1-1" class="gamecell"></div></div>
+    <div><div id="cell1-2" class="gamecell"></div></div>
+    <div><div id="cell1-3" class="gamecell"></div></div>
+    
+    <div><div id="cell2-1" class="gamecell"></div></div>
+    <div><div id="cell2-2" class="gamecell"></div></div>
+    <div><div id="cell2-3" class="gamecell"></div></div>
+
+    <div><div id="cell3-1" class="gamecell"></div></div>
+    <div><div id="cell3-2" class="gamecell"></div></div>
+    <div><div id="cell3-3" class="gamecell"></div></div>
+  </div>
+
+  <div id="winBackground">
+    <div id="winLetter">X</div>
+    <div id="winText">
+      <h2>Game Over. <br>User Wins.</h2>
+      <h4>You showed that computer how it's done!</h4>
+    </div>
+
+
+  </div>
+
+  <div id="loseBackground">
+    <div id="loseText">
+      <h2>You Lose.</h2>
+      <h4>You got Tic-Tac-T'owned.</h4>
+    </div>
+
+
+  </div>
+
+  <div id="tieBackground">
+    <div id="tieText">
+      <h2>Bleh. Tie.</h2>
+      <h4>Ties are lame. Play harder next time!</h4>
+    </div>
+  </div>
+
+</div>
+
+<a href="" class="newGameButton">
+  - Play Again -
+</a>
+
+</body>
+</html>

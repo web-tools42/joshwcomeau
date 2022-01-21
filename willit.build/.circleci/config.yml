@@ -1,0 +1,42 @@
+version: 2.1 # use CircleCI 2.1
+jobs: # a collection of steps
+  build: # runs not using Workflows must have a `build` job as entry point
+    working_directory: ~/willit-build # directory where steps will run
+    docker: # run the steps with Docker
+      - image: cypress/browsers:node11.13.0-chrome73
+    steps: # a collection of executable commands
+      - checkout # special step to check out source code to working directory
+      - restore_cache: # special step to restore the dependency cache
+          # Read about caching dependencies: https://circleci.com/docs/2.0/caching/
+          key: cache-dependency-{{ checksum "yarn.lock" }}
+      - run:
+          name: install node dependencies
+          command: yarn
+      - save_cache: # special step to save the dependency cache
+          key: cache-dependency-{{ checksum "yarn.lock" }}
+          paths:
+            - ./node_modules
+            - /root/.cache/
+      - run: # run linting
+          name: linting
+          command: yarn lint
+      # - run: # run unit testing
+      #     name: unit testing
+      #     command: yarn test
+      - run: # build the project
+          name: build project
+          command: yarn build
+      - run: # serve
+          name: serve project
+          command: yarn serve
+          background: true
+      - run: # audits
+          name: audits
+          command: yarn audit:ci
+      - run: # e2e, the server is already running so
+          name: e2e
+          command: yarn e2e:ci
+      - store_artifacts:
+          path: /root/willit-build/audit/cypress/videos
+      - store_artifacts:
+          path: /root/willit-build/cypress/videos

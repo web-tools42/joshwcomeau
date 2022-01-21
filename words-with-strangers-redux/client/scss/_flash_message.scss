@@ -1,0 +1,61 @@
+@import 'variables';
+
+#flash-message {
+  position: fixed;
+  z-index: 9; /* behind the header, but above everything else */
+  top: $header-height;
+  left: 0;
+  right: 0;
+  opacity: 0.9;
+  overflow: hidden;
+  height: $flash-message-height;
+  line-height: $flash-message-height;
+  text-align: center;
+  font-size: 1.15rem;
+  color: $white;
+  background: $darkgray;
+
+  &.error   { background: darken($red, 15%); }
+  &.alert   { background: $yellow; color: $mediumgray; }
+  &.notice  { background: $navy; }
+  &.success { background: $fadedteal; }
+
+}
+
+.flash-message-transition-enter {
+  transform: translate(0, -$flash-message-height);
+
+  .message-text {
+    opacity: 0.01;
+  }
+}
+
+.flash-message-transition-enter-active {
+  transform: translate(0, 0);
+  transition: transform 0.5s ease-in;
+
+  .message-text {
+    opacity: 1;
+    transition: opacity 0.25s linear 0.4s;
+  }
+}
+
+.flash-message-transition-leave {
+  transform: translate(0, 0);
+
+  .message-text {
+    opacity: 1;
+  }
+
+}
+
+.flash-message-transition-leave-active {
+  transform: translate(0, -$flash-message-height);
+  transition: transform 0.3s ease-in 0.15s;
+
+  .message-text {
+    opacity: 0.01;
+    transition: opacity 0.25s linear;
+  }
+
+}

@@ -1,0 +1,11 @@
+<div class="index_product_div">
+  <% @products.each do |p| %>
+    <div class="index_product_container">
+      <h3><%= link_to p.name, product_path(p.id) %></h3>
+      <p class="index_product_description"><%= p.description %></p>
+      <p class="index_product_price"><sup>$</sup><%= p.format_price %></p>
+    </div>
+
+
+  <% end %>
+</div>

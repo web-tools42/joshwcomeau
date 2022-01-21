@@ -1,0 +1,57 @@
+<template name="haikuFooter">
+  <div class="haiku-footer flex {{footerClasses}}">
+
+    <div class="haiku-author flex-item">
+      {{#if isASharedHaiku}}
+        <div class="shared-icon-container">
+          <i class="fa fa-retweet shared-icon"></i>
+        </div>
+
+        <div class="shared-author">
+          {{#with sharedAuthor}}
+            <div {{portraitAttrs}}></div>
+          {{/with}}
+        </div>
+        <div class="original-author-shared">
+          {{#with author}}
+            <div {{portraitAttrs}}></div>
+          {{/with}}
+        </div>
+      {{else}}
+        {{#with author}}
+          <div {{portraitAttrs}}></div>
+        {{/with}}
+      {{/if}}
+      <div class="author-and-time {{#if isASharedHaiku}}indented{{/if}}">
+        {{#with author}}
+          <a {{authorLinkAttrs}}>{{profile.displayName}}</a>
+        {{/with}}
+        <br>
+        <span class="relative-date">{{relativeDate}}</span>
+      </div>
+    </div>
+
+
+    <ul class="haiku-actions">
+      <li>
+        <button class="reply">
+          <i class="fa fa-reply"></i>
+        </button>
+      </li>
+      <li class="{{shareButtonClass}}">
+        <button class="share" disabled="{{shareButtonDisabled}}">
+          <i class="fa fa-retweet"></i>
+        </button>
+        <span class="count">{{humanizedShares}}</span>
+      </li>
+      <li class="{{likeButtonClass}}">
+        <button class="like" disabled="{{likeButtonDisabled}}">
+          <i class="fa fa-heart"></i>
+        </button>
+        <span class="count">{{humanizedLikes}}</span>
+
+      </li>
+    </ul>
+
+  </div>
+</template>

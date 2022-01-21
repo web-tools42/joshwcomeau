@@ -1,0 +1,23 @@
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+<p><%= @product.price %></p>
+<% if current_user && session[:user_id] == @product.user_id %>
+<p><%= link_to "Edit this product", edit_product_path(@product) %> | <%= link_to "Delete this product", product_path(@product), method: :delete %></p>
+<% end %>
+<br><br>
+<p><%= link_to "< Back to Products", products_path %></p>
+
+<h2>Reviews</h2>
+<% @product.reviews.each do |rev| %>
+  <p><%= rev.comment %></p>
+  <p style="font-size: 0.75em"></p>
+
+<% end %>
+
+<h3>Add a Review</h3>
+<%= form_for ([@product, @review]) do |f| %>
+  <%= f.text_field :comment %> <%= f.submit "Publish" %>
+<% end %>
+
+<%= debug @product if ApplicationHelper::DEBUGGING %>
+

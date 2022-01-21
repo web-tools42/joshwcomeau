@@ -1,0 +1,10 @@
+<h2>Edit Yoyo</h2>
+
+<label>Name: <input type="text" name="model" ng-model="yoyo.model"></label><br>
+<label>Diameter: <input type="text" name="diameter" ng-model="yoyo.diameter"></label><br>
+<label>Width: <input type="text" name="width" ng-model="yoyo.width"></label><br>
+<label>Weight: <input type="text" name="weight" ng-model="yoyo.weight"></label><br>
+<input type="submit" ng-click="updateYoyo(yoyo.id)">
+<hr>
+<div>{{ submitStatus }}</div>
+

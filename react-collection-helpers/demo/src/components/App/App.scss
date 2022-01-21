@@ -1,0 +1,160 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import '../../style-variables';
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+  font-size: 16px;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1.5;
+}
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+// Global styles
+*, *:before, *:after {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont,
+    "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background: $offwhite;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  margin-top: 3.5rem;
+}
+
+a {
+  position: relative;
+  display: inline-block;
+  color: $black;
+  transition: color 250ms;
+  text-decoration: none;
+}
+
+a:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: $red;
+  opacity: 0.2;
+  transition: opacity 350ms, transform 500ms ease-in;
+  transform: scaleY(0.66);
+}
+
+a:hover {
+  color: $red;
+}
+
+a:hover:after {
+  opacity: 1;
+  transform: scaleY(1);
+  transition: opacity 350ms, transform 500ms ease-out;
+
+}
+
+ol, ul {
+  color: $darkgray;
+  padding: 1rem 2rem;
+}
+
+li {
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 44px;
+}
+
+h2 {
+  font-size: 38px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 26px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+p {
+  color: $darkgray;
+  margin-bottom: 1.25rem;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.contact-info {
+  font-size: 18px;
+}
+
+.centered {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 32px;
+  }
+
+  .contact-info br {
+    display: none;
+  }
+}

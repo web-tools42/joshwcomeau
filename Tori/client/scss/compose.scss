@@ -1,0 +1,287 @@
+@import 'variables';
+
+#compose {
+  .haiku {
+    height: 11rem;
+    background-color: $white;
+    outline: none;
+    margin: 1rem 0;
+    cursor: text;
+    box-shadow: 2px 1px 3px rgba(0,0,0,0.1);
+    border-radius: 2px;
+
+    .haiku-text {
+      position: absolute;
+      outline: none;
+      font-size: 1.5rem;
+      font-weight: $fw-medium;
+
+      &.highlight-syllables {
+        z-index: 9;
+        color: transparent;
+      }
+
+      .syllable {
+        position: relative;
+
+        &:after {
+          position: absolute;
+          content: '';
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+
+        &:nth-child(even):after {
+          border-bottom: 2px solid $orange;
+        }
+        &:nth-child(odd):after {
+          border-bottom: 2px solid $blue;
+        }
+      }
+
+    }
+
+    .placeholder {
+      position: absolute;
+      font-size: 1.4rem;
+      opacity: 0.6;
+      pointer-events:none;
+    }
+
+    .progress-bar {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 10px;
+      width: 0; // overwritten by Javascript on upload
+      background-color: $grass;
+      border-radius: 0 0 2px 2px;
+      transition: 0.3s;
+    }
+  }
+
+
+  .under-haiku-text {
+    $row-height: 1.75rem;
+
+    h6.label {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.75rem;
+      color: #444;
+    }
+
+    .background-select-container {
+      .preset {
+        width: $row-height;
+        height: $row-height;
+        line-height: $row-height;
+        border: 1px solid rgba(0,0,0,0.2);
+        display: inline-block;
+        vertical-align: bottom;
+        margin-right: 0.25rem;
+        border-radius: 2px;
+        opacity: 0.8;
+        cursor: pointer;
+        background-position: center center;
+        background-size: cover;
+
+        &:hover {
+          opacity: 1;
+        }
+
+        &.selected {
+          opacity: 1;
+          border: 2px solid $green;
+        }
+
+      }
+      .custom {
+        display: inline-block;
+        height: $row-height;
+        line-height: $row-height;
+        position: relative;
+
+
+        input[type=file] {
+          color: transparent;
+          outline: none;
+          margin: 0;
+          height: 100%;
+          width: 80px; // Preventing spillover beyond the button.
+
+          &.selected {
+            &:before {
+              border: 2px solid $green;
+            }
+          }
+
+
+          &::-webkit-file-upload-button {
+            visibility: hidden;
+          }
+
+          &:hover {
+            &:before {
+              background: darken($blue, 8%);
+              border: 2px solid darken($blue, 8%);
+            }
+          }
+
+          &:before {
+            content: 'Upload';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            vertical-align: bottom;
+            display: inline-block;
+            background: $blue;
+            border: 2px solid $blue;
+            border-radius: 2px;
+            padding: 0 1rem;
+            line-height: $row-height;
+            outline: none;
+            color: $white;
+            -webkit-user-select: none;
+            cursor: pointer;
+            font-weight: $fw-heavy;
+            font-size: 10pt;
+          }
+        }
+      }
+    }
+
+
+    .syllable-indicator-container {
+      text-align: right;
+
+      .count {
+        position: relative;
+        display: inline-block;
+        width: $row-height;
+        height: $row-height;
+        line-height: $row-height;
+        margin-left: 4px;
+        font-size: 0.7rem;
+        text-align: center;
+        font-weight: 700;
+        border-bottom: 3px solid $orange;
+        overflow: hidden;
+        border-radius: 2px;
+
+        &.complete {
+          border-bottom: 3px solid $grass;
+
+          .bar { background: $grass; }
+        }
+
+        .num {
+          position: relative;
+          z-index: 2;
+        }
+
+        .bar {
+          content: '';
+          position: absolute;
+          z-index: 1;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          overflow: hidden;
+          background: $orange;
+        }
+      }
+
+    }
+  }
+  #advanced-mode-toggle {
+    opacity: 0.75;
+    cursor: pointer;
+    margin: 2rem 0 0.4rem 0;
+
+    &.active {
+      opacity: 1;
+    }
+
+    i {
+      width: 0.75rem;
+    }
+  }
+
+  .advanced-mode-controls {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+
+    .button-group {
+      display: inline-block;
+      margin-right: 0.5rem;
+      vertical-align: bottom;
+    }
+    button {
+      width: 2rem;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      padding: 0;
+      background: $white;
+      border: 1px solid darken($lightgray, 10%);
+      color: #111;
+
+      &.selected {
+        background: $green !important;
+      }
+
+      &.dark {
+        background: #777;
+        border: 1px solid #666;
+        color: $white;
+      }
+
+      i {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        line-height: 2rem;
+        font-size: 14px;
+      }
+
+      img {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+
+      }
+    }
+  }
+
+  .submit-haiku {
+    position: relative;
+    display: block;
+    background: $green;
+    padding: 0.75rem 4rem;
+    margin: 2rem auto 0;
+    border: 0px;
+    border-radius: 3rem;
+    color: $white;
+    font-weight: $fw-heavy;
+    outline: none;
+    transition: background 0.5s;
+
+    &:hover {
+      background: darken($green, 8%);
+      transition: background 0.2s;
+    }
+  }
+}

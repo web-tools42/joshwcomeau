@@ -1,0 +1,26 @@
+
+
+<div class="black_stripe"></div>
+<h1 class="registration_logo"><%= link_to "Seat Yourself", restaurants_path %></h1>
+
+    <div class="registration_form_outer"><div class="registration_form_inner">
+
+      <% if flash[:alert] %>
+        <div class="alert_login"><%= flash[:alert] %></div>
+      <% end %>
+      <% if flash[:notice] %>
+        <div class="notice_login"><%= flash[:notice] %></div>
+      <% end %>
+
+      <%= form_tag '/sessions' do %>
+
+          <p><%= text_field_tag 'email', nil,  placeholder: "Email Address" %></p>
+
+          <p><%= password_field_tag 'password', nil, placeholder: "Password" %></p>
+
+          <p><%= submit_tag 'Log in' %></p>
+
+      <% end %>
+
+    </div></div>
+

@@ -1,0 +1,27 @@
+{
+  "name": "react-swipe-to-reveal-options",
+  "version": "0.3.4",
+  "description": "Simple react.js component for a swipe-to-reveal-option item.",
+  "main": "react-swipe-to-reveal-options.js",
+  "peerDependencies": {
+    "react": "^15.0.0 || 0.x"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/enkidevs/react-swipe-to-reveal-options"
+  },
+  "keywords": [
+    "react",
+    "swipe-to-reveal",
+    "component",
+    "javascript",
+    "react-component"
+  ],
+  "author": "Mathieu Dutour",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/enkidevs/react-swipe-to-reveal-options/issues"
+  },
+  "homepage": "https://github.com/enkidevs/react-swipe-to-reveal-options"
+}

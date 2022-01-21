@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+ 
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RequestKittens | The Emotive Kitten API</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="apple-touch-icon" sizes="57x57" href="assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="assets/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+  <link rel="manifest" href="assets/favicon/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+  
+  <div class="black-overlay"></div>
+  <div class="wrapper">
+    <header class="smaller-ver">
+      <h2 class="title">Request Kittens</h2>        
+      <h5 class="tagline">The only API ridiculous enough to fetch cats by emotion.
+      <img class="header-icon" src="assets/images/kitten_icon.png" />
+    </header>
+
+    <section id="add-new">
+      <h3>Add new cat photo:</h3>
+
+      <form action="http://www.requestkittens/cats" method="post" id="add-new-form">
+        <table>
+          <tr>
+            <td>Emotion:</td>
+            <td>
+              <span class="select-container">
+                <select id="field-emotion" required>
+                  <!-- Options populated from server. -->
+                </select>
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>URL:</td>
+            <td><input type="text" name="url" id="field-url" placeholder="http://www.example.com/photo.jpg" required></td>
+          </tr>
+          <tr>
+            <td>Photo credit:</td>
+            <td><input type="text" name="owner" id="field-owner" placeholder="John Doe from website.com" required></td>
+          </tr>
+          <tr>
+            <td>API key:</td>
+            <td><input type="text" name="api_key" id="field-api-key" required></td>
+          </tr>
+        </table>
+
+        <button class="submit">Submit Photo</button>
+
+      </form>
+    </section>
+
+    <footer>
+      <div class="line1"> 
+        An experimental prototype by <strong>Joshua Comeau</strong>.
+      </div>
+      <div class="line2">
+        Copyright <span class="mono">Date.now()</span>. All rights, wrongs, and grey areas reserved.
+      </div>
+      
+      <div class="line3">
+        Cat icon is modified from an original by <a href="https://thenounproject.com/Martin%20LEBRETON/">Martin Lebreton</a>
+      </div> 
+    </footer>
+  </div>
+
+
+  <!-- JS libraries -->
+  <script src="assets/libs/jquery/dist/jquery.js"></script>
+  <script src="assets/libs/underscore/underscore.js"></script>
+  <script src="assets/libs/moment/moment.js"></script>
+  <script src="assets/libs/percentext/percentext.js"></script>
+
+  <!-- Concatenated app JS -->
+  <script src="app.js"></script>
+
+  <script>
+    window.reqKitControllers.application.fetchFlashMessageTemplate();
+
+    window.reqKitControllers.catNew.initialize();
+
+    $("#add-new-form").on("submit", function(e) {
+      e.preventDefault();
+      window.reqKitControllers.catNew.handleSubmit();
+    });
+  </script>
+</body>
+</html>

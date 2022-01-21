@@ -1,0 +1,18 @@
+<% if current_user %>
+  <h3 style="margin-top: 25px;">Add a New Review</h3>
+  <%= form_for([@product, @review]) do |f| %>
+    <% if @review.errors.any? %>
+      <h4>Found <%= pluralize(@review.errors.count, "error") %>.</h4>
+      <ul>
+        <% @review.errors.full_messages.each do |err| %>
+          <li><%= err %></li>
+        <% end %>
+    <% end %>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+    <br><br>
+    <%= f.submit "Publish Review" %>
+  <% end %>
+
+<% end %>
+

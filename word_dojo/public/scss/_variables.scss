@@ -1,0 +1,46 @@
+$cell-width: 44px;
+$cell-height: 76px;
+$cell-spacing: 7px;
+
+$cell-row-num:  7;
+$cell-col-num:  11;
+
+$sidebar-width: 200px;
+
+$board-outline: 16px;
+$bottom-row-height: 60px;
+
+
+
+// Private variables
+$color-offwhite:  #FFFFE2;
+$color-dgreen:    #00585F;
+$color-lgreen:    #009393;
+$color-lbeige:    #FFFCC4;
+$color-dbeige:    #F0EDBB;
+$color-orange:    #FF7C0D;
+$color-red:       #FF3800;
+$color-beige:     #FEFAEF;
+$color-sand:      #E0C387;
+$color-grey:      #737574;
+$color-mint:      #9CBAAE;
+$color-grass:     #44701D;
+$color-gold:      #FFC600;
+
+
+$color-background:  #666;
+$color-gameboard:   none;
+$color-tile:        #EEE;
+$color-tile-hover:  #FFF;
+$color-active-tile: $color-orange;
+$color-btn:         $color-dgreen;
+$color-btn-active:  $color-lgreen;
+$color-highscore:   $color-grass;
+$color-flash-head:  $color-red;
+$color-flash-info:  #FFF;
+
+$color-special-wc:  $color-gold;
+
+$color-htp-bg:      #444;
+$color-htp-heading: $color-lgreen;
+$color-htp-active:  $color-grass;

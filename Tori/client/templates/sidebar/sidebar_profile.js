@@ -1,0 +1,1 @@
+Template.sidebarProfile.helpers({});

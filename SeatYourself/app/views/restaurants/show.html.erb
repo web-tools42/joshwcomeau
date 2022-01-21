@@ -1,0 +1,199 @@
+<%= render 'shared/header' %>
+
+<div class="body">
+  <input type="hidden" id="address" value="<%= @restaurant.address %>">
+  
+  <div class="show_restaurant_wrapper">
+    <div class="show_header">
+      
+      <div class="show_header_image">
+        <%= image_tag @headerimage + "_header.jpg" %>
+      </div>
+      <div class="show_header_title">
+        <h1><%= @restaurant.name %></h1>
+      </div>
+
+      <% if flash[:alert] %>
+        <div class="show_failed_alert"><%= flash[:alert] %></div>
+      <% end %>
+
+
+      <div class="reservation_container">
+        <canvas id="reservationCanvas"></canvas>
+        <h3>Make a Reservation:</h3>
+        <%= render 'shared/reservation_form' %>
+      </div>
+
+    </div>
+   
+    <div class="show_body_firstrow">
+      <div class="show_body_left">
+        <h2>Restaurant Details</h2>
+        <div class="stats_container">
+          <ul>
+            <li><strong>Cuisine:</strong> <%= @restaurant.cuisine %></li>
+            <li><strong>Location:</strong> <%= @restaurant.location %></li>
+            <li><strong>Price:</strong> $$$</li>
+          </ul>
+        </div>
+        <p class="show_restaurant_description">
+          <strong>About <%= @restaurant.name %>:</strong> <%= @restaurant.description %>
+          <br><br><br>
+          <span style="font-size: 0.9em">
+            <strong style="color: #2692be">Restaurant Address:</strong> <%= @restaurant.address %>
+          </span>
+        </p>
+      </div>
+      <div id="map-canvas"></div>
+    </div>
+  
+    <div class="show_reviews">
+      <div class="reviews_display">
+        <h1 style="padding: 8px;">Restaurant Reviews</h1>
+        <div class="review-container">
+          <% if @reviews.length>0 ; @reviews.each do |review| %><div class="review">
+              <h3><%= review.title %></h3>
+              <p><%= review.content %></p>
+              <p class="chair_rating"> 
+                <% 5.times do |i| %>
+                  <% if i < review.rating %>
+                    <%= image_tag "chair_green.png" %>
+                  <% else %>
+                    <%= image_tag "chair_grey.png" %>
+                  <% end %>
+                <% end %>
+              </p>
+              <p class="review_posted_at">Reviewed by <%= review.user.first_name.capitalize %>
+                <br><span style="color: #999;"><%= review.created_at.strftime("%b %e %Y at %l:%M %p") %></span> </p>
+            </div><% end; else %>
+              <p style="margin-top: 25px; height: 150px;">No reviews yet. Be the first!</p>
+            <% end %>
+        </div>
+      </div>
+      
+      <% if authenticated? %>
+      <div class="reviews_add">
+        <h2>WRITE A REVIEW</h2>
+        <div class="reviews_add_form_holder">
+          <%= form_for [@restaurant, @restaurant.reviews.new] do |f| %>
+              <div class="form_holder_left">
+              <p><%= f.text_field :title, placeholder: "Enter a Headline" %></p>
+              <p><%= f.text_area :content, placeholder: "Write your review here" %></p>
+
+              </div>
+              <div class="form_holder_right">
+                <div class="rating_holder">
+                  <h4>RATE THIS RESTAURANT:</h4>
+                  <p><%= f.label 'rating_1', '1' %>
+                      <%= f.radio_button 'rating', 1 %>
+                      <%= f.label 'rating_2', '2' %>
+                      <%= f.radio_button 'rating', 2 %>
+                      <%= f.label 'rating_3', '3' %>
+                      <%= f.radio_button 'rating', 3 %>
+                      <%= f.label 'rating_4', '4' %>
+                      <%= f.radio_button 'rating', 4 %>
+                      <%= f.label 'rating_5', '5' %>
+                      <%= f.radio_button 'rating', 5 %>
+                  </p>
+                </div>
+              
+                <%= f.hidden_field 'user_id', value:session[:user_id] %>
+                <p><%= f.submit 'Submit your review now' %></p>
+              </div>
+
+
+          <% end %>   
+        </div>   
+      </div>
+      <% end %>
+
+      
+
+
+
+
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+
+
+
+<script>
+ geocoder = new google.maps.Geocoder();
+
+
+    //In this case it gets the address from an element on the page, but obviously you  could just pass it to the method instead
+function initialize() {
+
+  var address = document.getElementById("address").value;
+
+
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+
+      var myLatlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+
+      var mapOptions = {
+        center: myLatlng,
+        zoom: 16
+      };
+      
+      var map = new google.maps.Map(document.getElementById("map-canvas"),
+          mapOptions);
+
+
+      var marker = new google.maps.Marker({
+          position: myLatlng,
+          map: map,
+          title: "<%= @restaurant.name %>"
+      });
+      marker.setTitle("<%= @restaurant.name %>");
+      markers.push(newMarker);
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+
+}
+
+
+initialize();
+
+
+document.getElementById('reservationCanvas').patternizer(
+  {
+    stripes : [ 
+        {
+            color: '#63d6ff',
+            rotation: 45,
+            opacity: 37,
+            mode: 'normal',
+            width: 41,
+            gap: 40,
+            offset: 0
+        },
+        {
+            color: '#b9e7f6',
+            rotation: 45,
+            opacity: 50,
+            mode: 'normal',
+            width: 25,
+            gap: 25,
+            offset: 0
+        }
+    ],
+    bg : '#427b95'
+  }
+);
+
+</script>
+
+

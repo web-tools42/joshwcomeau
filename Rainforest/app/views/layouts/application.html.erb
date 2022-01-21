@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rainforest</title>
+  <link href='http://fonts.googleapis.com/css?family=Sniglet|Ruluko' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= link_to (image_tag "rainforest_logo.png", class: "logo"), products_path %>
+
+<% if current_user %>
+<div class="add_product_button">
+  <div class="add_product_link">
+    <%= link_to "+", new_product_path %>
+  </div>
+</div>
+<% end %>
+
+<div class="user_panel">
+  <ul>
+    <% if current_user %>
+      <li>Logged in as <span class="current_user_email"><%= current_user.username %></span>.</li>
+      <li><%= link_to "Log out", session_path("current"), method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Log In", new_session_path %></li>
+      <li><%= link_to "Register Account", new_user_path %></li>
+    <% end %>
+  </ul>
+</div>
+
+<% if flash[:alert] %>
+  <div class="flash_alert"><strong>Error:</strong> <%= flash[:alert] %></div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="flash_notice"><%= flash[:notice] %></div>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<%= render 'shared/header' %>
+
+<div class="body">
+
+    <div class="cuisine_filter">
+
+        <ul>Filter by cuisine
+            <li>European</li>
+            <li>French</li>
+            <li>Italian</li>
+            <li>Sushi</li>
+            <li>Chinese</li>
+            <li>Thai</li>
+            <li>Asian Fusion</li>
+            <li>American</li>
+            <li>Bar</li>
+            <li>Moroccan</li>
+            <li>Middle Eastern</li>
+            <li>Halal</li>
+        </ul>
+
+    </div>
+
+    <div class="show_restaurants">
+
+        <% @restaurants.cycle(4) do |restaurant| %>
+
+            <div class="restaurant_card" style="background: url('assets/<%= restaurant.display_image_url %>'); background-size: cover;">
+            <div class="card_head"><p><%= restaurant.name %></p></div>
+
+            </div>
+        <% end %>
+
+    </div>
+
+</div>
+
+
+<div class="footer">
+
+</div>

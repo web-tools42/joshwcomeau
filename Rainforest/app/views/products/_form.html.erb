@@ -1,0 +1,25 @@
+<%= form_for @product do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h4>Oh no! We found <%= pluralize(@product.errors.count, "error")%>!</h4>
+
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.label "Product Name:" %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label "Product Description:" %>
+  <%= f.text_area :description %>
+  <br>
+  <%= f.label "Price (in cents):" %>
+  <%= f.text_field :price_in_cents %>
+  <br><br>
+  <%= f.submit %>
+
+<% end %>

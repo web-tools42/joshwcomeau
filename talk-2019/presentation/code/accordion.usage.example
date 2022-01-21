@@ -1,0 +1,18 @@
+<Accordion>
+  <Accordion.Item title="Hello">
+    World
+  </Accordion.Item>
+</Accordion>
+
+
+
+
+// Another alternative:
+<Accordion
+  items={[
+    {
+      title: "Hello",
+      children: "World",
+    }
+  ]}
+/>

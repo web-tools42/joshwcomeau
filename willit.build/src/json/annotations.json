@@ -1,0 +1,9 @@
+[
+  {
+    "date": "3/18/1999",
+    "label": "Example annotation!",
+    "description": "Gatsby v1.2.3 ships with improved compression, bringing its Weissman score up to 2.75.",
+    "link": "http: //gatsbyjs.com",
+    "linkText": "Learn more"
+  }
+]

@@ -1,0 +1,11 @@
+<h2>Register for an account.</h2>
+
+<label>Email address: <input type="email" name="email" ng-model="user.email"></label><br>
+<label>Password: <input type="text" name="pw" ng-model="user.password"></label><br>
+<label>Confirm Password: <input type="text" name="pwcon" ng-model="user.password_confirmation"></label><br>
+<input type="submit" ng-click="submitRegistration()">
+<hr>
+<div>{{ submitStatus }}</div>
+{{user.email}}
+{{user.password}}
+{{user.password_confirmation}}

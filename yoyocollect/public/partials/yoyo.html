@@ -1,0 +1,8 @@
+<h2>{{ yoyo.model }}</h2>
+<h3 ng-repeat="manufacturer in yoyo.manufacturers">{{ manufacturer.name }}</h3>
+<p>
+  Diameter: {{ yoyo.diameter }}<br>
+  Width: {{ yoyo.width }}<br>
+  Weight: {{ yoyo.weight }}<br>
+</p>
+<p><strong><a href="" ng-click="editYoyo(yoyo.id)">Edit this Yoyo</a></strong></p>

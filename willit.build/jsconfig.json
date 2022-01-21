@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": "./",
+    "paths": {
+      "@modules/*": ["src/modules/*"],
+      "@images/*": ["src/images/*"],
+      "@utils": ["src/utils.js"]
+    }
+  },
+  "exclude": ["node_modules", "public"]
+}

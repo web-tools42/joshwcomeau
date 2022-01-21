@@ -1,0 +1,48 @@
+
+<div class="header">
+
+  <div class="logo">
+    <h1>SeatYourself</h1>
+  </div>
+
+  <div class="nav">
+
+    <ul>
+      <li><%= link_to "Find a Restaurant", restaurants_path %></li>
+      <% @user = session[:user_id].nil? ? "login" : session[:user_id] %>
+      <% if @user == 'login' %>
+      <li><%= link_to "Manage Reservations", new_session_path %></li>
+      <% elsif User.find_by(id:@user).user_type == "diner" %>
+      <li><%= link_to "Manage Reservations", user_path(@user) %></li>
+      <% else %>
+      <li><%= link_to "Manage Restaurants", user_path(@user) %></li>
+      <% end %>
+    </ul>
+
+  </div>
+
+  <div class="login">
+    <ul>
+      <% if authenticated? %>
+      <li>Welcome back <%= current_user.first_name %>!</li>
+      <li><%= link_to "Log Out", session_path(current_user.id), method: :delete %></li>
+      <% else %>
+      <li><%= link_to "Sign in", new_session_path %></li>
+      <li><%= link_to "Register a New Account", new_user_path %></li>
+      <% end %>
+      <li>
+        <%= form_tag "/search" do %>
+          <%= text_field_tag :search, nil, placeholder: "Enter search term..." %>
+          <%= submit_tag "Search" %>
+
+        <% end %>
+
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div id="header_alt">
+
+</div>

@@ -1,0 +1,639 @@
+import { Cite } from 'spectacle'
+import CodeSlide from 'spectacle-code-slide'
+
+import { LightSlide } from './slides'
+import RegularComponent from './regular-component'
+import TitleCard from '../src/components/TitleCard'
+import PoppingCircle from '../src/components/PoppingCircle'
+import Spacer from '../src/components/Spacer'
+import SpacedRow from '../src/components/SpacedRow'
+import Avatar from '../src/components/Avatar'
+import Footnote from '../src/components/Footnote'
+import AnimationIntroScreen from '../src/components/AnimationIntroScreen'
+import ExternalLink from '../src/components/ExternalLink'
+import FlexRow from '../src/components/FlexRow'
+import BigNumber from '../src/components/BigNumber'
+
+import './index.css'
+
+# 👋🏻 Good morning!
+
+---
+
+export default LightSlide
+
+import meSrc from '../assets/me.jpg'
+
+#### This is what I look like on the internet ↴
+
+<br /><br />
+
+<img
+  src={meSrc}
+  style={{ width: 200, height: 200, objectFit: 'cover', borderRadius: 100 }}
+/>
+
+---
+
+export default LightSlide
+
+I like cats, but I'm allergic
+
+---
+
+export default LightSlide
+
+### @joshwcomeau
+
+<br /><br />
+
+### Send me your cats
+
+---
+
+export default LightSlide
+
+<span style={{ fontSize: 200 }}>🛴 💥</span>
+
+---
+
+# Performance
+
+---
+
+### Things we optimize for performance:
+
+- Server-side rendering (or compile-time rendering)
+- Code-splitting
+- Tree-shaking
+- Asset optimization
+- Lazy-loading
+
+---
+
+### Things we don't focus on as much:
+
+- Everything after the page is loaded and interactive
+
+---
+
+<TitleCard />
+
+---
+
+Some context...
+
+---
+
+import amazonArticle from '../assets/amazon-article.png'
+
+<img src={amazonArticle} style={{ width: '100%' }} />
+
+<Footnote
+  subtitle="Source: fastcompany.com"
+  href="https://www.fastcompany.com/1825005/how-one-second-could-cost-amazon-16-billion-sales"
+/>
+
+---
+
+import slowLoading from '../assets/slow-loading.jpg'
+
+<img src={slowLoading} style={{ width: '100%' }} />
+
+---
+
+import amazonArticle2 from '../assets/amazon-article-pt2.png'
+
+<ExternalLink href="https://www.gigaspaces.com/blog/amazon-found-every-100ms-of-latency-cost-them-1-in-sales/">
+  <img src={amazonArticle2} style={{ height: '100%' }} />
+</ExternalLink>
+
+---
+
+import mansplaining from '../assets/mansplaining.png'
+
+<img src={mansplaining} style={{ height: '100%' }} />
+
+---
+
+import acSearchResults from '../assets/ac-search-results.png'
+
+<img src={acSearchResults} style={{ width: '100%' }} />
+
+---
+
+### People are not patient
+
+---
+
+We **remain impatient** after the page is loaded and interactive.
+
+---
+
+<FlexRow>
+  <BigNumber
+    prefix="Interaction"
+    num="50-100ms"
+    description="time to transition UI when clicking or tapping"
+  />
+  <BigNumber
+    prefix="animation"
+    num="16.67ms"
+    description="time for each frame in an animation"
+  />
+</FlexRow>
+
+---
+
+# Interactions
+
+---
+
+import inputDelaySrc from '../assets/input-delay.mp4'
+
+<ExternalLink href="https://input-delay.glitch.me/">
+  <video autoPlay src={inputDelaySrc} style={{ height: '100%' }} />
+</ExternalLink>
+
+<Footnote
+  title="input-delay.glitch.me"
+  subtitle="Made by Monica Dinculescu"
+  href="https://input-delay.glitch.me/"
+/>
+
+---
+
+<AnimationIntroScreen prefix="Case Study" title="EMT Software" />
+
+---
+
+<ExternalLink href="https://www.hillelwayne.com/post/performance-matters">
+  hillelwayne.com/post/performance-matters
+</ExternalLink>
+
+---
+
+import pcrSrc from '../assets/patient-care-report.png'
+
+<img src={pcrSrc} style={{ width: '100%' }} />
+
+---
+
+- 30,000,000 PCRs filled out per year, many by hand
+- Written in emergency situations, in-ambulance
+- Mistakes can be fatal (did they write 100mg or 160mg?)
+
+---
+
+A software version exists, and it's better in every measurable way, but nobody uses it.
+
+---
+
+The machine it runs on is low-powered, and every input comes with a 250ms delay.
+
+---
+
+# Input latency tools
+
+In React, the most common cause for input latency is wasteful renders.
+
+- `React.memo()`
+- `shouldComponentUpdate`
+
+---
+
+# Resources
+
+- ["React.memo() for Functional Components", from scotch.io](https://scotch.io/tutorials/react-166-reactmemo-for-functional-components-rendering-control)
+- [Official docs](https://reactjs.org/docs/react-api.html#reactmemo)
+
+---
+
+Profiling is your friend.
+
+---
+
+# What about animations?
+
+---
+
+Is this as important?
+
+---
+
+Animations serve many purposes, but a big one is making your app feel tangible / "real".
+
+---
+
+# Standards are higher than ever
+
+---
+
+# 📱 vs 🕸️
+
+---
+
+## Question
+
+Guess how large the Facebook mobile app is?
+
+---
+
+export default LightSlide
+
+import facebookAppSize from '../assets/fb-app-size.jpg'
+
+<img src={facebookAppSize} style={{ height: '100vh' }} />
+
+---
+
+import mario64Src from '../assets/super-mario-64.jpg'
+
+<img src={mario64Src} style={{ width: '50%' }} />
+
+Mario 64 was 32 megabytes.
+
+---
+
+### Think about how much friction app installs are...
+
+- Find the app in the App Store
+- Try and remember your App Store password
+- Download hundreds of megabytes
+- Wait for it to install
+- Figure out where the app icon went
+- Wait for it to open
+
+---
+
+### Why does anyone use mobile apps?
+
+---
+
+Many reasons, but I think a big one is that they're nice to use.
+
+---
+
+# "User Experience"
+
+---
+
+import mattPerryDevSrc from '../assets/matt-perry-dev.jpg'
+import chantasticSrc from '../assets/chantastic.jpg'
+
+<SpacedRow>
+  <Avatar name="Matt G Perry" src={mattPerryDevSrc} />
+  <Avatar name="Chantastic" src={chantasticSrc} />
+</SpacedRow>
+
+<Footnote
+  title="React Podcast #35"
+  subtitle="Make the Web Look Great, with Matt Perry"
+  href="https://reactpodcast.simplecast.fm/35"
+/>
+
+---
+
+# Relevance
+
+---
+
+AOL -> web
+
+---
+
+The web is an amazing open platform.
+
+---
+
+import codesandboxNetlifySrc from '../assets/codesandbox-netlify.jpg'
+
+<img src={codesandboxNetlifySrc} style={{ width: '100%' }} />
+
+---
+
+The web is _low-friction_ both for consumers and developers.
+
+The web is content-rich because of it.
+
+---
+
+In order to keep the web relevant, we need to match the UX of native apps.
+
+This is where animation performance comes in.
+
+---
+
+<AnimationIntroScreen title="Accordions" />
+
+---
+
+<!--
+
+- Go to the bootstrap accordion demo, show how it works
+- Pull up the devtools
+- Record opening and closing
+- Explain the FPS count - ideally we want 60fps. This is the native refresh rate of a lot of devices, and it's also just a buttery target.
+- 60fps -> 16.6ms/frame
+- zoom into a slower frame
+- Focus on layout and paint
+- Show how the ENTIRE PAGE is being repainted
+-->
+
+[Bootstrap Accordion example](https://getbootstrap.com/docs/4.0/components/collapse/#accordion-example)
+
+---
+
+import greenPixelsSrc from '../assets/green-pixels.mp4'
+
+The Pixel Pipeline
+
+<video
+  src={greenPixelsSrc}
+  autoPlay
+  loop
+  style={{ width: 300, height: 300, borderRadius: 1000, objectFit: 'cover' }}
+/>
+
+---
+
+import pixelPipelineSrc from '../assets/pixel-pipeline.jpg'
+
+export default LightSlide
+
+<img src={pixelPipelineSrc} style={{ width: '100%' }} />
+
+<Footnote
+  title="Rendering Performance"
+  subtitle="By Paul Lewis"
+  href="https://developers.google.com/web/fundamentals/performance/rendering/"
+/>
+
+---
+
+Properties like `background-color` don't trigger layout.
+
+---
+
+export default LightSlide
+
+import cssTriggersSrc from '../assets/csstriggers.png'
+
+<img src={cssTriggersSrc} style={{ width: '100%' }} />
+
+[https://csstriggers.com/](https://csstriggers.com/)
+
+---
+
+We should rely primarily on two properties that can skip layout _and_ paint:
+
+`opacity` and `transform`
+
+---
+
+# A better accordion?
+
+---
+
+We can't build _exactly_ that animation, but we can build something close.
+
+---
+
+import AccordionExample from '../src/components/Accordion/Accordion.example.js'
+
+<AccordionExample />
+
+---
+
+export default props => (
+  <CodeSlide
+    {...props}
+    lang="jsx"
+    code={require('raw-loader!./code/accordion.item.with-mounting.example')}
+    ranges={[
+      { loc: [0], title: 'Accordion Item' },
+      { loc: [0], title: '⚡️️️️️⚡️️️️️⚡️️️️️⚡️️️️️' },
+      { loc: [8, 9] },
+      { loc: [31, 38] },
+      { loc: [47, 48] },
+      { loc: [38, 46] },
+      { loc: [50, 60] },
+    ]}
+  />
+)
+
+---
+
+export default props => (
+  <CodeSlide
+    {...props}
+    lang="jsx"
+    code={require('raw-loader!./code/accordion.item.css.example')}
+    ranges={[
+      { loc: [0], title: 'Accordion keyframes' },
+      { loc: [0, 9] },
+      { loc: [10, 19] },
+      { loc: [20, 26] },
+    ]}
+  />
+)
+
+---
+
+### `will-change`?
+
+`will-change` is a way to let the browser know to optimize a transition.
+
+It can help a lot, but it's a tradeoff with memory ⚖️
+
+---
+
+# Don't be afraid to break the rules\*
+
+\*As long as you're profiling!
+
+---
+
+import khanMenu from '../assets/khan-menu.gif'
+
+<img src={khanMenu} />
+
+---
+
+<AnimationIntroScreen title="Like Button" />
+
+---
+
+import Tweet from '../src/components/Tweet/Tweet.managed'
+
+<SpacedRow>
+  <Tweet tweetContents="Hello React Boston! 👋🏻" />
+</SpacedRow>
+
+---
+
+import LikeButton from '../src/components/LikeButton/LikeButton.managed'
+
+<LikeButton size={160} />
+
+---
+
+import likeBeforeSrc from '../assets/like-before.png'
+
+<img src={likeBeforeSrc} style={{ width: '100%' }} />
+
+---
+
+## It runs on the main thread.
+
+[Perf test](https://codepen.io/joshwcomeau/pen/yrPzWO)
+
+---
+
+# Options
+
+- Less particles
+- Use CSS transitions
+- Sprites
+
+---
+
+import likeSpriteSrc from '../assets/like-sprite.png'
+
+export default LightSlide
+
+<img src={likeSpriteSrc} style={{ width: '100%' }} />
+
+---
+
+import LikeSprite from '../src/components/LikeSprite'
+
+export default LightSlide
+
+<LikeSprite />
+
+---
+
+export default props => (
+  <CodeSlide
+    {...props}
+    lang="jsx"
+    code={require('raw-loader!./code/like-sprite.example')}
+    ranges={[
+      { loc: [0], title: 'LikeSprite.js' },
+      { loc: [5, 12] },
+      { loc: [13, 22] },
+      { loc: [23, 28] },
+      { loc: [29, 37] },
+    ]}
+  />
+)
+
+---
+
+export default LightSlide
+
+import spritePerfSrc from '../assets/sprite-perf.png'
+
+<img src={spritePerfSrc} style={{ width: '100%' }} />
+
+---
+
+# Fun fact
+
+This is actually how Twitter does it!
+
+---
+
+# Tools
+
+- [GIPHY Capture](https://giphy.com/apps/giphycapture)
+- [EZGif](https://ezgif.com/gif-to-sprite)
+- Photoshop (or similar)
+
+---
+
+<AnimationIntroScreen title="Offscreen Canvas" />
+
+---
+
+# So I built a thing
+
+[Tinkersynth](https://tinkersynth.com)
+
+---
+
+import tinkersynthYikesSrc from '../assets/tinkersynth-yikes.mp4'
+
+<video autoPlay loop src={tinkersynthYikesSrc} style={{ height: '75vh' }} />
+
+---
+
+# The forgotten hero: <br />Web Workers
+
+We can do all of the art calculations in a separate thread.
+
+---
+
+<p><ExternalLink href="https://dassur.ma/things/when-workers/">"When should you be using Web Workers?"</ExternalLink>, by Surma</p>
+
+---
+
+# The trusty sidekick: <br />OffscreenCanvas
+
+OffscreenCanvas allows you to _paint to a canvas_ from _within a web worker_.
+
+---
+
+import offscreenCanvasSupportSrc from '../assets/offscreen-canvas-support.png'
+
+:(
+
+<img src={offscreenCanvasSupportSrc} style={{ width: '100%' }} />
+
+---
+
+⏰
+
+---
+
+# Conclusion
+
+---
+
+## People hate pages that take forever to load
+
+---
+
+## People hate pages that don't respond swiftly to interactions
+
+---
+
+## People hate choppy, stuttery animations
+
+---
+
+# Context matters
+
+If you're building an Amazon competitor, it makes sense to prioritize page-load above all else.
+
+For other apps? It depends.
+
+---
+
+Test your product on low-powered devices, and see where the pain points are.
+
+---
+
+Start analyzing the products you use every day.
+
+---
+
+All **resources, links, and code samples** available on Twitter:
+
+<br />
+<span style={{ fontSize: 72, color: '#6FA0FF' }}>{'@JoshWComeau'}</span>
+
+(Don't forget: cats!)
+
+##### Thank you!

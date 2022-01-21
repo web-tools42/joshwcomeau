@@ -1,0 +1,45 @@
+{
+  "name": "redux-vcr.shared",
+  "version": "0.3.3",
+  "description": "Shared Redux logic for various Redux VCR modules",
+  "main": "lib/index.js",
+  "files": [
+    "README.md",
+    "lib"
+  ],
+  "scripts": {
+    "build": "nwb build",
+    "clean": "nwb clean",
+    "test": "nwb test",
+    "test:watch": "nwb test --server",
+    "lint": "eslint -c ../.eslintrc src/** --ext .js",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {
+    "firebase": "3.2.1",
+    "reselect": "^2.5.3"
+  },
+  "peerDependencies": {
+    "invariant": "2.2.1",
+    "redux": "3.x"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "eslint-plugin-react": "^6.0.0",
+    "invariant": "^2.2.1",
+    "lodash": "^4.15.0",
+    "nwb": "0.11.x",
+    "redux": "^3.5.2",
+    "sinon": "^2.0.0-pre.2"
+  },
+  "author": "Joshua Comeau",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joshwcomeau/redux-vcr.git"
+  }
+}
